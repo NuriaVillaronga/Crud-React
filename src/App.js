@@ -13,32 +13,37 @@ import userData from "./users-data.json"
 const IconAction = ({ id, size = '2x' }) => {
 
   let imgIcon = '';
+  let iconColor = '';
+
   if(id == "delete") {
       imgIcon = faTrashCan;
+      iconColor = "rgb(185, 9, 9)";
   }
   else if(id == "save") {
       imgIcon = faFloppyDisk;
+      iconColor = "rgb(40, 122, 177)";
   }
   else if(id == "update") {
       imgIcon = faPenToSquare;
+      iconColor = "rgb(63, 109, 69)";
   }
   else if(id == "cancel") {
       imgIcon = faXmark;
+      iconColor = "rgb(185, 9, 9)"; 
   }
 
-  return (<div id={id} className="iconBtn">
-    <FontAwesomeIcon icon={imgIcon} size={size} className="icons"/>
-  </div>);   
+  return (<FontAwesomeIcon id={id} icon={imgIcon} size={size} color={iconColor} className="iconsCrud"/>);   
 }; 
+
 
 const ReadOnlyRow = ({ element, handleEdit }) => {
   return (<tr>
     <td>{element.name}</td>
     <td>{element.email}</td>
-    <td>{element.rol}</td>
+    <td>{element.rol}</td> 
     <td>
-        <button type="button" onClick={(event) => handleEdit(event, element)}><IconAction id="update" size="2x"/></button>
-        <button><IconAction id="delete" size="2x"/></button>
+        <button className="btnIcon" type="button" onClick={(event) => handleEdit(event, element)}><IconAction id="update" size="2x"/></button>
+        <button className="btnIcon"><IconAction id="delete" size="2x"/></button>
     </td>
   </tr>); 
 }
@@ -54,8 +59,8 @@ const EditableRow = ({ editForm, handleEditChange, handleCancel }) => {
       </select>
     </td>
     <td>
-        <button type="submit"><IconAction id="save" size="2x"/></button>
-        <button type="button" onClick={handleCancel}><IconAction id="cancel" size="2x"/></button>
+        <button className="btnIcon" type="submit"><IconAction id="save" size="2x"/></button>
+        <button className="btnIcon" type="button" onClick={handleCancel}><IconAction id="cancel" size="2x"/></button>
     </td>
   </tr>); 
 }

@@ -1,14 +1,27 @@
-div.iconBtn {
-    display: inline;
-    padding-right: 10px;
-    padding-left: 10px;
+.iconsCrud:hover {
+    cursor: pointer;
 }
 
-.icons:hover {
-    color: rgb(146, 140, 140);
-    cursor: pointer;
+#save:hover {
+    color: rgb(125, 177, 211);
+}
+
+#update:hover {
+    color: rgb(130, 170, 135);
+}
+
+#delete:hover, #cancel:hover {
+    color: rgb(216, 116, 116);
 }
 
 tr.hidde {
     display: none;
+}
+
+.btnIcon {
+    display: inline;
+    border: none !important;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: white;
 }
