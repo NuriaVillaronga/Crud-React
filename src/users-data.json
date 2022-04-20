@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Tiger Nixon", 
+    "email": "tiger.nixon@gmail.com",
+    "rol": "Admin"
+  },
+  {
+    "id": 2,
+    "name": "Garrett Winters",
+    "email": "garret.winters@gmail.com",
+    "rol": "User"
+  },
+  {
+    "id": 3,
+    "name": "Ashton Cox",
+    "email": "ashton.cox@gmail.com",
+    "rol": "Admin"
+  },
+  {
+    "id": 4,
+    "name": "Nuria Villaronga", 
+    "email": "nuria.villaronga@gmail.com",
+    "rol": "Admin"
+  },
+  {
+    "id": 5,
+    "name": "Juana Muxía",
+    "email": "juana.muxia@gmail.com",
+    "rol": "User"
+  },
+  {
+    "id": 6,
+    "name": "Jura Josh",
+    "email": "jura.josh@gmail.com",
+    "rol": "Admin"
+  }
+]
