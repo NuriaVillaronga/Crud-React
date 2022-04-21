@@ -36,14 +36,14 @@ const IconAction = ({ id, size = '2x' }) => {
 }; 
 
 
-const ReadOnlyRow = ({ element, handleEdit }) => {
+const ReadOnlyRow = ({ element, handleEdit, handleDelete }) => {
   return (<tr>
     <td>{element.name}</td>
     <td>{element.email}</td>
     <td>{element.rol}</td> 
     <td>
         <button className="btnIcon" type="button" onClick={(event) => handleEdit(event, element)}><IconAction id="update" size="2x"/></button>
-        <button className="btnIcon"><IconAction id="delete" size="2x"/></button>
+        <button className="btnIcon" type="button" onClick={() => handleDelete(element.id)}><IconAction id="delete" size="2x"/></button>
     </td>
   </tr>); 
 }
@@ -126,9 +126,14 @@ const TableCrud = ({ filter }) => {
     setEditUserId(null);
   }
 
-  //---------Falta--------------
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (userId) => {
+    const newUsers = [...users];
 
+    const index = users.findIndex((user) => user.id === userId);
+
+    newUsers.splice(index, 1);
+
+    setUsers(newUsers);
   }
 
   let attrFilter = '';
@@ -157,7 +162,7 @@ const TableCrud = ({ filter }) => {
           users.map((user) => (
             <Fragment key={user.id}>
               {
-                editUserId === user.id ? <EditableRow editForm={editFormData} handleCancel={handleCancelClick} handleEditChange={handleEditFormChange}/> : <ReadOnlyRow element={user} handleEdit={handleEditClick}/>
+                editUserId === user.id ? <EditableRow editForm={editFormData} handleCancel={handleCancelClick} handleEditChange={handleEditFormChange}/> : <ReadOnlyRow element={user} handleEdit={handleEditClick} handleDelete={handleDeleteClick}/>
               }
             </Fragment>
           ))
@@ -169,7 +174,7 @@ const TableCrud = ({ filter }) => {
 
 function App() {
   return (
-    <div>
+    <div className="container">
         <TableCrud filter={false}/>
     </div>
   );
