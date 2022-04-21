@@ -35,3 +35,29 @@ tr.hidde {
     margin-top: 50px;
 }
 
+#addUserForm {
+    display: none;
+    background-color: rgba(209, 209, 209, 0.239);
+}
+
+.suplementary-table {
+    width: 60%;
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+    margin: 40px;
+}
+
+.suplementary-table tr, .suplementary-table td, .suplementary-table th{
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.div-suplementary-table {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 228, 196, 0.405);
+}
+
+.row-suplementary-table {
+    display: none;
+}
+
