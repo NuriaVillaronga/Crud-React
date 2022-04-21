@@ -3,36 +3,54 @@
     "id": 1,
     "name": "Tiger Nixon", 
     "email": "tiger.nixon@gmail.com",
-    "rol": "Admin"
+    "password": "dsfjsfnkwf12s2s2$sce",
+    "rol": "Admin",
+    "register_data": "15/02/1998", 
+    "state": "Activo"
   },
   {
     "id": 2,
     "name": "Garrett Winters",
     "email": "garret.winters@gmail.com",
-    "rol": "User"
+    "password": "dsfjsfnkwf12s2s2$sce",
+    "rol": "User",
+    "register_data": "15/02/1998", 
+    "state": "Activo"
   },
   {
     "id": 3,
     "name": "Ashton Cox",
     "email": "ashton.cox@gmail.com",
-    "rol": "Admin"
+    "password": "dsfjsfnkwf12s2s2$sce",
+    "rol": "User",
+    "register_data": "15/02/1998", 
+    "state": "Activo"
   },
   {
     "id": 4,
     "name": "Nuria Villaronga", 
     "email": "nuria.villaronga@gmail.com",
-    "rol": "Admin"
+    "password": "dsfjsfnkwf12s2s2$sce",
+    "rol": "User",
+    "register_data": "15/02/1998", 
+    "state": "Activo"
   },
   {
     "id": 5,
     "name": "Juana Muxía",
     "email": "juana.muxia@gmail.com",
-    "rol": "User"
+    "password": "dsfjsfnkwf12s2s2$sce",
+    "rol": "User",
+    "register_data": "15/02/1998", 
+    "state": "Activo"
   },
   {
     "id": 6,
     "name": "Jura Josh",
     "email": "jura.josh@gmail.com",
-    "rol": "Admin"
+    "password": "dsfjsfnkwf12s2s2$sce",
+    "rol": "Admin",
+    "register_data": "15/02/1998", 
+    "state": "Activo"
   }
 ]

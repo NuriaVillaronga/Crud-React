@@ -1,62 +1,11 @@
 import React, { useState, Fragment } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import userData from "./users-data.json"
+import userData from "./users-data.json";
+import Icon from './Components/Icon'; 
 
-//"xs","lg","sm","1x","2x","3x","4x","5x","6x","7x","8x","9x","10x"; 
-const IconAction = ({ id, size = '2x' }) => {
-
-  let imgIcon = '';
-  let iconColor = '';
-
-  if(id == "delete") {
-      imgIcon = faTrashCan;
-      iconColor = "rgb(185, 9, 9)";
-  }
-  else if(id == "save") {
-      imgIcon = faFloppyDisk;
-      iconColor = "rgb(40, 122, 177)";
-  }
-  else if(id == "update") {
-      imgIcon = faPenToSquare;
-      iconColor = "rgb(63, 109, 69)";
-  }
-  else if(id == "arrowUp") {
-    imgIcon = faArrowUp;
-    iconColor = "grey";
-  }
-  else if(id == "cancel") {
-      imgIcon = faXmark;
-      iconColor = "rgb(185, 9, 9)"; 
-  }
-
-  return (<FontAwesomeIcon id={id} icon={imgIcon} size={size} color={iconColor} className="iconsCrud"/>);   
-}; 
-
-
-const ReadOnlyRow = ({ element, handleEdit, handleDelete, handleDisplay }) => {
-
-  return (<Fragment>
-    <tr>
-    <td><button className="btnIcon" id={`arrowUp-${element.id}`} onClick={() => handleDisplay(element.id)}><IconAction id="arrowUp" size="1x"/></button>{element.name}</td>
-    <td>{element.email}</td>
-    <td>{element.rol}</td> 
-    <td>
-        <button className="btnIcon" type="button" onClick={(event) => handleEdit(event, element)}><IconAction id="update" size="2x"/></button>
-        <button className="btnIcon" type="button" onClick={() => handleDelete(element.id)}><IconAction id="delete" size="2x"/></button>
-    </td>
-  </tr>
-  <tr className='row-suplementary-table' id={`row-suplementary${element.id}`}>
-      <td colspan="4">
-        <div className='div-suplementary-table'>
-          <table className='suplementary-table'>
+const TableSecundaryInformation = () => {
+  return (<table className='suplementary-table'>
             <tr>
               <th>Direccion</th>
               <th>CP</th>
@@ -67,7 +16,28 @@ const ReadOnlyRow = ({ element, handleEdit, handleDelete, handleDisplay }) => {
               <td>fddfhdfh</td>
               <td>dfhdfhdf</td>
             </tr>
-          </table>
+          </table>);
+}
+
+const ReadOnlyRow = ({ element, handleEdit, handleDelete, handleDisplay }) => {
+
+  return (<Fragment>
+    <tr>
+    <td><button className="btnIcon" id={`angleDown-${element.id}`} onClick={() => handleDisplay(element.id)}><Icon id="angleDown" size="1x"/></button>{element.name}</td>
+    <td>{element.email}</td>
+    <td>{element.password}</td> 
+    <td>{element.rol}</td> 
+    <td>{element.register_data}</td>
+    <td>{element.state}</td>
+    <td>
+        <button className="btnIcon" type="button" onClick={(event) => handleEdit(event, element)}><Icon id="update" size="2x"/></button>
+        <button className="btnIcon" type="button" onClick={() => handleDelete(element.id)}><Icon id="delete" size="2x"/></button> 
+    </td>
+  </tr>
+  <tr className='row-suplementary-table' id={`row-suplementary${element.id}`}>
+      <td colspan="7">
+        <div className='div-suplementary-table'>
+          <TableSecundaryInformation/>
         </div>
       </td>
     </tr>
@@ -85,8 +55,8 @@ const EditableRow = ({ editForm, handleEditChange, handleCancel }) => {
       </select>
     </td>
     <td>
-        <button className="btnIcon" type="submit"><IconAction id="save" size="2x"/></button>
-        <button className="btnIcon" type="button" onClick={handleCancel}><IconAction id="cancel" size="2x"/></button>
+        <button className="btnIcon" type="submit"><Icon id="save" size="2x"/></button>
+        <button className="btnIcon" type="button" onClick={handleCancel}><Icon id="cancel" size="2x"/></button>
     </td>
   </tr>); 
 }
@@ -184,7 +154,7 @@ const TableCrud = ({ filter }) => {
   const handleDisplayTable = (userId) => {
 
     var elemento = document.getElementById(`row-suplementary${userId}`);
-    var flechaCambio = document.getElementById(`arrowUp-${userId}`);
+    var flechaCambio = document.getElementById(`angleDown-${userId}`);
 
     if (visibility == true) {
       elemento.style.display = "none";
@@ -216,10 +186,13 @@ const TableCrud = ({ filter }) => {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th>Name</th>
+                      <th>Nombre completo</th>
                       <th>Email</th>
-                      <th>Role</th>
-                      <th>Actions</th>
+                      <th>Contraseña</th>
+                      <th>Rol</th>
+                      <th>Fecha de registro</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
