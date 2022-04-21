@@ -18,7 +18,7 @@ function ReadOnlyRow ( element, handleEditClick, handleDeleteClick, handleDispla
       </td>
     </tr>
     <tr className='row-suplementary-table' id={`row-suplementary${element.id}`}>
-        <td colspan="7">
+        <td colSpan="7">
           <div className='div-suplementary-table'>
             <SecundaryTable/>
           </div>

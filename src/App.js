@@ -35,7 +35,7 @@ const ReadOnlyRow = ({ element, handleEdit, handleDelete, handleDisplay }) => {
     </td>
   </tr>
   <tr className='row-suplementary-table' id={`row-suplementary${element.id}`}>
-      <td colspan="7">
+      <td colSpan="7">
         <div className='div-suplementary-table'>
           <TableSecundaryInformation/>
         </div>
