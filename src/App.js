@@ -172,10 +172,26 @@ const TableCrud = ({ filter }) => {
     </form>);   
 }; 
 
+//Esto habrá que cambiarlo, era solo para hacer idea de como colocarlo
+const AddUser = () => {
+  return (<Fragment>
+            <button className="btn btn-primary">Añadir nuevo usuario</button>
+          </Fragment>);
+}
+
 function App() {
   return (
     <div className="container">
-        <TableCrud filter={false}/>
+        <div className="row">
+            <div className="col-12 newUserCol">
+                <AddUser/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-12">
+              <TableCrud filter={false}/>
+            </div>
+        </div>
     </div>
   );
 }
