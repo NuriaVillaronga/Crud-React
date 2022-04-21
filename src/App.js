@@ -28,10 +28,6 @@ const IconAction = ({ id, size = '2x' }) => {
       imgIcon = faPenToSquare;
       iconColor = "rgb(63, 109, 69)";
   }
-  else if(id == "arrowDown") {
-    imgIcon = faArrowDown;
-    iconColor = "grey";
-  }
   else if(id == "arrowUp") {
     imgIcon = faArrowUp;
     iconColor = "grey";
@@ -46,9 +42,10 @@ const IconAction = ({ id, size = '2x' }) => {
 
 
 const ReadOnlyRow = ({ element, handleEdit, handleDelete, handleDisplay }) => {
+
   return (<Fragment>
     <tr>
-    <td><button className="btnIcon" onClick={() => handleDisplay(element.id)}><IconAction id="arrowUp" size="1x"/></button>{element.name}</td>
+    <td><button className="btnIcon" id={`arrowUp-${element.id}`} onClick={() => handleDisplay(element.id)}><IconAction id="arrowUp" size="1x"/></button>{element.name}</td>
     <td>{element.email}</td>
     <td>{element.rol}</td> 
     <td>
@@ -106,6 +103,7 @@ const TableCrud = ({ filter }) => {
     rol: "",
   });
 
+  const [visibility, setVisibility] = useState(false);
 
   const [addFormData, setAddFormData] = useState({
     name : "",
@@ -182,12 +180,23 @@ const TableCrud = ({ filter }) => {
     document.getElementById("btnAddUser").style.display = "block";
   }
 
-  //Habrá que hacer un cambio de estado de visible a invisible
+
   const handleDisplayTable = (userId) => {
 
     var elemento = document.getElementById(`row-suplementary${userId}`);
-    console.log(elemento);
-    elemento.style.display = "table-row"
+    var flechaCambio = document.getElementById(`arrowUp-${userId}`);
+
+    if (visibility == true) {
+      elemento.style.display = "none";
+      flechaCambio.setAttribute("style","transform: rotate(360deg)");
+      setVisibility(false);
+    }
+    else if(visibility == false) {
+      elemento.style.display = "table-row";
+      flechaCambio.setAttribute("style","transform: rotate(180deg)");
+      setVisibility(true);
+    }
+    
   }
 
   let attrFilter = '';
