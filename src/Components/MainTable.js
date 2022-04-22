@@ -29,6 +29,25 @@ function MainTable () {
   
       setEditionForm(formValues);
     }
+
+    const handleSaveFormSubmit = (event) => {
+      event.preventDefault();
+  
+      const editedUser = {
+        id : editUserId,
+        name : editionForm.name,
+        email: editionForm.email,
+        rol: editionForm.rol, 
+      }
+  
+      const newUsers = [...users];
+      const index = users.findIndex((user) => user.id === editUserId);
+  
+  
+      newUsers[index] = editedUser;
+      setUsers(newUsers);
+      setEditUserId(null);
+    }
   
     const handleEditChange = (event) => {
       event.preventDefault();
@@ -75,30 +94,32 @@ function MainTable () {
       
     }
     
-    return (<table className="table">
-                <thead>
-                <tr>
-                    <th>Nombre completo</th>
-                    <th>Email</th>
-                    <th>Contraseña</th>
-                    <th>Rol</th>
-                    <th>Fecha de registro</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    users.map((user) => (
-                    <Fragment key={user.id}>
-                        { 
-                        editUserId === user.id ? <EditableRow editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange}/> : <ReadOnlyRow element={user} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
-                        }
-                    </Fragment>
-                    ))
-                }
-                </tbody>
-            </table>);   
+    return (<form onSubmit={handleSaveFormSubmit}>
+              <table className="table">
+                  <thead>
+                  <tr>
+                      <th>Nombre completo</th>
+                      <th>Email</th>
+                      <th>Contraseña</th>
+                      <th>Rol</th>
+                      <th>Fecha de registro</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {
+                      users.map((user) => (
+                      <Fragment key={user.id}>
+                          { 
+                          editUserId === user.id ? <EditableRow editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange}/> : <ReadOnlyRow element={user} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
+                          }
+                      </Fragment>
+                      ))
+                  }
+                  </tbody>
+              </table>
+            </form>);   
 }; 
 
 export default MainTable;
