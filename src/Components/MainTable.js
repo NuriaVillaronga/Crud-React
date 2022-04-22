@@ -10,10 +10,22 @@ function MainTable () {
     const [editUserId, setEditUserId] = useState(null);
   
     const [editionForm, setEditionForm] = useState({
+      id : "",
       name : "",
       email: "",
       rol: "", 
+      direccion : "",
+      cp: "",
+      telefono: ""
     });
+
+    /*
+      const [addFormData, setAddFormData] = useState({
+        name : "",
+        email: "",
+        rol: "",
+      });
+    */
   
     const [visibility, setVisibility] = useState(false);
   
@@ -22,12 +34,20 @@ function MainTable () {
       setEditUserId(user.id);
   
       const formValues = {
+        id : user.id,
         name : user.name,
         email: user.email,
         rol: user.rol,
       }
-  
+
       setEditionForm(formValues);
+
+      var elemento = document.getElementById(`row-suplementary${user.id}`);
+      var flechaCambio = document.getElementById(`angleDown-${user.id}`);
+
+      elemento.style.display = "table-row";
+      flechaCambio.setAttribute("style","transform: rotate(180deg)");
+      setVisibility(true);
     }
 
     const handleSaveFormSubmit = (event) => {
@@ -91,7 +111,6 @@ function MainTable () {
         flechaCambio.setAttribute("style","transform: rotate(180deg)");
         setVisibility(true);
       }
-      
     }
     
     return (<form onSubmit={handleSaveFormSubmit}>
@@ -108,18 +127,19 @@ function MainTable () {
                   </tr>
                   </thead>
                   <tbody>
-                  {
+                    {
                       users.map((user) => (
-                      <Fragment key={user.id}>
-                          { 
-                          editUserId === user.id ? <EditableRow editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange}/> : <ReadOnlyRow element={user} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
+                        <Fragment key={user.id}> 
+                          {
+                            editUserId === user.id ? <EditableRow element={user} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <ReadOnlyRow element={user} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
                           }
-                      </Fragment>
+                        </Fragment>
                       ))
-                  }
+                    }
                   </tbody>
               </table>
             </form>);   
 }; 
+
 
 export default MainTable;

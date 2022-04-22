@@ -1,18 +1,31 @@
 import React from 'react';
+import Icon from './Icon'; 
+import ReadOnlyST from './ReadOnlyST';
+import EditableST from './EditableST';
 
-function SecundaryTable () {
+function SecundaryTable ( props ) {
+
     return (<table className='suplementary-table'>
-              <tr>
-                <th>Direccion</th>
-                <th>CP</th>
-                <th>Teléfono</th>
-              </tr>
-              <tr>
-                <td>dfagdfgdh</td>
-                <td>fddfhdfh</td>
-                <td>dfhdfhdf</td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Direccion</th>
+                  <th>CP</th>
+                  <th>Teléfono</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{props.direccion}</td>
+                  <td>{props.cp}</td>
+                  <td>{props.telefono}</td>
+                </tr>
+              </tbody>
             </table>);
 }
 
 export default SecundaryTable;
+
+/*{
+  props.editUserId === props.id ? <EditableST editionForm={props.editionForm}/> : <ReadOnlyST element={props}/>
+}
+*/

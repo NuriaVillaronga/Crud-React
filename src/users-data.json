@@ -6,7 +6,10 @@
     "password": "dsfjsfnkwf12s2s2$sce",
     "rol": "Admin",
     "register_data": "15/02/1998", 
-    "state": "Activo"
+    "state": "Activo",
+    "direccion": "C/Falsa 13 Vilaxoan",
+    "cp": "36611",
+    "telefono": "657384625"
   },
   {
     "id": 2,
@@ -15,7 +18,10 @@
     "password": "dsfjsfnkwf12s2s2$sce",
     "rol": "User",
     "register_data": "15/02/1998", 
-    "state": "Activo"
+    "state": "Activo",
+    "direccion": "C/Falsa 13 Vilagarcia",
+    "cp": "36600",
+    "telefono": "651194625"
   },
   {
     "id": 3,
@@ -24,7 +30,10 @@
     "password": "dsfjsfnkwf12s2s2$sce",
     "rol": "User",
     "register_data": "15/02/1998", 
-    "state": "Activo"
+    "state": "Activo",
+    "direccion": "C/Falsa 13 Pontevedra",
+    "cp": "36720",
+    "telefono": "612557845"
   },
   {
     "id": 4,
@@ -33,7 +42,10 @@
     "password": "dsfjsfnkwf12s2s2$sce",
     "rol": "User",
     "register_data": "15/02/1998", 
-    "state": "Activo"
+    "state": "Activo",
+    "direccion": "C/Falsa 14 Santiago",
+    "cp": "32460",
+    "telefono": "696941322"
   },
   {
     "id": 5,
@@ -42,7 +54,10 @@
     "password": "dsfjsfnkwf12s2s2$sce",
     "rol": "User",
     "register_data": "15/02/1998", 
-    "state": "Activo"
+    "state": "Activo",
+    "direccion": "C/Falsa 16 Illa de Arousa",
+    "cp": "36140",
+    "telefono": "657330689"
   },
   {
     "id": 6,
@@ -51,6 +66,9 @@
     "password": "dsfjsfnkwf12s2s2$sce",
     "rol": "Admin",
     "register_data": "15/02/1998", 
-    "state": "Activo"
+    "state": "Activo",
+    "direccion": "C/Falsa 12 A Coruña",
+    "cp": "31320",
+    "telefono": "612233445"
   }
 ]
