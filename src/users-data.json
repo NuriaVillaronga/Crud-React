@@ -7,9 +7,9 @@
     "rol": "Admin",
     "register_data": "15/02/1998", 
     "state": "Activo",
-    "direccion": "C/Falsa 13 Vilaxoan",
+    "address": "C/Alfredo Saralegui Nº12 Vilaxoán", 
     "cp": "36611",
-    "telefono": "657384625"
+    "phone": "657384625" 
   },
   {
     "id": 2,
@@ -19,9 +19,9 @@
     "rol": "User",
     "register_data": "15/02/1998", 
     "state": "Activo",
-    "direccion": "C/Falsa 13 Vilagarcia",
+    "address": "C/Falsa 13 Vilagarcia",
     "cp": "36600",
-    "telefono": "651194625"
+    "phone": "651194625"
   },
   {
     "id": 3,
@@ -31,21 +31,21 @@
     "rol": "User",
     "register_data": "15/02/1998", 
     "state": "Activo",
-    "direccion": "C/Falsa 13 Pontevedra",
+    "address": "C/Falsa 13 Pontevedra",
     "cp": "36720",
-    "telefono": "612557845"
+    "phone": "612557845"
   },
   {
     "id": 4,
-    "name": "Nuria Villaronga", 
+    "name": "Nuria Maria Villaronga Rodriguez Guillan", 
     "email": "nuria.villaronga@gmail.com",
     "password": "dsfjsfnkwf12s2s2$sce",
     "rol": "User",
     "register_data": "15/02/1998", 
     "state": "Activo",
-    "direccion": "C/Falsa 14 Santiago",
+    "address": "C/Falsa 14 Santiago",
     "cp": "32460",
-    "telefono": "696941322"
+    "phone": "696941322"
   },
   {
     "id": 5,
@@ -55,9 +55,9 @@
     "rol": "User",
     "register_data": "15/02/1998", 
     "state": "Activo",
-    "direccion": "C/Falsa 16 Illa de Arousa",
+    "address": "C/Falsa 16 Illa de Arousa",
     "cp": "36140",
-    "telefono": "657330689"
+    "phone": "657330689"
   },
   {
     "id": 6,
@@ -67,8 +67,8 @@
     "rol": "Admin",
     "register_data": "15/02/1998", 
     "state": "Activo",
-    "direccion": "C/Falsa 12 A Coruña",
+    "address": "C/Falsa 12 A Coruña",
     "cp": "31320",
-    "telefono": "612233445"
+    "phone": "612233445"
   }
 ]

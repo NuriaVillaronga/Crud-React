@@ -1,63 +1,119 @@
 .iconsCrud:hover {
     cursor: pointer;
 }
-
-#save:hover {
-    color: rgb(125, 177, 211);
-}
-
-#update:hover {
-    color: rgb(130, 170, 135);
-}
-
-#delete:hover, #cancel:hover {
-    color: rgb(216, 116, 116);
-}
-
 tr.hidde {
     display: none;
 }
-
-.btnIcon {
-    display: inline;
-    border: none !important;
-    margin-right: 10px;
-    margin-left: 10px;
-    background-color: white;
-}
-
 .newUserCol {
     text-align: left;
     margin-bottom: 20px;
 }
-
 .container {
     margin-top: 50px;
 }
-
 #addUserForm {
     display: none;
     background-color: rgba(209, 209, 209, 0.239);
 }
 
-.suplementary-table {
-    width: 60%;
-    border: 1px solid rgb(0, 0, 0);
-    text-align: center;
-    margin: 40px;
+/*Icons - MainTable and SecundaryTable*/
+.icon-button {
+    display: inline;
+    border: none !important;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: white;
+}
+#save:hover {
+    color: rgb(125, 177, 211);
+}
+#update:hover {
+    color: rgb(130, 170, 135);
+}
+#delete:hover, #cancel:hover {
+    color: rgb(216, 116, 116);
 }
 
-.suplementary-table tr, .suplementary-table td, .suplementary-table th{
-    border: 1px solid rgb(0, 0, 0);
-}
 
-.div-suplementary-table {
+/*Secundary table*/
+.col_apartamento{
+    width: 20%;
+}
+.col_ciudad {
+    width: 20%;
+}
+.col_provincia {
+    width: 13%;
+}
+.col_cp {
+    width: 8%;
+}
+.col_telefono {
+    width: 9%;
+}
+.secundaryTable {
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+.row-editable-secundaryTable,  .row-editable-mainTable {
+    background-color: rgba(158, 219, 255, 0.199);
+}
+.row-editable-secundaryTable th {
+    background-color: rgba(224, 224, 224, 0.219) !important;
+}
+.div-editable-secundaryTable, .div-read-secundaryTable { 
     display: flex;
     justify-content: center;
-    background-color: rgba(255, 228, 196, 0.405);
 }
-
-.row-suplementary-table {
+.row-read-secundaryTable {
     display: none;
 }
+.save-cancel-button {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
+/*Main table*/
+.col_nombre {
+    width: 24%;
+}
+.col_registro, .col_rol {
+    width: 8%;
+}
+.col_estado {
+    width: 9%;
+}
+.col_contraseña {
+    width: 18%;
+}
+.col_email {
+    width: 21%;
+}
+.col_acciones {
+    text-align: center;
+    padding-left: 0px !important;
+}
+.mainTable {
+    width: 100%;
+    border: 1px solid rgba(224, 224, 224, 0.575);
+}
+.mainTable tr {
+    border: 1px solid rgba(224, 224, 224, 0.575);
+}
+.mainTable td,  .mainTable th {
+    border: 1px solid rgba(224, 224, 224, 0.575); 
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.mainTable td {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.mainTable th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(224, 224, 224, 0.37);
+}
+
 

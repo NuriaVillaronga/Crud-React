@@ -50,8 +50,14 @@ const ContainerMainTable = () => {
 
 function App() {
   return (
-    <div className="container">
-        <ContainerMainTable/>
+    <div className="container-fluid">
+        <div className="row">
+          <div className="col-1"></div>
+          <div className="col-10">
+            <ContainerMainTable/>
+          </div>
+          <div className="col-1"></div>
+        </div>
     </div>
   );
 }

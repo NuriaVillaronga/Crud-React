@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
-import EditableRow from './EditableRow'; 
-import ReadOnlyRow from './ReadOnlyRow'; 
+import EditableRowMT from './EditableRowMT'; 
+import ReadOnlyRowMT from './ReadOnlyRowMT'; 
 import userData from "../users-data.json";
 
 function MainTable () { 
@@ -13,10 +13,13 @@ function MainTable () {
       id : "",
       name : "",
       email: "",
-      rol: "", 
-      direccion : "",
+      rol: "",
+      password: "",
+      state: "", 
+      address : "",
       cp: "",
-      telefono: ""
+      phone: "",
+      register_data: ""
     });
 
     /*
@@ -32,22 +35,21 @@ function MainTable () {
     const handleEditClick = (event, user) => {
       event.preventDefault(); //preventDefault() cancela el evento si es cancelable, lo que significa que la acción predeterminada que pertenece al evento no ocurrirá.
       setEditUserId(user.id);
-  
+
       const formValues = {
         id : user.id,
         name : user.name,
         email: user.email,
         rol: user.rol,
+        password: user.password,
+        state: user.state,
+        address : user.address,
+        cp: user.cp,
+        phone: user.phone,
+        register_data: user.register_data 
       }
 
       setEditionForm(formValues);
-
-      var elemento = document.getElementById(`row-suplementary${user.id}`);
-      var flechaCambio = document.getElementById(`angleDown-${user.id}`);
-
-      elemento.style.display = "table-row";
-      flechaCambio.setAttribute("style","transform: rotate(180deg)");
-      setVisibility(true);
     }
 
     const handleSaveFormSubmit = (event) => {
@@ -58,6 +60,12 @@ function MainTable () {
         name : editionForm.name,
         email: editionForm.email,
         rol: editionForm.rol, 
+        password: editionForm.password,
+        state: editionForm.state, 
+        address: editionForm.address,
+        cp: editionForm.cp,
+        phone: editionForm.phone,
+        register_data: editionForm.register_data 
       }
   
       const newUsers = [...users];
@@ -79,7 +87,6 @@ function MainTable () {
       newFormData[fieldName] = fieldValue;
   
       setEditionForm(newFormData);
-  
     }
   
     const handleCancelClick = () => {
@@ -96,34 +103,36 @@ function MainTable () {
       setUsers(newUsers);
     }
   
-    const handleDisplayClick = (userId) => { 
+
+    const handleDisplayClick = (id_user) => { 
   
-      var elemento = document.getElementById(`row-suplementary${userId}`);
-      var flechaCambio = document.getElementById(`angleDown-${userId}`);
+      var row_read_ST = document.getElementById(`row-read-secundaryTable-${id_user}`);
+      var icon_arrow = document.getElementById(`icon-arrow-${id_user}`);
   
       if (visibility == true) {
-        elemento.style.display = "none";
-        flechaCambio.setAttribute("style","transform: rotate(360deg)");
+        row_read_ST.style.display = "none";
+        icon_arrow.setAttribute("style", "transform: rotate(360deg)");
         setVisibility(false);
       }
       else if(visibility == false) {
-        elemento.style.display = "table-row";
-        flechaCambio.setAttribute("style","transform: rotate(180deg)");
+        row_read_ST.style.display = "table-row";
+        icon_arrow.setAttribute("style", "transform: rotate(180deg)");
         setVisibility(true);
       }
+
     }
     
     return (<form onSubmit={handleSaveFormSubmit}>
-              <table className="table">
+              <table className="mainTable">
                   <thead>
                   <tr>
-                      <th>Nombre completo</th>
-                      <th>Email</th>
-                      <th>Contraseña</th>
-                      <th>Rol</th>
-                      <th>Fecha de registro</th>
-                      <th>Estado</th>
-                      <th>Acciones</th>
+                      <th className="col_nombre">Nombre (completo)</th>
+                      <th className="col_email">Email</th>
+                      <th className="col_contraseña">Contraseña</th>
+                      <th className="col_rol">Rol</th>
+                      <th className="col_registro">Registro</th>
+                      <th className="col_estado">Estado</th>
+                      <th className="col_acciones">Acciones</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -131,9 +140,9 @@ function MainTable () {
                       users.map((user) => (
                         <Fragment key={user.id}> 
                           {
-                            editUserId === user.id ? <EditableRow element={user} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <ReadOnlyRow element={user} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
+                            editUserId === user.id ? <EditableRowMT element={user} editedUserId={editUserId} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <ReadOnlyRowMT element={user} editedUserId={editUserId} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
                           }
-                        </Fragment>
+                        </Fragment> 
                       ))
                     }
                   </tbody>
