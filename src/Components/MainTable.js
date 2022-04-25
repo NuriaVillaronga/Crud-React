@@ -19,7 +19,10 @@ function MainTable () {
       address : "",
       cp: "",
       phone: "",
-      register_data: ""
+      register_data: "",
+      city: "",
+      provincia: "",
+      apartment: ""
     });
 
     /*
@@ -46,7 +49,10 @@ function MainTable () {
         address : user.address,
         cp: user.cp,
         phone: user.phone,
-        register_data: user.register_data 
+        register_data: user.register_data,
+        city: user.city,
+        provincia: user.provincia,
+        apartment: user.apartment
       }
 
       setEditionForm(formValues);
@@ -65,7 +71,10 @@ function MainTable () {
         address: editionForm.address,
         cp: editionForm.cp,
         phone: editionForm.phone,
-        register_data: editionForm.register_data 
+        register_data: editionForm.register_data,
+        city: editionForm.city,
+        provincia: editionForm.provincia,
+        apartment: editionForm.apartment
       }
   
       const newUsers = [...users];

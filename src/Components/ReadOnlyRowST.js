@@ -5,9 +5,9 @@ function ReadOnlyRowST ( props ) {
     return (<Fragment>
               <tr>
                 <td>{props.element.address}</td> 
-                <td>Piso 2º Puerta IZQ</td>
-                <td>Vilagarcía de Arousa</td>
-                <td>Pontevedra</td>
+                <td>{props.element.apartment}</td>
+                <td>{props.element.city}</td>
+                <td>{props.element.provincia}</td>
                 <td>{props.element.cp}</td>
                 <td>{props.element.phone}</td>
               </tr>

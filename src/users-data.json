@@ -9,7 +9,10 @@
     "state": "Activo",
     "address": "C/Alfredo Saralegui Nº12 Vilaxoán", 
     "cp": "36611",
-    "phone": "657384625" 
+    "phone": "657384625",
+    "apartment": "Piso 2º Puerta IZQ",
+    "city":"Vilagarcía de Arousa",
+    "provincia":"Pontevedra"
   },
   {
     "id": 2,
@@ -21,7 +24,10 @@
     "state": "Activo",
     "address": "C/Falsa 13 Vilagarcia",
     "cp": "36600",
-    "phone": "651194625"
+    "phone": "651194625",
+    "apartment": "Piso 2º Puerta IZQ",
+    "city":"Vilagarcía de Arousa",
+    "provincia":"Pontevedra"
   },
   {
     "id": 3,
@@ -33,7 +39,10 @@
     "state": "Activo",
     "address": "C/Falsa 13 Pontevedra",
     "cp": "36720",
-    "phone": "612557845"
+    "phone": "612557845",
+    "apartment": "Piso 2º Puerta IZQ",
+    "city":"Vilagarcía de Arousa",
+    "provincia":"Pontevedra"
   },
   {
     "id": 4,
@@ -45,7 +54,10 @@
     "state": "Activo",
     "address": "C/Falsa 14 Santiago",
     "cp": "32460",
-    "phone": "696941322"
+    "phone": "696941322",
+    "apartment": "Piso 2º Puerta IZQ",
+    "city":"Vilagarcía de Arousa",
+    "provincia":"Pontevedra"
   },
   {
     "id": 5,
@@ -57,7 +69,10 @@
     "state": "Activo",
     "address": "C/Falsa 16 Illa de Arousa",
     "cp": "36140",
-    "phone": "657330689"
+    "phone": "657330689",
+    "apartment": "Piso 2º Puerta IZQ",
+    "city":"Vilagarcía de Arousa",
+    "provincia":"Pontevedra"
   },
   {
     "id": 6,
@@ -69,6 +84,9 @@
     "state": "Activo",
     "address": "C/Falsa 12 A Coruña",
     "cp": "31320",
-    "phone": "612233445"
+    "phone": "612233445",
+    "apartment": "Piso 2º Puerta IZQ",
+    "city":"Vilagarcía de Arousa",
+    "provincia":"Pontevedra"
   }
 ]

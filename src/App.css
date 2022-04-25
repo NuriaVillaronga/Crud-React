@@ -11,9 +11,24 @@ tr.hidde {
 .container {
     margin-top: 50px;
 }
-#addUserForm {
+
+/*Add-form*/
+#add-form {
     display: none;
     background-color: rgba(209, 209, 209, 0.239);
+    padding: 20px;
+}
+.info-contacto {
+    padding-bottom: 25px;
+}
+.info-interna {
+    padding-bottom: 35px;
+}
+.title-interna, .title-contacto {
+    padding-bottom: 10px;
+}
+.container-items {
+    padding-bottom: 8px;
 }
 
 /*Icons - MainTable and SecundaryTable*/

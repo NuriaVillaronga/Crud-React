@@ -7,9 +7,15 @@ function EditableRowST (props) {
                     <td>
                         <input className="form-control" type="text" required="required" name="address" value={props.editionForm.address} onChange={props.handleEditChange}/>
                     </td>
-                    <td>Piso 2º Puerta IZQ</td>
-                    <td>Vilagarcía de Arousa</td>
-                    <td>Pontevedra</td>
+                    <td>
+                        <input className="form-control" type="text" required="required" name="apartment" value={props.editionForm.apartment} onChange={props.handleEditChange}/>
+                    </td>
+                    <td>
+                        <input className="form-control" type="text" required="required" name="city" value={props.editionForm.city} onChange={props.handleEditChange}/>
+                    </td>
+                    <td>
+                        <input className="form-control" type="text" required="required" name="provincia" value={props.editionForm.provincia} onChange={props.handleEditChange}/>
+                    </td>
                     <td>
                         <input className="form-control" type="text" required="required" name="cp" value={props.editionForm.cp} onChange={props.handleEditChange}/>
                     </td>
