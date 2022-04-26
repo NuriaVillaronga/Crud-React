@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CustomSelect from './Components/CustomSelect';
 import RowMenu from './Components/RowMenu';
 import ContainerMainTable from './Components/ContainerMainTable';
+import userData from "./users-data.json";
+import { nanoid } from "nanoid";
 
 
 const Header = () => {
@@ -30,6 +32,8 @@ const Content = () => {
     containerMainTable.style.display = "none";
   }
 
+  const [users, setUsers] = useState(userData);
+
   return (<div className="row content-row">
             <div className="col-2 menu-col">
               <RowMenu id="pedidos-row" value="PEDIDOS" global={true}/> 
@@ -44,12 +48,12 @@ const Content = () => {
               <RowMenu id="administradores-row" value="Productos con oferta"/>
               <RowMenu id="registro-producto-row" value="Registro nuevo produto" add={true}/>
             </div>
-            <div className="col-10 border">
-              <ContainerAddUser id="container-add-user"/>
-              <ContainerMainTable id="container-main-table"/>
+            <div className="col-10 border administration-row">
+              <ContainerAddUser id="container-add-user" users={users} setUsers={setUsers}/>
+              <ContainerMainTable id="container-main-table" users={users} setUsers={setUsers}/>
             </div>
           </div>);
-}
+};
 
 
 const options = [
@@ -81,7 +85,9 @@ const optionsOurense = [
 
 const nullOption = { label: "Todavía no has seleccionado provincia", value: null };
 
-const AddUser = () => {
+
+const AddUser = ( props ) => {
+
   const handleChangeSelect = ( {value} ) => {
 
       if (value === null) {
@@ -119,11 +125,33 @@ const AddUser = () => {
 
   }
 
+  const [registerForm, setRegisterForm] = useState({id : "", nameAdd : "", emailAdd: "", rolAdd: "", passwordAdd: "", stateAdd: "",  addressAdd: "", cpAdd: "", phoneAdd: "", cityAdd: "", provinciaAdd: "", apartmentAdd: ""});
+  
+  const handleRegisterFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute('name');
+    const fieldValue = event.target.value;
+
+    const newFormRegister = {...registerForm};
+    newFormRegister[fieldName] = fieldValue;
+
+    setRegisterForm(newFormRegister);
+  }
+
+  const handleRegisterFormSubmit = (event) => {
+      event.preventDefault();
+
+      const newUser = {id : nanoid(), name : registerForm.nameAdd, email: registerForm.emailAdd, rol: registerForm.rolAdd, password: registerForm.passwordAdd, state: registerForm.stateAdd,  address: registerForm.addressAdd, cp: registerForm.cpAdd, phone: registerForm.phoneAdd, city: registerForm.cityAdd, provincia: registerForm.provinciaAdd, apartment: registerForm.apartmentAdd};
+      const newUsers = [...props.users, newUser];
+      props.setUser(newUsers)
+  }
+
   const [optionsCity, setOptionsCity] = useState([]);
   const [valueCity, setValueCity] = useState(nullOption);
 
   return (<Fragment>
-            <form id="add-form">
+            <form id="add-form" onSubmit={handleRegisterFormSubmit}>
                 <h5>Registro de nuevos usuarios</h5>
                 <div className="row">
                   <div className="col-12 info-contacto">
@@ -131,14 +159,26 @@ const AddUser = () => {
                         <div className="col-12"><u>Información de contacto</u></div>
                       </div>
                       <div className="row">
-                        <div className="col-4 container-items"><input className="form-control" placeholder="Nombre" name="nameAdd" required="required"></input></div>
-                        <div className="col-4 container-items"><input className="form-control" placeholder="Apellidos" name="lastNameAdd" required="required"></input></div>
-                        <div className="col-4 container-items"><input className="form-control" placeholder="Teléfono" name="phoneAdd" required="required"></input></div>
+                        <div className="col-4 container-items">
+                          <input className="form-control" placeholder="Nombre" name="nameAdd" required="required" onChange={handleRegisterFormChange}/>
+                        </div>
+                        <div className="col-4 container-items">
+                          <input className="form-control" placeholder="Apellidos" name="lastNameAdd" required="required" onChange={handleRegisterFormChange}/>
+                        </div>
+                        <div className="col-4 container-items">
+                          <input className="form-control" placeholder="Teléfono" name="phoneAdd" required="required" onChange={handleRegisterFormChange}/>
+                        </div>
                       </div>
                       <div className="row">
-                        <div className="col-4 container-items"><input className="form-control" placeholder="Dirección (Calle y número)" name="addressAdd" required="required"></input></div>
-                        <div className="col-4 container-items"><input className="form-control" placeholder="Aparatmento, piso, etc" name="apartmentAdd" required="required"></input></div>
-                        <div className="col-4 container-items"><input className="form-control" placeholder="Código postal" name="cpAdd" required="required"></input></div>
+                        <div className="col-4 container-items">
+                          <input className="form-control" placeholder="Dirección (Calle y número)" name="addressAdd" required="required" onChange={handleRegisterFormChange}/>
+                        </div>
+                        <div className="col-4 container-items">
+                          <input className="form-control" placeholder="Aparatmento, piso, etc" name="apartmentAdd" required="required" onChange={handleRegisterFormChange}/>
+                        </div>
+                        <div className="col-4 container-items">
+                          <input className="form-control" placeholder="Código postal" name="cpAdd" required="required" onChange={handleRegisterFormChange}/>
+                        </div>
                       </div>
                       <div className="row">
                         <div className="col-4 container-items">
@@ -155,18 +195,22 @@ const AddUser = () => {
                         <div className="col-12"><u>Información interna</u></div>
                       </div>
                       <div className="row">
-                        <div className="col-4 container-items"><input className="form-control" placeholder="Email" name="emailAdd" required="required"></input></div>
-                        <div className="col-4 container-items"><input className="form-control" type="password" placeholder="Password" name="passwordValue" required="required"></input></div>
+                        <div className="col-4 container-items">
+                          <input className="form-control" placeholder="Email" name="emailAdd" required="required" onChange={handleRegisterFormChange}/>
+                        </div>
+                        <div className="col-4 container-items">
+                          <input className="form-control" type="password" placeholder="Password" name="passwordValue" required="required" onChange={handleRegisterFormChange}/>
+                        </div>
                       </div>
                       <div className="row">
                         <div className="col-4 container-items">
-                                                <select className="form-select" name="rolAdd" required="required">
+                                                <select className="form-select" name="rolAdd" required="required" onChange={handleRegisterFormChange}>
                                                   <option>Admin</option>
                                                   <option>User</option>
                                                 </select>
                         </div>
                         <div className="col-4 container-items">
-                                                <select className="form-select" name="stateAdd" required="required">
+                                                <select className="form-select" name="stateAdd" required="required" onChange={handleRegisterFormChange}>
                                                   <option>Activo</option>
                                                   <option>Inactivo</option>
                                                 </select>
@@ -178,14 +222,14 @@ const AddUser = () => {
                 <button className="btn btn-primary" type="submit">Guardar</button>
               </form>
           </Fragment>);
-}
+};
 
-const ContainerAddUser = ( {id} ) => {
+const ContainerAddUser = ( { id, users, setUsers } ) => {
 
     return (<Fragment>
       <div className="row" id={id}>
           <div className="col-12 newUserCol">
-            <AddUser/>
+            <AddUser users={users} setUser={setUsers}/>
           </div>
         </div>
       </Fragment>
@@ -194,8 +238,9 @@ const ContainerAddUser = ( {id} ) => {
 
 
 function App() {
+
   return (
-    <div className="container-fluid">
+    <div className="container-fluid container-panel">
         <Header/>
         <Content/>
     </div>

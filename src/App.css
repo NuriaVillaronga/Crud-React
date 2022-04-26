@@ -1,3 +1,7 @@
+.container-panel {
+    min-height: 100vh;
+}
+
 .header-row {
     background-color: rgb(32, 30, 30);
     color: white;
@@ -5,12 +9,12 @@
     padding-bottom: 30px;
 }
 
-
 /*Menú*/
 .menu-col {
     color: white;
     background-color: rgb(78, 73, 73);
     padding: 0px !important;
+    min-height: 91.1vh; /*Como hacer que se adapte a alto completo sin necesidad de esta propiedad de css*/
 }
 .global-btn, .especific-btn {
     width: 100%;
@@ -60,6 +64,18 @@
 /*******/
 
 
+/*Administration panel*/
+
+.administration-row {
+    padding-top: 60px;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    min-height: 91.1vh;
+}
+
+/******/
+
+
 .iconsCrud:hover {
     cursor: pointer;
 }
@@ -98,7 +114,7 @@ tr.hidde {
     border: none !important;
     margin-right: 5px;
     margin-left: 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
 }
 #save:hover {
     color: rgb(125, 177, 211);
@@ -147,24 +163,29 @@ tr.hidde {
 }
 .save-cancel-button {
     background-color: rgba(255, 255, 255, 0);
+    color: rgb(255, 232, 207);
+}
+
+.row-read-secundaryTable {
+    border-bottom: 3px solid rgb(233, 148, 79) !important;
 }
 
 
 /*Main table*/
 .col_nombre {
-    width: 24%;
+    width: 25%;
 }
 .col_registro, .col_rol {
-    width: 8%;
+    width: 9%;
 }
 .col_estado {
     width: 9%;
 }
 .col_contraseña {
-    width: 18%;
+    width: 17%;
 }
 .col_email {
-    width: 21%;
+    width: 20%;
 }
 .col_acciones {
     text-align: center;

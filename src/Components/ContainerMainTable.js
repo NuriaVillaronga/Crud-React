@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import MainTable from './MainTable';
 
-function ContainerMainTable ( {id} ) { 
+function ContainerMainTable ( {id, users, setUsers } ) { 
     
     return (<Fragment>
             <div className="row" id={id}>
                 <div className="col-12">
-                    <MainTable/>
+                    <MainTable users={users} setUsers={setUsers}/>
                 </div>
             </div>
           </Fragment>

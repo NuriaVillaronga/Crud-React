@@ -41,7 +41,7 @@ function EditableRowMT (props) {
                 <tr className="row-editable-secundaryTable"> 
                     <td colSpan="7">
                         <div className='div-editable-secundaryTable'>
-                            <SecundaryTable editionForm={props.editionForm} editedUserId={props.editedUserId} element={props.element} handleEditChange={props.handleEditChange}/>
+                            <SecundaryTable editionForm={props.editionForm} idUserEdit={props.idUserEdit} element={props.element} handleEditChange={props.handleEditChange}/>
                         </div>
                     </td>
                 </tr>

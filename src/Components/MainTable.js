@@ -3,16 +3,14 @@ import EditableRowMT from './EditableRowMT';
 import ReadOnlyRowMT from './ReadOnlyRowMT'; 
 import userData from "../users-data.json";
 
-function MainTable () { 
-
-    const [users, setUsers] = useState(userData);
+function MainTable ( props ) { 
   
     const [idUserEdit, setIdUserEdit] = useState(null);  
   
     const [editionForm, setEditionForm] = useState({id : "", name : "", email: "", rol: "", password: "", state: "",  address : "", cp: "", phone: "", register_data: "", city: "", provincia: "", apartment: ""});
   
     const [visibility, setVisibility] = useState(false);
-  
+
     const handleEditClick = (event, user) => {
       event.preventDefault();
       setIdUserEdit(user.id);
@@ -27,12 +25,12 @@ function MainTable () {
   
       const user_on_edition = { id : idUserEdit, name : editionForm.name, email: editionForm.email, rol: editionForm.rol, password: editionForm.password, state: editionForm.state, address: editionForm.address, cp: editionForm.cp, phone: editionForm.phone, register_data: editionForm.register_data, city: editionForm.city, provincia: editionForm.provincia, apartment: editionForm.apartment };
   
-      const new_users_array = [...users]; // Con ... se copian todas las propiedades del array de usuarios "users"
+      const new_users_array = [...props.users]; // Con ... se copian todas las propiedades del array de usuarios "users"
 
-      const index = users.findIndex((user) => user.id === idUserEdit);
+      const index = props.users.findIndex((user) => user.id === idUserEdit);
   
       new_users_array[index] = user_on_edition; 
-      setUsers(new_users_array); 
+      props.setUsers(new_users_array); 
       setIdUserEdit(null);
     }
   
@@ -53,13 +51,13 @@ function MainTable () {
     }
   
     const handleDeleteClick = (userId) => {
-      const new_users_array = [...users];
+      const new_users_array = [...props.users];
   
-      const index = users.findIndex((user) => user.id === userId);
+      const index = props.users.findIndex((user) => user.id === userId);
   
       new_users_array.splice(index, 1);
   
-      setUsers(new_users_array);
+      props.setUsers(new_users_array);
     }
   
 
@@ -67,15 +65,18 @@ function MainTable () {
   
       var row_read_ST = document.getElementById(`row-read-secundaryTable-${id_user}`);
       var icon_arrow = document.getElementById(`icon-arrow-${id_user}`);
+      var row_read_MT = document.getElementById(`row-read-mainTable-${id_user}`);
   
       if (visibility == true) {
         row_read_ST.style.display = "none";
         icon_arrow.setAttribute("style", "transform: rotate(360deg)");
+        row_read_MT.setAttribute("style", "background-color: white");
         setVisibility(false);
       }
       else if(visibility == false) {
-        row_read_ST.style.display = "table-row";
         icon_arrow.setAttribute("style", "transform: rotate(180deg)");
+        row_read_MT.setAttribute("style", "border-top: 3px solid rgb(233, 148, 79) !important; background-color: rgb(255, 232, 207)");
+        row_read_ST.setAttribute("style", "display:table-row");
         setVisibility(true);
       }
 
@@ -96,10 +97,10 @@ function MainTable () {
                   </thead>
                   <tbody>
                     {
-                      users.map((user) => (
+                      props.users.map((user) => (
                         <Fragment key={user.id}> 
                           {
-                            idUserEdit === user.id ? <EditableRowMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <ReadOnlyRowMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
+                            idUserEdit === user.id ? <EditableRowMT element={user} idUserEdit={idUserEdit} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <ReadOnlyRowMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
                           }
                         </Fragment> 
                       ))

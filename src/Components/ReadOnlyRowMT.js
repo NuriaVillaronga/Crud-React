@@ -5,7 +5,7 @@ import Icon from './Icon';
 function ReadOnlyRowMT ( props ) {   
 
     return (<Fragment>
-              <tr>
+              <tr id={`row-read-mainTable-${props.element.id}`}>
                 <td>
                     <button className="icon-button" type="button" id={`icon-arrow-${props.element.id}`} onClick={() => props.handleDisplayClick(props.element.id)}>
                         <Icon id="angleDown" size="1x"/>
