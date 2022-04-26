@@ -1,8 +1,9 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainTable from './Components/MainTable';
 import CustomSelect from './Components/CustomSelect';
+import RowMenu from './Components/RowMenu';
+import ContainerMainTable from './Components/ContainerMainTable';
 
 
 const Header = () => {
@@ -13,39 +14,39 @@ const Header = () => {
             </div>);
 }
 
-const RowMenu = ( {id, value, global = false } ) => {
-  
-    let style_class = "";
-
-    if (global == false) {
-      style_class="especific-item";
-    }
-    if (global == true) {
-      style_class="global-item";
-    }
-
-    return(<div className={`row ${style_class} border`} id={id}>
-            <div className="col-12">{value}</div>
-          </div>);
-}
-
 const Content = () => {
+
+  const handleUsuariosClick = () => {
+    var containerAddUser = document.getElementById("container-add-user");
+    var containerMainTable = document.getElementById("container-main-table");
+    containerAddUser.style.display = "none";
+    containerMainTable.style.display = "block";
+  }
+
+  const handleRegistroUsuariosClick = () => {
+    var containerAddUser = document.getElementById("container-add-user");
+    var containerMainTable = document.getElementById("container-main-table");
+    containerAddUser.style.display = "block";
+    containerMainTable.style.display = "none";
+  }
+
   return (<div className="row content-row">
-            <div className="col-2 border menu-col">
-              <RowMenu id="pedidos-row" value="PEDIDOS" global={true}/>
+            <div className="col-2 menu-col">
+              <RowMenu id="pedidos-row" value="PEDIDOS" global={true}/> 
               <RowMenu id="tramitados-row" value="Pedidos en trámite"/>
               <RowMenu id="finalizados-row" value="Pedidos finalizados"/>
-              <RowMenu id="usuarios-row" value="USUARIOS" global={true}/>
+              <RowMenu id="usuarios-row" value="USUARIOS" global={true} handleUsuariosClick={handleUsuariosClick}/>
               <RowMenu id="clientes-row" value="Clientes"/>
               <RowMenu id="administradores-row" value="Administradores"/>
-              <RowMenu id="registro-row" value="Registro nuevo usuario"/>
+              <RowMenu id="registro-usuario-row" value="Registro nuevo usuario" add={true} handleRegistroUsuariosClick={handleRegistroUsuariosClick}/>
               <RowMenu id="catalogo-row" value="CATÁLOGO" global={true}/>
               <RowMenu id="clientes-row" value="Productos"/>
               <RowMenu id="administradores-row" value="Productos con oferta"/>
-              <RowMenu id="registro-row" value="Registro nuevo produto"/>
+              <RowMenu id="registro-producto-row" value="Registro nuevo produto" add={true}/>
             </div>
             <div className="col-10 border">
-              <ContainerMainTable/>
+              <ContainerAddUser id="container-add-user"/>
+              <ContainerMainTable id="container-main-table"/>
             </div>
           </div>);
 }
@@ -80,7 +81,7 @@ const optionsOurense = [
 
 const nullOption = { label: "Todavía no has seleccionado provincia", value: null };
 
-const AddUser = ({desplegarFormulario, ocultarFormShowBtn}) => {
+const AddUser = () => {
   const handleChangeSelect = ( {value} ) => {
 
       if (value === null) {
@@ -122,7 +123,6 @@ const AddUser = ({desplegarFormulario, ocultarFormShowBtn}) => {
   const [valueCity, setValueCity] = useState(nullOption);
 
   return (<Fragment>
-            <button className="btn btn-primary" id="add-btn" type="button" onClick={desplegarFormulario}>Añadir nuevo usuario</button>
             <form id="add-form">
                 <h5>Registro de nuevos usuarios</h5>
                 <div className="row">
@@ -176,33 +176,17 @@ const AddUser = ({desplegarFormulario, ocultarFormShowBtn}) => {
                 </div>
                 
                 <button className="btn btn-primary" type="submit">Guardar</button>
-                <button className="btn btn-danger" type="button" onClick={ocultarFormShowBtn}>Cancelar</button>
               </form>
           </Fragment>);
 }
 
-const ContainerMainTable = () => {
-
-  const handleDesplegarFormulario = () => {
-    document.getElementById("add-form").style.display = "block";
-    document.getElementById("add-btn").style.display = "none";
-  }
-  
-  const handleOcultarFormShowBtn = () => {
-    document.getElementById("add-form").style.display = "none"; 
-    document.getElementById("add-btn").style.display = "block";
-  }
+const ContainerAddUser = ( {id} ) => {
 
     return (<Fragment>
-      <div className="row">
+      <div className="row" id={id}>
           <div className="col-12 newUserCol">
-            <AddUser desplegarFormulario={handleDesplegarFormulario} ocultarFormShowBtn={handleOcultarFormShowBtn}/>
+            <AddUser/>
           </div>
-        </div>
-        <div className="row">
-            <div className="col-12">
-              <MainTable/>
-            </div>
         </div>
       </Fragment>
   ); 

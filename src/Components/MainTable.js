@@ -7,53 +7,17 @@ function MainTable () {
 
     const [users, setUsers] = useState(userData);
   
-    const [editUserId, setEditUserId] = useState(null);
+    const [idUserEdit, setIdUserEdit] = useState(null);  
   
-    const [editionForm, setEditionForm] = useState({
-      id : "",
-      name : "",
-      email: "",
-      rol: "",
-      password: "",
-      state: "", 
-      address : "",
-      cp: "",
-      phone: "",
-      register_data: "",
-      city: "",
-      provincia: "",
-      apartment: ""
-    });
-
-    /*
-      const [addFormData, setAddFormData] = useState({
-        name : "",
-        email: "",
-        rol: "",
-      });
-    */
+    const [editionForm, setEditionForm] = useState({id : "", name : "", email: "", rol: "", password: "", state: "",  address : "", cp: "", phone: "", register_data: "", city: "", provincia: "", apartment: ""});
   
     const [visibility, setVisibility] = useState(false);
   
     const handleEditClick = (event, user) => {
-      event.preventDefault(); //preventDefault() cancela el evento si es cancelable, lo que significa que la acción predeterminada que pertenece al evento no ocurrirá.
-      setEditUserId(user.id);
+      event.preventDefault();
+      setIdUserEdit(user.id);
 
-      const formValues = {
-        id : user.id,
-        name : user.name,
-        email: user.email,
-        rol: user.rol,
-        password: user.password,
-        state: user.state,
-        address : user.address,
-        cp: user.cp,
-        phone: user.phone,
-        register_data: user.register_data,
-        city: user.city,
-        provincia: user.provincia,
-        apartment: user.apartment
-      }
+      const formValues = { id : user.id, name : user.name, email: user.email, rol: user.rol, password: user.password, state: user.state, address : user.address, cp: user.cp, phone: user.phone, register_data: user.register_data, city: user.city, provincia: user.provincia, apartment: user.apartment };
 
       setEditionForm(formValues);
     }
@@ -61,29 +25,15 @@ function MainTable () {
     const handleSaveFormSubmit = (event) => {
       event.preventDefault();
   
-      const editedUser = {
-        id : editUserId,
-        name : editionForm.name,
-        email: editionForm.email,
-        rol: editionForm.rol, 
-        password: editionForm.password,
-        state: editionForm.state, 
-        address: editionForm.address,
-        cp: editionForm.cp,
-        phone: editionForm.phone,
-        register_data: editionForm.register_data,
-        city: editionForm.city,
-        provincia: editionForm.provincia,
-        apartment: editionForm.apartment
-      }
+      const user_on_edition = { id : idUserEdit, name : editionForm.name, email: editionForm.email, rol: editionForm.rol, password: editionForm.password, state: editionForm.state, address: editionForm.address, cp: editionForm.cp, phone: editionForm.phone, register_data: editionForm.register_data, city: editionForm.city, provincia: editionForm.provincia, apartment: editionForm.apartment };
   
-      const newUsers = [...users];
-      const index = users.findIndex((user) => user.id === editUserId);
+      const new_users_array = [...users]; // Con ... se copian todas las propiedades del array de usuarios "users"
+
+      const index = users.findIndex((user) => user.id === idUserEdit);
   
-  
-      newUsers[index] = editedUser;
-      setUsers(newUsers);
-      setEditUserId(null);
+      new_users_array[index] = user_on_edition; 
+      setUsers(new_users_array); 
+      setIdUserEdit(null);
     }
   
     const handleEditChange = (event) => {
@@ -92,24 +42,24 @@ function MainTable () {
       const fieldName = event.target.getAttribute("name");
       const fieldValue = event.target.value;
   
-      const newFormData = { ...editionForm  };
+      const newFormData = {...editionForm};
       newFormData[fieldName] = fieldValue;
   
       setEditionForm(newFormData);
     }
   
     const handleCancelClick = () => {
-      setEditUserId(null);
+      setIdUserEdit(null);
     }
   
     const handleDeleteClick = (userId) => {
-      const newUsers = [...users];
+      const new_users_array = [...users];
   
       const index = users.findIndex((user) => user.id === userId);
   
-      newUsers.splice(index, 1);
+      new_users_array.splice(index, 1);
   
-      setUsers(newUsers);
+      setUsers(new_users_array);
     }
   
 
@@ -149,7 +99,7 @@ function MainTable () {
                       users.map((user) => (
                         <Fragment key={user.id}> 
                           {
-                            editUserId === user.id ? <EditableRowMT element={user} editedUserId={editUserId} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <ReadOnlyRowMT element={user} editedUserId={editUserId} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
+                            idUserEdit === user.id ? <EditableRowMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <ReadOnlyRowMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
                           }
                         </Fragment> 
                       ))

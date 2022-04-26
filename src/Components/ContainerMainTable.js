@@ -1,10 +1,10 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import MainTable from './MainTable';
 
-function ContainerMainTable () { 
+function ContainerMainTable ( {id} ) { 
     
     return (<Fragment>
-            <div className="row">
+            <div className="row" id={id}>
                 <div className="col-12">
                     <MainTable/>
                 </div>
