@@ -1,3 +1,22 @@
+.header-row {
+    background-color: rgb(61, 57, 57);
+    color: white;
+}
+.menu-col {
+    color: white;
+}
+.global-item {
+    background-color: rgb(78, 73, 73);
+    padding-top:15px;
+    padding-bottom:15px;
+}
+.especific-item {
+    background-color: rgb(99, 93, 93);
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+
 .iconsCrud:hover {
     cursor: pointer;
 }

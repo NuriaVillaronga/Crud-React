@@ -4,6 +4,53 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MainTable from './Components/MainTable';
 import CustomSelect from './Components/CustomSelect';
 
+
+const Header = () => {
+    return (<div className="row header-row">
+              <div className="col-10">Logo</div>
+              <div className="col-1">Imagen usuario</div>
+              <div className="col-1">Exit</div>
+            </div>);
+}
+
+const RowMenu = ( {id, value, global = false } ) => {
+  
+    let style_class = "";
+
+    if (global == false) {
+      style_class="especific-item";
+    }
+    if (global == true) {
+      style_class="global-item";
+    }
+
+    return(<div className={`row ${style_class} border`} id={id}>
+            <div className="col-12">{value}</div>
+          </div>);
+}
+
+const Content = () => {
+  return (<div className="row content-row">
+            <div className="col-2 border menu-col">
+              <RowMenu id="pedidos-row" value="PEDIDOS" global={true}/>
+              <RowMenu id="tramitados-row" value="Pedidos en trámite"/>
+              <RowMenu id="finalizados-row" value="Pedidos finalizados"/>
+              <RowMenu id="usuarios-row" value="USUARIOS" global={true}/>
+              <RowMenu id="clientes-row" value="Clientes"/>
+              <RowMenu id="administradores-row" value="Administradores"/>
+              <RowMenu id="registro-row" value="Registro nuevo usuario"/>
+              <RowMenu id="catalogo-row" value="CATÁLOGO" global={true}/>
+              <RowMenu id="clientes-row" value="Productos"/>
+              <RowMenu id="administradores-row" value="Productos con oferta"/>
+              <RowMenu id="registro-row" value="Registro nuevo produto"/>
+            </div>
+            <div className="col-10 border">
+              <ContainerMainTable/>
+            </div>
+          </div>);
+}
+
+
 const options = [
   { value: 'pontevedra', label: 'Pontevedra' },
   { value: 'ourense', label: 'Ourense' },
@@ -165,13 +212,8 @@ const ContainerMainTable = () => {
 function App() {
   return (
     <div className="container-fluid">
-        <div className="row">
-          <div className="col-1"></div>
-          <div className="col-10">
-            <ContainerMainTable/>
-          </div>
-          <div className="col-1"></div>
-        </div>
+        <Header/>
+        <Content/>
     </div>
   );
 }
