@@ -199,21 +199,21 @@ const AddUser = ( props ) => {
                           <input className="form-control" placeholder="Email" name="emailAdd" required="required" onChange={handleRegisterFormChange}/>
                         </div>
                         <div className="col-4 container-items">
-                          <input className="form-control" type="password" placeholder="Password" name="passwordValue" required="required" onChange={handleRegisterFormChange}/>
+                          <input className="form-control" type="password" placeholder="Password" name="passwordAdd" required="required" onChange={handleRegisterFormChange}/>
                         </div>
                       </div>
                       <div className="row">
                         <div className="col-4 container-items">
-                                                <select className="form-select" name="rolAdd" required="required" onChange={handleRegisterFormChange}>
-                                                  <option>Admin</option>
-                                                  <option>User</option>
-                                                </select>
+                          <select className="form-select" name="rolAdd" required="required" onChange={handleRegisterFormChange}>
+                            <option value="Admin">Admin</option>
+                            <option value="User">User</option>
+                          </select>
                         </div>
                         <div className="col-4 container-items">
-                                                <select className="form-select" name="stateAdd" required="required" onChange={handleRegisterFormChange}>
-                                                  <option>Activo</option>
-                                                  <option>Inactivo</option>
-                                                </select>
+                          <select className="form-select" name="stateAdd" required="required" onChange={handleRegisterFormChange}>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                          </select>
                         </div>
                       </div>
                   </div>
