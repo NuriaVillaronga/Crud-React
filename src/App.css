@@ -68,12 +68,13 @@
 
 .administration-row {
     padding-top: 60px;
+    padding-bottom: 60px;
     padding-left: 40px !important;
     padding-right: 40px !important;
     min-height: 91.1vh;
 }
 
-/******/
+/***Formulario registro usuarios validacion***/
 
 
 .iconsCrud:hover {
@@ -104,9 +105,31 @@ tr.hidde {
 .title-interna, .title-contacto {
     padding-bottom: 10px;
 }
-.container-items {
+.container-items, .container-items-input {
     padding-bottom: 8px;
 }
+.container-items-input {
+    position: relative;
+}
+#error {
+    position: absolute;
+    right: 25px;
+	top: 16%;
+}
+.invalid_input {
+    border: 2px solid red !important;
+}
+.show_error {
+    padding-top: 3px;
+    padding-left: 3px;
+    display: block;
+    color: red;
+    font-size: 11px;
+}
+.hidde_error {
+    display: none;
+}
+/**/
 
 /*Icons - MainTable and SecundaryTable*/
 .icon-button {

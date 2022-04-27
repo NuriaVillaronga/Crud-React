@@ -6,6 +6,10 @@ import RowMenu from './Components/RowMenu';
 import ContainerMainTable from './Components/ContainerMainTable';
 import userData from "./users-data.json";
 import { nanoid } from "nanoid";
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import moment from 'moment';
+import Icon from './Components/Icon';
+
 
 
 const Header = () => {
@@ -18,20 +22,6 @@ const Header = () => {
 
 const Content = () => {
 
-  const handleUsuariosClick = () => {
-    var containerAddUser = document.getElementById("container-add-user");
-    var containerMainTable = document.getElementById("container-main-table");
-    containerAddUser.style.display = "none";
-    containerMainTable.style.display = "block";
-  }
-
-  const handleRegistroUsuariosClick = () => {
-    var containerAddUser = document.getElementById("container-add-user");
-    var containerMainTable = document.getElementById("container-main-table");
-    containerAddUser.style.display = "block";
-    containerMainTable.style.display = "none";
-  }
-
   const [users, setUsers] = useState(userData);
 
   return (<div className="row content-row">
@@ -39,18 +29,24 @@ const Content = () => {
               <RowMenu id="pedidos-row" value="PEDIDOS" global={true}/> 
               <RowMenu id="tramitados-row" value="Pedidos en trámite"/>
               <RowMenu id="finalizados-row" value="Pedidos finalizados"/>
-              <RowMenu id="usuarios-row" value="USUARIOS" global={true} handleUsuariosClick={handleUsuariosClick}/>
+              <Link to="/usuarios">
+                <RowMenu id="usuarios-row" value="USUARIOS" global={true}/>
+              </Link>
               <RowMenu id="clientes-row" value="Clientes"/>
               <RowMenu id="administradores-row" value="Administradores"/>
-              <RowMenu id="registro-usuario-row" value="Registro nuevo usuario" add={true} handleRegistroUsuariosClick={handleRegistroUsuariosClick}/>
+              <Link to="/registro_usuarios">
+                <RowMenu id="registro-usuario-row" value="Registro nuevo usuario" add={true}/>
+              </Link>
               <RowMenu id="catalogo-row" value="CATÁLOGO" global={true}/>
               <RowMenu id="clientes-row" value="Productos"/>
               <RowMenu id="administradores-row" value="Productos con oferta"/>
               <RowMenu id="registro-producto-row" value="Registro nuevo produto" add={true}/>
             </div>
             <div className="col-10 border administration-row">
-              <ContainerAddUser id="container-add-user" users={users} setUsers={setUsers}/>
-              <ContainerMainTable id="container-main-table" users={users} setUsers={setUsers}/>
+              <Routes>
+                <Route exact path="/usuarios" element={<ContainerMainTable id="container-main-table" users={users} setUsers={setUsers}/>}/>
+                <Route exact path="/registro_usuarios" element={<ContainerAddUser id="container-add-user" users={users} setUsers={setUsers}/>}/>
+              </Routes>
             </div>
           </div>);
 };
@@ -58,32 +54,40 @@ const Content = () => {
 
 const options = [
   { value: 'pontevedra', label: 'Pontevedra' },
-  { value: 'ourense', label: 'Ourense' },
-  { value: 'coruña', label: 'A Coruña' },
-  { value: 'lugo', label: 'Lugo' }
+  { value: 'Ourense', label: 'Ourense' },
+  { value: 'A Coruña', label: 'A Coruña' },
+  { value: 'Lugo', label: 'Lugo' }
 ]
 
 const optionsPontevedra = [
-  { value: 'vilaxoan', label: 'Vilaxoán' },
-  { value: 'illa', label: 'Illa de Arousa' }
+  { value: 'Vilaxoán', label: 'Vilaxoán' },
+  { value: 'Illa de Arousa', label: 'Illa de Arousa' }
 ]
 
 const optionsCoruña = [
-  { value: 'ortigueira', label: 'Ortigueira' },
-  { value: 'muros', label: 'Muros' }
+  { value: 'Ortigueira', label: 'Ortigueira' },
+  { value: 'Muros', label: 'Muros' }
 ]
 
 const optionsLugo = [
-  { value: 'ciprian', label: 'San Ciprián' },
-  { value: 'becerrea', label: 'Becerreá' }
+  { value: 'San Ciprián', label: 'San Ciprián' },
+  { value: 'Becerreá', label: 'Becerreá' }
 ]
 
 const optionsOurense = [
-  { value: 'allariz', label: 'Allariz' },
-  { value: 'verin', label: 'Verín' }
+  { value: 'Allariz', label: 'Allariz' },
+  { value: 'Verín', label: 'Verín' }
 ]
 
-const nullOption = { label: "Todavía no has seleccionado provincia", value: null };
+const optionsState = [
+  { value: 'Activo', label: 'Activo' },
+  { value: 'Inactivo', label: 'Inactivo' }
+]
+
+const optionsRol = [
+  { value: 'Admin', label: 'Admin' },
+  { value: 'User', label: 'User' }
+]
 
 
 const AddUser = ( props ) => {
@@ -91,64 +95,103 @@ const AddUser = ( props ) => {
   const handleChangeSelect = ( {value} ) => {
 
       if (value === null) {
-          setValueCity(nullOption);
+          setValueCity("");
           setOptionsCity([]);
+          setProvinceValue("")
       }
-      else if (value === "pontevedra") {
+      else if (value === "Pontevedra") {
           setValueCity(optionsPontevedra[0]);
           setOptionsCity(optionsPontevedra);
+          setProvinceValue("Pontevedra")
       }
-      else if(value === "coruña") {
+      else if(value === "A Coruña") {
           setValueCity(optionsCoruña[0]);
           setOptionsCity(optionsCoruña);
+          setProvinceValue("A Coruña")
       }
-      else if(value === "lugo") {
+      else if(value === "Lugo") {
           setValueCity(optionsLugo[0]);
           setOptionsCity(optionsLugo);
+          setProvinceValue("Lugo")
       }
-      else if(value === "ourense") {
+      else if(value === "Ourense") {
           setValueCity(optionsOurense[0]);
           setOptionsCity(optionsOurense); 
+          setProvinceValue("Ourense")
       }
   }
 
   const handleChangeSelectCity = ( {value} ) => {
-
-      console.log(value);
-      console.log(optionsCity);
 
       for (let i=0; optionsCity.length; i++) {
           if(optionsCity[i].value === value) {
               setValueCity(optionsCity[i]);
           }
       }
+  }
 
+  const handleChangeRol = ( {value} ) => {
+
+    if (value === null) {
+        setRolValue("")
+    }
+    else if (value === "Admin") {
+        setRolValue("Admin")
+    }
+    else if(value === "User") {
+        setRolValue("User")
+    }
+  }
+
+  const handleChangeStatus = ( {value} ) => {
+
+    if (value === null) {
+        setStatusValue("")
+    }
+    else if (value === "Activo") {
+        setStatusValue("Activo")
+    }
+    else if(value === "Inactivo") {
+        setStatusValue("Inactivo")
+    }
   }
 
   const [registerForm, setRegisterForm] = useState({id : "", nameAdd : "", emailAdd: "", rolAdd: "", passwordAdd: "", stateAdd: "",  addressAdd: "", cpAdd: "", phoneAdd: "", cityAdd: "", provinciaAdd: "", apartmentAdd: ""});
-  
-  const handleRegisterFormChange = (event) => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute('name');
-    const fieldValue = event.target.value;
-
-    const newFormRegister = {...registerForm};
-    newFormRegister[fieldName] = fieldValue;
-
-    setRegisterForm(newFormRegister);
-  }
 
   const handleRegisterFormSubmit = (event) => {
       event.preventDefault();
 
-      const newUser = {id : nanoid(), name : registerForm.nameAdd, email: registerForm.emailAdd, rol: registerForm.rolAdd, password: registerForm.passwordAdd, state: registerForm.stateAdd,  address: registerForm.addressAdd, cp: registerForm.cpAdd, phone: registerForm.phoneAdd, city: registerForm.cityAdd, provincia: registerForm.provinciaAdd, apartment: registerForm.apartmentAdd};
+      var registerData = moment().format("DD/MM/YYYY");
+
+      const newUser = {id : nanoid(), name : registerForm.nameAdd, email: registerForm.emailAdd, register_data: registerData, rol: rolValue, password: registerForm.passwordAdd, state: statusValue,  address: registerForm.addressAdd, cp: registerForm.cpAdd, phone: registerForm.phoneAdd, city: valueCity.value, provincia: provinceValue, apartment: registerForm.apartmentAdd};
       const newUsers = [...props.users, newUser];
       props.setUser(newUsers)
+
+      setRegisterFormSubmited(true);
   }
 
   const [optionsCity, setOptionsCity] = useState([]);
-  const [valueCity, setValueCity] = useState(nullOption);
+  const [valueCity, setValueCity] = useState("");
+  const [provinceValue, setProvinceValue] = useState("");
+  const [rolValue, setRolValue] = useState("");
+  const [statusValue, setStatusValue] = useState("");
+  const [registerFormSubmited, setRegisterFormSubmited] = useState(false)
+
+
+  const [nombreValue, setNombre] = useState({campo:"", valido: null});
+  const [apellidoValue, setApellido] = useState({campo:"", valido: null});
+  const [phoneValue, setPhone] = useState({campo:"", valido: null});
+  const [addressValue, setAddress] = useState({campo:"", valido: null});
+  const [cpValue, setCP] = useState({campo:"", valido: null});
+  const [apartmentValue, setApartment] = useState({campo:"", valido: null});
+  const [emailValue, setEmail] = useState({campo:"", valido: null});
+  const [passwordValue, setPassword] = useState({campo:"", valido: null});
+
+  const regExp_letters = /^[a-zA-ZÀ-ÿŸ\u00f1\u00d1\s]+$/;
+  const regExp_cp = /^[0-9]{5}$/;
+  const regExp_phone = /^[0-9]{9}$/;
+  const regExp_email = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+  const regExp_pass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
 
   return (<Fragment>
             <form id="add-form" onSubmit={handleRegisterFormSubmit}>
@@ -159,33 +202,21 @@ const AddUser = ( props ) => {
                         <div className="col-12"><u>Información de contacto</u></div>
                       </div>
                       <div className="row">
-                        <div className="col-4 container-items">
-                          <input className="form-control" placeholder="Nombre" name="nameAdd" required="required" onChange={handleRegisterFormChange}/>
-                        </div>
-                        <div className="col-4 container-items">
-                          <input className="form-control" placeholder="Apellidos" name="lastNameAdd" required="required" onChange={handleRegisterFormChange}/>
-                        </div>
-                        <div className="col-4 container-items">
-                          <input className="form-control" placeholder="Teléfono" name="phoneAdd" required="required" onChange={handleRegisterFormChange}/>
-                        </div>
+                        <InputAUF placeholder="Nombre" name="nameAdd" required="required" estado={nombreValue} registerForm={registerForm} cambiarEstado={setNombre} setRegisterForm={setRegisterForm} expresion={new RegExp(regExp_letters)} mensaje="Nombre solo puede contener letras y espacios"/>
+                        <InputAUF placeholder="Apellidos" name="lastNameAdd" required="required" estado={apellidoValue} registerForm={registerForm} cambiarEstado={setApellido} setRegisterForm={setRegisterForm} expresion={new RegExp(regExp_letters)} mensaje="Apellidos solo puede contener letras y espacios"/>
+                        <InputAUF placeholder="Teléfono" name="phoneAdd" required="required" estado={phoneValue} registerForm={registerForm} cambiarEstado={setPhone} setRegisterForm={setRegisterForm} expresion={new RegExp(regExp_phone)} mensaje="Teléfono debe contener 9 números"/>
+                      </div>
+                      <div className="row">
+                        <InputAUF placeholder="Dirección (Calle y número)" name="addressAdd" required="required" estado={addressValue} registerForm={registerForm} cambiarEstado={setAddress} setRegisterForm={setRegisterForm}/>
+                        <InputAUF placeholder="Aparatmento, piso, etc" name="apartmentAdd" estado={apartmentValue} registerForm={registerForm} cambiarEstado={setApartment} setRegisterForm={setRegisterForm}/>
+                        <InputAUF placeholder="Código postal" name="cpAdd" required="required" estado={cpValue} registerForm={registerForm} cambiarEstado={setCP} setRegisterForm={setRegisterForm} expresion={new RegExp(regExp_cp)} mensaje="Código postal debe contener 5 números"/>
                       </div>
                       <div className="row">
                         <div className="col-4 container-items">
-                          <input className="form-control" placeholder="Dirección (Calle y número)" name="addressAdd" required="required" onChange={handleRegisterFormChange}/>
+                          <CustomSelect handleChangeSelect={handleChangeSelect} options={options} placeholder="Provincia"/>
                         </div>
                         <div className="col-4 container-items">
-                          <input className="form-control" placeholder="Aparatmento, piso, etc" name="apartmentAdd" required="required" onChange={handleRegisterFormChange}/>
-                        </div>
-                        <div className="col-4 container-items">
-                          <input className="form-control" placeholder="Código postal" name="cpAdd" required="required" onChange={handleRegisterFormChange}/>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-4 container-items">
-                          <CustomSelect handleChangeSelect={handleChangeSelect} options={options}/>
-                        </div>
-                        <div className="col-4 container-items">
-                          <CustomSelect options={optionsCity} value={valueCity} handleChangeSelect={handleChangeSelectCity}/>
+                          <CustomSelect options={optionsCity} value={valueCity} handleChangeSelect={handleChangeSelectCity} placeholder="Ciudad"/>
                         </div>
                         <div className="col-4"></div>
                       </div>
@@ -195,34 +226,77 @@ const AddUser = ( props ) => {
                         <div className="col-12"><u>Información interna</u></div>
                       </div>
                       <div className="row">
-                        <div className="col-4 container-items">
-                          <input className="form-control" placeholder="Email" name="emailAdd" required="required" onChange={handleRegisterFormChange}/>
-                        </div>
-                        <div className="col-4 container-items">
-                          <input className="form-control" type="password" placeholder="Password" name="passwordAdd" required="required" onChange={handleRegisterFormChange}/>
-                        </div>
+                        <InputAUF placeholder="Email" name="emailAdd" required="required" estado={emailValue} registerForm={registerForm} cambiarEstado={setEmail} setRegisterForm={setRegisterForm} expresion={new RegExp(regExp_email)} mensaje="Email debe seguir el siguiente formato: foo-bar.baz@example.com"/>
+                        <InputAUF type="password" placeholder="Contraseña" name="passwordAdd" required="required" estado={passwordValue} registerForm={registerForm} cambiarEstado={setPassword} setRegisterForm={setRegisterForm} expresion={new RegExp(regExp_pass)} mensaje="Contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula"/>
+                        <div className="col-4"></div>
                       </div>
                       <div className="row">
                         <div className="col-4 container-items">
-                          <select className="form-select" name="rolAdd" required="required" onChange={handleRegisterFormChange}>
-                            <option value="Admin">Admin</option>
-                            <option value="User">User</option>
-                          </select>
+                          <CustomSelect options={optionsRol} handleChangeSelect={handleChangeRol} placeholder="Rol"/>
                         </div>
                         <div className="col-4 container-items">
-                          <select className="form-select" name="stateAdd" required="required" onChange={handleRegisterFormChange}>
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                          </select>
+                          <CustomSelect options={optionsState} handleChangeSelect={handleChangeStatus} placeholder="Estado"/>
                         </div>
+                        <div className="col-4"></div>
                       </div>
                   </div>
                 </div>
-                
-                <button className="btn btn-primary" type="submit">Guardar</button>
+                  <button className="btn btn-primary" type="submit">Guardar</button>
+                  {registerFormSubmited ?  <Navigate to="/usuarios" /> : null }
               </form>
           </Fragment>);
 };
+
+const InputAUF = ({type ="text", placeholder, name, required = "", estado, cambiarEstado, setRegisterForm, registerForm, expresion, mensaje}) => {
+
+  const handleRegisterFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute('name');
+    const fieldValue = event.target.value;
+
+    const newFormRegister = {...registerForm};
+    newFormRegister[fieldName] = fieldValue;
+
+    cambiarEstado({...estado, campo: event.target.value})
+    setRegisterForm(newFormRegister);
+  }
+
+  var style_input ="";
+  var style_error ="";
+  var icon_error ="";
+
+  const validacion = () => {
+    if (expresion) {
+      
+        if(expresion.test(estado.campo)) {
+          cambiarEstado({...estado, valido: "validado"})
+        }
+        else {
+          cambiarEstado({...estado, valido: "no_validado"})
+        }
+    }
+  }
+
+  if(estado.valido == "no_validado") {
+    style_input = "invalid_input";
+    style_error = "show_error";
+    icon_error ="error";
+  }
+  else if (estado.valido == "validado" || estado.valido == null) {
+    style_input = "";
+    style_error = "hidde_error";
+    icon_error ="";
+  }
+
+    return (
+      <div className="col-4 container-items-input">
+          <input className={`form-control ${style_input}`} type={type} placeholder={placeholder} value={estado.campo} name={name} expresion={expresion} required={required} onKeyUp={validacion} onChange={handleRegisterFormChange}/>
+          <Icon id={icon_error} size="1x"/>
+          <div className={style_error}>{mensaje}</div>
+      </div>
+    );
+}
 
 const ContainerAddUser = ( { id, users, setUsers } ) => {
 
@@ -239,11 +313,12 @@ const ContainerAddUser = ( { id, users, setUsers } ) => {
 
 function App() {
 
-  return (
-    <div className="container-fluid container-panel">
-        <Header/>
-        <Content/>
-    </div>
+  return (<Router>
+        <div className="container-fluid container-panel">
+          <Header/>
+          <Content/>
+      </div>
+  </Router>
   );
 }
 

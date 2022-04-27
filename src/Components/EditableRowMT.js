@@ -21,7 +21,7 @@ function EditableRowMT (props) {
                         </select>
                     </td>
                     <td>
-                        <input className="form-control" type="text" required="required" name="register_data" value={props.editionForm.register_data} onChange={props.handleEditChange}/>
+                        <input className="form-control" type="text" required="required" name="register_data" value={props.editionForm.register_data} onChange={props.handleEditChange} readOnly/>
                     </td>
                     <td>
                         <select className="form-select" required="required" name="state" value={props.editionForm.state} onChange={props.handleEditChange}>

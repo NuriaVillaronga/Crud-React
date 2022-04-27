@@ -5,6 +5,7 @@ import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * Componente Icon para utilizar iconos en función de la acción que se quiera llevar a cabo. 
@@ -14,12 +15,15 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
  * @param size Permite establecer el tamaño del icono. Valores posibles (por defecto 2x): ["xs","lg","sm","1x","2x","3x","4x","5x","6x","7x","8x","9x","10x"];
  * @returns FontAwesomeIcon
  */
-function Icon ({ id, size = '2x' }) { 
+function Icon ({ id="", size = '2x' }) { 
 
     let icon_type = '';
     let icon_color = '';   
   
-    if(id == "delete") {
+    if(id == "") {
+        return ("");
+    }
+    else if(id == "delete") {
         icon_type = faTrashCan;
         icon_color = "rgb(185, 9, 9)";
     }
@@ -38,6 +42,10 @@ function Icon ({ id, size = '2x' }) {
     else if(id == "cancel") {
         icon_type = faXmark;
         icon_color = "rgb(185, 9, 9)"; 
+    }
+    else if(id == "error") {
+        icon_type = faCircleExclamation;
+        icon_color = "red"; 
     }
   
     return (<FontAwesomeIcon id={id} icon={icon_type} size={size} color={icon_color} className="iconsCrud"/>);   
