@@ -20,12 +20,21 @@ function InputALL ({type ="text", placeholder, name, required = "", status, valu
   
     const validation = () => { 
       if (regexp) {
-        
-          if(regexp.test(value)) { 
-            changeStatus({...status, valid: "validado"}) 
+          if(regexp == "/^$/") {
+            if(!regexp.test(value)) { 
+              changeStatus({...status, valid: "validado"}) 
+            }
+            else {
+              changeStatus({...status, valid: "no_validado"})
+            } 
           }
           else {
-            changeStatus({...status, valid: "no_validado"})
+            if(regexp.test(value)) { 
+              changeStatus({...status, valid: "validado"}) 
+            }
+            else {
+              changeStatus({...status, valid: "no_validado"})
+            }
           }
       }
     }

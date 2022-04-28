@@ -11,11 +11,11 @@ function EditableRowST (props) {
   
     const regExp_cp = /^[0-9]{5}$/;
     const regExp_phone = /^[0-9]{9}$/;
-
+    const regExp_required =/^$/;
 
     return (<Fragment>
                 <tr>
-                    <td><InputALL name="address" value={props.editionForm.address} required="required" status={addressValue} changeStatus={setAddress} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/></td>
+                    <td><InputALL name="address" value={props.editionForm.address} required="required" status={addressValue} changeStatus={setAddress} editionForm={props.editionForm} setEditionForm={props.setEditionForm} regexp={new RegExp(regExp_required)} error_message="Dirección es un campo obligatorio"/></td>
                     <td><InputALL name="apartment" value={props.editionForm.apartment} status={apartmentValue} changeStatus={setApartment} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/></td>
                     <td>
                         <input className="form-control" type="text" required="required" name="city" value={props.editionForm.city} onChange={props.handleEditChange}/>

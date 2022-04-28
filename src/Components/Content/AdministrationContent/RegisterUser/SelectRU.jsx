@@ -1,8 +1,9 @@
 import React from 'react';
 import Icon from '../../../Icon';
+import SelectCustom from '../../../SelectCustom';
 
 
-function InputRU ({type ="text", placeholder, name, required = "", status, changeStatus, setRegisterForm, registerForm, regexp, error_message}) { 
+function SelectRU ({ placeholder, name, required = "", status, changeStatus, setRegisterForm, registerForm, regexp, error_message }) { 
 
     const handleRegisterFormChange = (event) => { 
       event.preventDefault();
@@ -14,29 +15,21 @@ function InputRU ({type ="text", placeholder, name, required = "", status, chang
       newFormRegister[fieldName] = fieldValue;
   
       changeStatus({...status, field: event.target.value})
-      setRegisterForm(newFormRegister); 
+      setRegisterForm(newFormRegister);  
     }
   
     var style_input ="";
     var style_error ="";
     var icon_error ="";
-
+  
     const validation = () => { 
       if (regexp) {
-          if(regexp == "/^$/") {
-            if(!regexp.test(status.field)) { 
-              changeStatus({...status, valid: "validado"}) 
-            }
-            else {
-              changeStatus({...status, valid: "no_validado"})
-            } 
-          } else {
-            if(regexp.test(status.field)) { 
-              changeStatus({...status, valid: "validado"}) 
-            }
-            else {
-              changeStatus({...status, valid: "no_validado"})
-            }
+        
+          if(regexp.test(status.field)) { 
+            changeStatus({...status, valid: "validado"}) 
+          }
+          else {
+            changeStatus({...status, valid: "no_validado"})
           }
       }
     }
@@ -54,7 +47,7 @@ function InputRU ({type ="text", placeholder, name, required = "", status, chang
   
       return (
         <div className="col-4 container-items-input">
-            <input className={`form-control ${style_input}`} type={type} placeholder={placeholder} value={status.field} name={name} regexp={regexp} required={required} onKeyUp={validation} onBlur={validation} onChange={handleRegisterFormChange}/>
+            <SelectCustom class={`form-control ${style_input}`} placeholder={placeholder} value={status.field} name={name} regexp={regexp} onBlur={validation} required={required} onChange={handleRegisterFormChange}/>
             <Icon id={icon_error} size="1x"/>
             <div className={style_error}>{error_message}</div>
         </div>

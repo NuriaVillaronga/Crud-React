@@ -145,6 +145,7 @@ function RegisterUser ( props ) {
     const regExp_phone = /^[0-9]{9}$/;
     const regExp_email = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
     const regExp_pass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
+    const regExp_required =/^$/;
   
     return (<Fragment>
               <form id="add-form" onSubmit={handleRegisterFormSubmit}>
@@ -160,7 +161,7 @@ function RegisterUser ( props ) {
                           <InputRU placeholder="Teléfono" name="phoneAdd" required="required" status={phoneValue} registerForm={registerForm} changeStatus={setPhone} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_phone)} error_message="Teléfono debe contener 9 números"/>
                         </div>
                         <div className="row">
-                          <InputRU placeholder="Dirección (Calle y número)" name="addressAdd" required="required" status={addressValue} registerForm={registerForm} changeStatus={setAddress} setRegisterForm={setRegisterForm}/> 
+                          <InputRU placeholder="Dirección (Calle y número)" name="addressAdd" required="required" status={addressValue} registerForm={registerForm} changeStatus={setAddress} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_required)} error_message="Dirección es un campo obligatorio"/> 
                           <InputRU placeholder="Aparatmento, piso, etc" name="apartmentAdd" status={apartmentValue} registerForm={registerForm} changeStatus={setApartment} setRegisterForm={setRegisterForm}/> 
                           <InputRU placeholder="Código postal" name="cpAdd" required="required" status={cpValue} registerForm={registerForm} changeStatus={setCP} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_cp)} error_message="Código postal debe contener 5 números"/>
                         </div>
@@ -188,7 +189,7 @@ function RegisterUser ( props ) {
                             <SelectCustom options={optionsRol} handleChangeSelect={handleChangeRol} placeholder="Rol"/>
                           </div>
                           <div className="col-4 container-items">
-                            <SelectCustom options={optionsState} handleChangeSelect={handleChangeStatus} placeholder="status"/>
+                            <SelectCustom options={optionsState} handleChangeSelect={handleChangeStatus} placeholder="Estado"/>
                           </div>
                           <div className="col-4"></div>
                         </div>
