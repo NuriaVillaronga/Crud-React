@@ -34,6 +34,7 @@ function MainTable ( props ) {
       setIdUserEdit(null);
     }
   
+    //---------------
     const handleEditChange = (event) => {
       event.preventDefault();
   
@@ -45,6 +46,7 @@ function MainTable ( props ) {
   
       setEditionForm(newFormData);
     }
+    //-----------------
   
     const handleCancelClick = () => {
       setIdUserEdit(null);
@@ -100,7 +102,7 @@ function MainTable ( props ) {
                       props.users.map((user) => (
                         <Fragment key={user.id}> 
                           {
-                            idUserEdit === user.id ? <EditableMT element={user} idUserEdit={idUserEdit} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
+                            idUserEdit === user.id ? <EditableMT element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
                           }
                         </Fragment>  
                       ))
