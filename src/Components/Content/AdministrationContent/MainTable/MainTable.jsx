@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
-import EditableRowMT from './EditableRowMT'; 
-import ReadOnlyRowMT from './ReadOnlyRowMT'; 
-import userData from "../users-data.json";
+import EditableRowMT from './Editable/EditableRowMT';
+import ReadOnlyRowMT from './NoEditable/ReadOnlyRowMT';
+
 
 function MainTable ( props ) { 
   

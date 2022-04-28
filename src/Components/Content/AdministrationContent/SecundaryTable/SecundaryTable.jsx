@@ -1,6 +1,6 @@
 import React from 'react';
-import EditableRowST from './EditableRowST';
-import ReadOnlyRowST from './ReadOnlyRowST';
+import EditableRowST from './Editable/EditableRowST';
+import ReadOnlyRowST from './NoEditable/ReadOnlyRowST';
 
 function SecundaryTable ( props ) {
 

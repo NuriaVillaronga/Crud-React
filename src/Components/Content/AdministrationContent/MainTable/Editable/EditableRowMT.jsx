@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import Icon from './Icon'; 
-import SecundaryTable from './SecundaryTable';
+import SecundaryTable from '../../SecundaryTable/SecundaryTable';
+import Icon from '../../../../Icon';
 
 function EditableRowMT (props) {   
     return (<Fragment>

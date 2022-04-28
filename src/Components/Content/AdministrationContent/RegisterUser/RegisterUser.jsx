@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import CustomSelect from './CustomSelect';
+import CustomSelect from '../../../CustomSelect';
 import InputAddUser from './InputAddUser';
 import moment from 'moment';
 import { nanoid } from "nanoid";

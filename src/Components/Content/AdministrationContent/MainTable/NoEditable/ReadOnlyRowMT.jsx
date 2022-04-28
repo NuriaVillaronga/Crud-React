@@ -1,6 +1,6 @@
 import React, { Fragment }from 'react';
-import SecundaryTable from './SecundaryTable';
-import Icon from './Icon'; 
+import SecundaryTable from '../../SecundaryTable/SecundaryTable';
+import Icon from '../../../../Icon';
 
 function ReadOnlyRowMT ( props ) {   
 

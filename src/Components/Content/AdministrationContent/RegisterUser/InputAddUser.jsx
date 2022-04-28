@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from './Icon';
+import Icon from '../../../Icon';
 
 
 function InputAddUser ({type ="text", placeholder, name, required = "", status, changeStatus, setRegisterForm, registerForm, regexp, error_message}) { 
