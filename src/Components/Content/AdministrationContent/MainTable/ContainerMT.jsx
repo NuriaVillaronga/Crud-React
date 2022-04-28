@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import MainTable from './MainTable';
 
-function ContainerMainTable ( {id, users, setUsers } ) { 
+function ContainerMT ( {id, users, setUsers } ) { 
     
     return (<Fragment>
             <div className="row" id={id}>
@@ -13,4 +13,4 @@ function ContainerMainTable ( {id, users, setUsers } ) {
     );   
 }; 
 
-export default ContainerMainTable;
+export default ContainerMT; 

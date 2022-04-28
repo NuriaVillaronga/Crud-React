@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import RegisterUser from './RegisterUser';
 
-function ContainerAddUser ( { id, users, setUsers } ) { 
+function ContainerRU ( { id, users, setUsers } ) { 
   
     return (<Fragment>
         <div className="row" id={id}>
@@ -13,4 +13,4 @@ function ContainerAddUser ( { id, users, setUsers } ) {
     );   
 }; 
 
-export default ContainerAddUser;
+export default ContainerRU; 

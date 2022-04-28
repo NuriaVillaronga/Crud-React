@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import SecundaryTable from '../../SecundaryTable/SecundaryTable';
 import Icon from '../../../../Icon';
 
-function EditableRowMT (props) {   
+function EditableMT (props) {   
     return (<Fragment>
                 <tr className="row-editable-mainTable">
                     <td>
@@ -48,4 +48,4 @@ function EditableRowMT (props) {
             </Fragment>); 
 }
 
-export default EditableRowMT;
+export default EditableMT;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Componente RowMenu para incorporarle filas al menú en función de la acción que se quiera llevar a cabo. 
+ * Componente MenuItem para incorporarle filas al menú en función de la acción que se quiera llevar a cabo. 
  * Según la acción a realizar las propiedades de la componente cambiarán.
  * 
  * @param id Permite identificar la acción que representará la fila (obtener clientes, obtener admins...)
@@ -10,7 +10,7 @@ import React from 'react';
  * @param add Booleano para identificar si la fila será una acción global (obtener todos los usuarios) o específica (obtener clientes, obtener admins).
  * @returns Fila del menú
  */
-function RowMenu ( {id, value, global = false, add = false} ) { 
+function MenuItem ( {id, value, global = false, add = false} ) { 
 
     let style_btn = "";
 
@@ -21,7 +21,7 @@ function RowMenu ( {id, value, global = false, add = false} ) {
       }
     }
     if (global == true) {
-      style_btn = "global-btn";
+      style_btn = "global-btn"; 
     }
 
     return(<div className="row" id={id}>
@@ -33,4 +33,4 @@ function RowMenu ( {id, value, global = false, add = false} ) {
           </div>); 
 }
 
-export default RowMenu;
+export default MenuItem;

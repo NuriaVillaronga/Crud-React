@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
-import CustomSelect from '../../../CustomSelect';
-import InputAddUser from './InputAddUser';
+import SelectCustom from '../../../SelectCustom';
+import InputRU from './InputRU';
 import moment from 'moment';
 import { nanoid } from "nanoid";
 import { Navigate } from 'react-router-dom';
@@ -155,40 +155,40 @@ function RegisterUser ( props ) {
                           <div className="col-12"><u>Información de contacto</u></div>
                         </div>
                         <div className="row">
-                          <InputAddUser placeholder="Nombre" name="nameAdd" required="required" status={nombreValue} registerForm={registerForm} changeStatus={setNombre} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_letters)} error_message="Nombre solo puede contener letras y espacios"/>
-                          <InputAddUser placeholder="Apellidos" name="lastNameAdd" required="required" status={apellidoValue} registerForm={registerForm} changeStatus={setApellido} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_letters)} error_message="Apellidos solo puede contener letras y espacios"/>
-                          <InputAddUser placeholder="Teléfono" name="phoneAdd" required="required" status={phoneValue} registerForm={registerForm} changeStatus={setPhone} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_phone)} error_message="Teléfono debe contener 9 números"/>
+                          <InputRU placeholder="Nombre" name="nameAdd" required="required" status={nombreValue} registerForm={registerForm} changeStatus={setNombre} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_letters)} error_message="Nombre solo puede contener letras y espacios"/>
+                          <InputRU placeholder="Apellidos" name="lastNameAdd" required="required" status={apellidoValue} registerForm={registerForm} changeStatus={setApellido} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_letters)} error_message="Apellidos solo puede contener letras y espacios"/>
+                          <InputRU placeholder="Teléfono" name="phoneAdd" required="required" status={phoneValue} registerForm={registerForm} changeStatus={setPhone} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_phone)} error_message="Teléfono debe contener 9 números"/>
                         </div>
                         <div className="row">
-                          <InputAddUser placeholder="Dirección (Calle y número)" name="addressAdd" required="required" status={addressValue} registerForm={registerForm} changeStatus={setAddress} setRegisterForm={setRegisterForm}/> 
-                          <InputAddUser placeholder="Aparatmento, piso, etc" name="apartmentAdd" status={apartmentValue} registerForm={registerForm} changeStatus={setApartment} setRegisterForm={setRegisterForm}/> 
-                          <InputAddUser placeholder="Código postal" name="cpAdd" required="required" status={cpValue} registerForm={registerForm} changeStatus={setCP} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_cp)} error_message="Código postal debe contener 5 números"/>
+                          <InputRU placeholder="Dirección (Calle y número)" name="addressAdd" required="required" status={addressValue} registerForm={registerForm} changeStatus={setAddress} setRegisterForm={setRegisterForm}/> 
+                          <InputRU placeholder="Aparatmento, piso, etc" name="apartmentAdd" status={apartmentValue} registerForm={registerForm} changeStatus={setApartment} setRegisterForm={setRegisterForm}/> 
+                          <InputRU placeholder="Código postal" name="cpAdd" required="required" status={cpValue} registerForm={registerForm} changeStatus={setCP} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_cp)} error_message="Código postal debe contener 5 números"/>
                         </div>
                         <div className="row">
                           <div className="col-4 container-items">
-                            <CustomSelect handleChangeSelect={handleChangeSelect} options={options} placeholder="Provincia"/>
+                            <SelectCustom handleChangeSelect={handleChangeSelect} options={options} placeholder="Provincia"/>
                           </div>
                           <div className="col-4 container-items">
-                            <CustomSelect options={optionsCity} value={valueCity} handleChangeSelect={handleChangeSelectCity} placeholder="Ciudad"/>  
+                            <SelectCustom options={optionsCity} value={valueCity} handleChangeSelect={handleChangeSelectCity} placeholder="Ciudad"/>  
                           </div>
-                          <div className="col-4"></div>
+                          <div className="col-4"></div> 
                         </div>
                     </div>
                     <div className="col-12 info-interna">
                         <div className="row title-interna">
                           <div className="col-12"><u>Información interna</u></div>
                         </div>
-                        <div className="row">
-                          <InputAddUser placeholder="Email" name="emailAdd" required="required" status={emailValue} registerForm={registerForm} changeStatus={setEmail} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_email)} error_message="Email debe seguir el siguiente formato: foo-bar.baz@example.com"/>
-                          <InputAddUser type="password" placeholder="Contraseña" name="passwordAdd" required="required" status={passwordValue} registerForm={registerForm} changeStatus={setPassword} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_pass)} error_message="Contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula"/>
+                        <div className="row"> 
+                          <InputRU placeholder="Email" name="emailAdd" required="required" status={emailValue} registerForm={registerForm} changeStatus={setEmail} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_email)} error_message="Email debe seguir el siguiente formato: foo-bar.baz@example.com"/>
+                          <InputRU type="password" placeholder="Contraseña" name="passwordAdd" required="required" status={passwordValue} registerForm={registerForm} changeStatus={setPassword} setRegisterForm={setRegisterForm} regexp={new RegExp(regExp_pass)} error_message="Contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula"/>
                           <div className="col-4"></div>
                         </div>
                         <div className="row">
                           <div className="col-4 container-items">
-                            <CustomSelect options={optionsRol} handleChangeSelect={handleChangeRol} placeholder="Rol"/>
+                            <SelectCustom options={optionsRol} handleChangeSelect={handleChangeRol} placeholder="Rol"/>
                           </div>
                           <div className="col-4 container-items">
-                            <CustomSelect options={optionsState} handleChangeSelect={handleChangeStatus} placeholder="status"/>
+                            <SelectCustom options={optionsState} handleChangeSelect={handleChangeStatus} placeholder="status"/>
                           </div>
                           <div className="col-4"></div>
                         </div>

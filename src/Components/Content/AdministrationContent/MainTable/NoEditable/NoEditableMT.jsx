@@ -2,7 +2,7 @@ import React, { Fragment }from 'react';
 import SecundaryTable from '../../SecundaryTable/SecundaryTable';
 import Icon from '../../../../Icon';
 
-function ReadOnlyRowMT ( props ) {   
+function NoEditableMT ( props ) {   
 
     return (<Fragment>
               <tr id={`row-read-mainTable-${props.element.id}`}>
@@ -36,4 +36,4 @@ function ReadOnlyRowMT ( props ) {
             </Fragment>); 
 }
 
-export default ReadOnlyRowMT;
+export default NoEditableMT;

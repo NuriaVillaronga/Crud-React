@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
-import EditableRowMT from './Editable/EditableRowMT';
-import ReadOnlyRowMT from './NoEditable/ReadOnlyRowMT';
+import EditableMT from './Editable/EditableMT';
+import NoEditableMT from './NoEditable/NoEditableMT'; 
 
 
 function MainTable ( props ) { 
@@ -100,9 +100,9 @@ function MainTable ( props ) {
                       props.users.map((user) => (
                         <Fragment key={user.id}> 
                           {
-                            idUserEdit === user.id ? <EditableRowMT element={user} idUserEdit={idUserEdit} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <ReadOnlyRowMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
+                            idUserEdit === user.id ? <EditableMT element={user} idUserEdit={idUserEdit} editionForm={editionForm} handleCancelClick={handleCancelClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleEditChange={handleEditChange} handleDisplayClick={handleDisplayClick}/>
                           }
-                        </Fragment> 
+                        </Fragment>  
                       ))
                     }
                   </tbody>

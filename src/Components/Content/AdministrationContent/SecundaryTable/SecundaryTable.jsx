@@ -1,6 +1,6 @@
 import React from 'react';
-import EditableRowST from './Editable/EditableRowST';
-import ReadOnlyRowST from './NoEditable/ReadOnlyRowST';
+import EditableST from './Editable/EditableST'; 
+import NoEditableST from './NoEditable/NoEditableST'; 
 
 function SecundaryTable ( props ) {
 
@@ -16,7 +16,7 @@ function SecundaryTable ( props ) {
                 </tr>
               </thead>
               <tbody>
-                { props.idUserEdit === props.element.id ? <EditableRowST editionForm={props.editionForm} handleEditChange={props.handleEditChange}/> : <ReadOnlyRowST element={props.element}/> }
+                { props.idUserEdit === props.element.id ? <EditableST editionForm={props.editionForm} handleEditChange={props.handleEditChange}/> : <NoEditableST element={props.element}/> }
               </tbody>
             </table>);
 }

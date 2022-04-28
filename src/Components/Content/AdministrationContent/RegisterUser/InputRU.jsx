@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from '../../../Icon';
 
 
-function InputAddUser ({type ="text", placeholder, name, required = "", status, changeStatus, setRegisterForm, registerForm, regexp, error_message}) { 
+function InputRU ({type ="text", placeholder, name, required = "", status, changeStatus, setRegisterForm, registerForm, regexp, error_message}) { 
 
     const handleRegisterFormChange = (event) => { 
       event.preventDefault();
@@ -14,7 +14,7 @@ function InputAddUser ({type ="text", placeholder, name, required = "", status, 
       newFormRegister[fieldName] = fieldValue;
   
       changeStatus({...status, field: event.target.value})
-      setRegisterForm(newFormRegister); 
+      setRegisterForm(newFormRegister);  
     }
   
     var style_input ="";
@@ -53,4 +53,4 @@ function InputAddUser ({type ="text", placeholder, name, required = "", status, 
       );
   }
 
-export default InputAddUser;
+export default InputRU;

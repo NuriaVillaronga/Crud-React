@@ -1,6 +1,6 @@
 import React, { Fragment }from 'react';
 
-function ReadOnlyRowST ( props ) {   
+function NoEditableST ( props ) {   
 
     return (<Fragment>
               <tr>
@@ -14,4 +14,4 @@ function ReadOnlyRowST ( props ) {
             </Fragment>); 
 }
 
-export default ReadOnlyRowST; 
+export default NoEditableST;  
