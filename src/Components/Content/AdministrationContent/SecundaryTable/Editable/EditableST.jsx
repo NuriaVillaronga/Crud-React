@@ -4,6 +4,12 @@ import InputALL from '../../InputALL';
 
 function EditableRowST (props) {  
     
+    const options = [ { value: 'pontevedra', label: 'Pontevedra' }, { value: 'Ourense', label: 'Ourense' }, { value: 'A Coruña', label: 'A Coruña' }, { value: 'Lugo', label: 'Lugo' } ]
+    const optionsPontevedra = [ { value: 'Vilaxoán', label: 'Vilaxoán' }, { value: 'Illa de Arousa', label: 'Illa de Arousa' } ]
+    const optionsCoruña = [ { value: 'Ortigueira', label: 'Ortigueira' }, { value: 'Muros', label: 'Muros' } ]
+    const optionsLugo = [ { value: 'San Ciprián', label: 'San Ciprián' }, { value: 'Becerreá', label: 'Becerreá' } ]
+    const optionsOurense = [ { value: 'Allariz', label: 'Allariz' }, { value: 'Verín', label: 'Verín' } ]
+
     const [addressValue, setAddress] = useState({field:"", valid: null});
     const [apartmentValue, setApartment] = useState({field:"", valid: null});
     const [cpValue, setCP] = useState({field:"", valid: null});

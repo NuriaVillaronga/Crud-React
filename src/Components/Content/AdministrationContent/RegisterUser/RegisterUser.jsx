@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import SelectCustom from '../../../SelectCustom';
+import SelectCustom from './SelectRU';
 import InputRU from './InputRU';
 import moment from 'moment';
 import { nanoid } from "nanoid";

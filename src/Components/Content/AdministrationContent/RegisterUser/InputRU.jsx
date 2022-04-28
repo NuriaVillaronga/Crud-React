@@ -53,7 +53,7 @@ function InputRU ({type ="text", placeholder, name, required = "", status, chang
     }
   
       return (<div className="col-4 container-items-input">
-                  <input className={`form-control ${style_input}`} type={type} placeholder={placeholder} value={status.field} name={name} regexp={regexp} required={required} onKeyUp={validation} onBlur={validation} onChange={handleRegisterFormChange}/>
+                  <input className={`form-control ${style_input}`} type={type} placeholder={placeholder} value={status.field} name={name} regexp={regexp} required={required} onKeyUp={validation} onChange={handleRegisterFormChange}/>
                   <Icon id={icon_error} size="1x"/>
                   <div className={style_error}>{error_message}</div>
               </div>);
