@@ -48,27 +48,27 @@ function RegisterUser ( props ) {
     const handleChangeSelect = ( {value} ) => {
   
         if (value === null) {
-            setValueCity("");
+            setCityValue("");
             setOptionsCity([]);
             setProvinceValue("")
         }
         else if (value === "Pontevedra") {
-            setValueCity(optionsPontevedra[0]);
+            setCityValue(optionsPontevedra[0]);
             setOptionsCity(optionsPontevedra);
             setProvinceValue("Pontevedra")
         }
         else if(value === "A Coruña") {
-            setValueCity(optionsCoruña[0]);
+            setCityValue(optionsCoruña[0]);
             setOptionsCity(optionsCoruña);
             setProvinceValue("A Coruña")
         }
         else if(value === "Lugo") {
-            setValueCity(optionsLugo[0]);
+            setCityValue(optionsLugo[0]);
             setOptionsCity(optionsLugo);
             setProvinceValue("Lugo")
         }
         else if(value === "Ourense") {
-            setValueCity(optionsOurense[0]);
+            setCityValue(optionsOurense[0]);
             setOptionsCity(optionsOurense); 
             setProvinceValue("Ourense")
         }
@@ -77,8 +77,8 @@ function RegisterUser ( props ) {
     const handleChangeSelectCity = ( {value} ) => {
   
         for (let i=0; optionsCity.length; i++) {
-            if(optionsCity[i].value === value) {
-                setValueCity(optionsCity[i]);
+            if(optionsCity[i].label == value) {
+                setCityValue(optionsCity[i]);
             }
         }
     }
@@ -96,16 +96,16 @@ function RegisterUser ( props ) {
       }
     }
   
-    const handleChangeStatus = ( {value} ) => {
+    const handleChangeState = ( {value} ) => {
   
       if (value === null) {
-          setStatusValue("")
+          setStateValue("")
       }
       else if (value === "Activo") {
-          setStatusValue("Activo")
+          setStateValue("Activo")
       }
       else if(value === "Inactivo") {
-          setStatusValue("Inactivo")
+          setStateValue("Inactivo")
       }
     }
   
@@ -116,7 +116,7 @@ function RegisterUser ( props ) {
   
         var registerData = moment().format("DD/MM/YYYY");
   
-        const newUser = {id : nanoid(), name : registerForm.nameAdd, email: registerForm.emailAdd, register_data: registerData, rol: rolValue, password: registerForm.passwordAdd, state: statusValue,  address: registerForm.addressAdd, cp: registerForm.cpAdd, phone: registerForm.phoneAdd, city: valueCity.value, provincia: provinceValue, apartment: registerForm.apartmentAdd};
+        const newUser = {id : nanoid(), name : registerForm.nameAdd, email: registerForm.emailAdd, register_data: registerData, rol: rolValue, password: registerForm.passwordAdd, state: stateValue,  address: registerForm.addressAdd, cp: registerForm.cpAdd, phone: registerForm.phoneAdd, city: cityValue.value, provincia: provinceValue, apartment: registerForm.apartmentAdd};
         const newUsers = [...props.users, newUser];
         props.setUser(newUsers)
   
@@ -124,12 +124,11 @@ function RegisterUser ( props ) {
     }
   
     const [optionsCity, setOptionsCity] = useState([]);
-    const [valueCity, setValueCity] = useState("");
+    const [cityValue, setCityValue] = useState("");  
     const [provinceValue, setProvinceValue] = useState("");
     const [rolValue, setRolValue] = useState("");
-    const [statusValue, setStatusValue] = useState("");
+    const [stateValue, setStateValue] = useState(""); 
     const [registerFormSubmited, setRegisterFormSubmited] = useState(false)
-  
   
     const [nombreValue, setNombre] = useState({field:"", valid: null}); 
     const [apellidoValue, setApellido] = useState({field:"", valid: null});
@@ -139,6 +138,11 @@ function RegisterUser ( props ) {
     const [apartmentValue, setApartment] = useState({field:"", valid: null});
     const [emailValue, setEmail] = useState({field:"", valid: null});
     const [passwordValue, setPassword] = useState({field:"", valid: null});
+
+    const [cityValidate, setCityValidate] = useState("");
+    const [provinceValidate, setProvinceValidate] = useState("");
+    const [rolValidate, setRolValidate] = useState("");
+    const [stateValidate, setStateValidate] = useState("");
   
     const regExp_letters = /^[a-zA-ZÀ-ÿŸ\u00f1\u00d1\s]+$/;
     const regExp_cp = /^[0-9]{5}$/;
@@ -167,10 +171,10 @@ function RegisterUser ( props ) {
                         </div>
                         <div className="row">
                           <div className="col-4 container-items">
-                            <SelectCustom handleChangeSelect={handleChangeSelect} options={options} placeholder="Provincia"/>
+                            <SelectCustom handleChangeSelect={handleChangeSelect} status={provinceValidate} changeSelectStatus={setProvinceValidate} selected={provinceValue} options={options} placeholder="Provincia" error_message="Provincia es un campo obligatorio"/>
                           </div>
                           <div className="col-4 container-items">
-                            <SelectCustom options={optionsCity} value={valueCity} handleChangeSelect={handleChangeSelectCity} placeholder="Ciudad"/>  
+                            <SelectCustom options={optionsCity} status={cityValidate} changeSelectStatus={setCityValidate} value={cityValue} selected={cityValue} handleChangeSelect={handleChangeSelectCity} placeholder="Ciudad" error_message="Ciudad es un campo obligatorio"/>  
                           </div>
                           <div className="col-4"></div> 
                         </div>
@@ -186,10 +190,10 @@ function RegisterUser ( props ) {
                         </div>
                         <div className="row">
                           <div className="col-4 container-items">
-                            <SelectCustom options={optionsRol} handleChangeSelect={handleChangeRol} placeholder="Rol"/>
+                            <SelectCustom options={optionsRol} selected={rolValue} status={rolValidate} changeSelectStatus={setRolValidate} handleChangeSelect={handleChangeRol} placeholder="Rol" error_message="Rol es un campo obligatorio"/>
                           </div>
                           <div className="col-4 container-items">
-                            <SelectCustom options={optionsState} handleChangeSelect={handleChangeStatus} placeholder="Estado"/>
+                            <SelectCustom options={optionsState} selected={stateValue} status={stateValidate} changeSelectStatus={setStateValidate} handleChangeSelect={handleChangeState} placeholder="Estado" error_message="Estado es un campo obligatorio"/> 
                           </div>
                           <div className="col-4"></div>
                         </div>
