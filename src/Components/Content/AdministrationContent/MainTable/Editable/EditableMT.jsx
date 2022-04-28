@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import SecundaryTable from '../../SecundaryTable/SecundaryTable';
 import Icon from '../../../../Icon';
 import InputALL from '../../InputALL';
@@ -9,8 +9,32 @@ function EditableMT (props) {
     const optionsState = [ { value: 'Activo', label: 'Activo' }, { value: 'Inactivo', label: 'Inactivo' } ]
     const optionsRol = [ { value: 'Admin', label: 'Admin' }, { value: 'User', label: 'User' } ]
 
-    const [rolValue, setRolValue] = useState("");
-    const [stateValue, setStateValue] = useState(props.editionForm.state); 
+    const [rolValue, setRolValue] = useState(""); 
+
+    var selectedState = "";
+
+    for (var i=0; i<optionsState.length; i++) {
+        if(optionsState[i].value == props.editionForm.state) {
+            selectedState = optionsState[i];
+        }
+    }
+
+    const [stateValue, setStateValue] = useState(selectedState);
+
+    const handleChangeState = ( {value} ) => {
+        setStateValue(value);
+        for (var i=0; i<optionsState.length; i++) {
+            if(optionsState[i].value == props.editionForm.state) {
+                selectedState = optionsState[i];
+            }
+        }
+    }
+
+    var valorGuardado = ""
+
+    useEffect(() => {
+        valorGuardado = stateValue;
+    });
 
     const handleChangeRol = ( {value} ) => {
   
@@ -23,19 +47,8 @@ function EditableMT (props) {
         else if(value === "User") {
             setRolValue("User")
         }
-      }
-    
-      const handleChangeState = ( {value} ) => {
-        
-        console.log(value)
-        if (value === null) {
-            setStateValue("")
-        }
-        if (value == stateValue) {
-            setStateValue(value)
-        }
-        
     }
+
 
     const handleEditChange = (event) => {
         
@@ -71,11 +84,7 @@ function EditableMT (props) {
                     </td>
                     <td><input className="form-control" type="text" required="required" name="register_data" value={props.editionForm.register_data} onChange={props.handleEditChange} readOnly/></td>
                     <td>
-                        <select className="form-select" required="required" name="state" value={props.editionForm.state} onChange={handleEditChange}>
-                            <option>Activo</option>
-                            <option>Inactivo</option>
-                        </select>
-                        <SelectALL/>
+                        <SelectALL name="state" state={props.editionForm.state} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
                     </td>
                     <td className="col_acciones">
                         <button className="icon-button save-cancel-button" type="submit"><Icon id="save" size="2x"/></button>
