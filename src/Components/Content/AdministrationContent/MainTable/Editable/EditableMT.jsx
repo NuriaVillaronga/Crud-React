@@ -2,53 +2,12 @@ import React, { useState, Fragment, useEffect } from 'react';
 import SecundaryTable from '../../SecundaryTable/SecundaryTable';
 import Icon from '../../../../Icon';
 import InputALL from '../../InputALL';
-import SelectALL from '../../SelectALL';
+import SelectMT from './SelectMT';
 
 function EditableMT (props) {  
 
-    const optionsState = [ { value: 'Activo', label: 'Activo' }, { value: 'Inactivo', label: 'Inactivo' } ]
     const optionsRol = [ { value: 'Admin', label: 'Admin' }, { value: 'User', label: 'User' } ]
-
-    const [rolValue, setRolValue] = useState(""); 
-
-    var selectedState = "";
-
-    for (var i=0; i<optionsState.length; i++) {
-        if(optionsState[i].value == props.editionForm.state) {
-            selectedState = optionsState[i];
-        }
-    }
-
-    const [stateValue, setStateValue] = useState(selectedState);
-
-    const handleChangeState = ( {value} ) => {
-        setStateValue(value);
-        for (var i=0; i<optionsState.length; i++) {
-            if(optionsState[i].value == props.editionForm.state) {
-                selectedState = optionsState[i];
-            }
-        }
-    }
-
-    var valorGuardado = ""
-
-    useEffect(() => {
-        valorGuardado = stateValue;
-    });
-
-    const handleChangeRol = ( {value} ) => {
-  
-        if (value === null) {
-            setRolValue("")
-        }
-        else if (value === "Admin") {
-            setRolValue("Admin")
-        }
-        else if(value === "User") {
-            setRolValue("User")
-        }
-    }
-
+    const optionsState = [ { value: 'Activo', label: 'Activo' }, { value: 'Inactivo', label: 'Inactivo' } ]
 
     const handleEditChange = (event) => {
         
@@ -62,6 +21,9 @@ function EditableMT (props) {
     
         props.setEditionForm(newFormData);
     }
+
+    const [stateValue, setStateValue] = useState("");
+    const [rolValue, setRolValue] = useState("");
     
     const [nameValue, setName] = useState({field:"", valid: null}); 
     const [emailValue, setEmail] = useState({field:"", valid: null});
@@ -77,14 +39,11 @@ function EditableMT (props) {
                     <td><InputALL name="email" value={props.editionForm.email} required="required" status={emailValue} changeStatus={setEmail} editionForm={props.editionForm} setEditionForm={props.setEditionForm} regexp={new RegExp(regExp_email)} error_message="Ejemplo de formato: foo-bar.baz@example.com"/></td>
                     <td><InputALL name="password" value={props.editionForm.password} required="required" status={passwordValue} changeStatus={setPassword} editionForm={props.editionForm} setEditionForm={props.setEditionForm} regexp={new RegExp(regExp_pass)} error_message="Formato: 8-16 caracteres, un dígito, una minúscula, una mayúscula"/></td>
                     <td> 
-                        <select className="form-select" required="required" name="rol" value={props.editionForm.rol} onChange={handleEditChange}>
-                            <option>Admin</option>
-                            <option>User</option>
-                        </select>
+                        <SelectMT name="rol" property={props.editionForm.rol} options={optionsRol} estado={rolValue} setEstado={setRolValue} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
                     </td>
                     <td><input className="form-control" type="text" required="required" name="register_data" value={props.editionForm.register_data} onChange={props.handleEditChange} readOnly/></td>
                     <td>
-                        <SelectALL name="state" state={props.editionForm.state} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
+                        <SelectMT name="state" property={props.editionForm.state} options={optionsState} estado={stateValue} setEstado={setStateValue} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
                     </td>
                     <td className="col_acciones">
                         <button className="icon-button save-cancel-button" type="submit"><Icon id="save" size="2x"/></button>
