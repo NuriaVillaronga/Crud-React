@@ -20,6 +20,7 @@ function EditableRowST (props) {
     const optionsLugo = [ { value: 'San Ciprián', label: 'San Ciprián' }, { value: 'Becerreá', label: 'Becerreá' } ]
     const optionsOurense = [ { value: 'Allariz', label: 'Allariz' }, { value: 'Verín', label: 'Verín' } ]
 
+    //Hacer un if marcando las opciones por defecto iniciales en funcion del valor de los datos del formulario
     const [provinciaValue, setProvinceValue] = useState(optionsProvincia[0]);
     const [cityValue, setCityValue] = useState(optionsPontevedra[0]);
     const [optionsCity, setOptionsCity] = useState(optionsPontevedra);  
