@@ -29,7 +29,7 @@ function NoEditableMT ( props ) {
               <tr className='row-read-secundaryTable' id={`row-read-secundaryTable-${props.element.id}`}>
                   <td colSpan="7">
                       <div className='div-read-secundaryTable'> 
-                          <SecundaryTable editionForm={props.editionForm} editedUserId={props.editedUserId} element={props.element} handleEditChange={props.handleEditChange}/>
+                          <SecundaryTable editionForm={props.editionForm} editedUserId={props.editedUserId} element={props.element}/>
                       </div>
                   </td>
               </tr>

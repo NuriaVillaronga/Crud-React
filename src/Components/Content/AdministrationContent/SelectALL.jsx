@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import Select from 'react-select';
 
-function SelectState ( props ) {  
+function SelectALL ( props ) {  
 
-    var valorGuardado = ""
+    var valorGuardado = props.estado;
 
     for (var i=0; i<props.options.length; i++) {
-        if(props.options[i].value == props.property) {
+        if(props.options[i].value == valorGuardado) {
             valorGuardado = props.options[i];
         }
     }
@@ -20,6 +20,7 @@ function SelectState ( props ) {
     
         props.setEditionForm(newFormData);
         props.setEstado(fieldValue);
+
     }
 
     useEffect(() => {
@@ -29,4 +30,4 @@ function SelectState ( props ) {
     return (<Select name={props.name} onChange={handleSelectChange} options={props.options} defaultValue={valorGuardado}/>); 
 }
 
-export default SelectState;  
+export default SelectALL;   

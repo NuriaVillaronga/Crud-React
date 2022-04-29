@@ -9,7 +9,7 @@ import { Navigate } from 'react-router-dom';
 function RegisterUser ( props ) { 
 
     const options = [
-        { value: 'pontevedra', label: 'Pontevedra' },
+        { value: 'Pontevedra', label: 'Pontevedra' },
         { value: 'Ourense', label: 'Ourense' },
         { value: 'A Coruña', label: 'A Coruña' },
         { value: 'Lugo', label: 'Lugo' }
@@ -84,29 +84,11 @@ function RegisterUser ( props ) {
     }
   
     const handleChangeRol = ( {value} ) => {
-  
-      if (value === null) {
-          setRolValue("")
-      }
-      else if (value === "Admin") {
-          setRolValue("Admin")
-      }
-      else if(value === "User") {
-          setRolValue("User")
-      }
+        setRolValue(value);
     }
   
     const handleChangeState = ( {value} ) => {
-  
-      if (value === null) {
-          setStateValue("")
-      }
-      else if (value === "Activo") {
-          setStateValue("Activo")
-      }
-      else if(value === "Inactivo") {
-          setStateValue("Inactivo")
-      }
+        setStateValue(value)
     }
   
     const [registerForm, setRegisterForm] = useState({id : "", nameAdd : "", emailAdd: "", rolAdd: "", passwordAdd: "", stateAdd: "",  addressAdd: "", cpAdd: "", phoneAdd: "", cityAdd: "", provinciaAdd: "", apartmentAdd: ""});

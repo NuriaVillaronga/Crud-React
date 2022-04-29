@@ -1,29 +1,16 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment } from 'react';
 import SecundaryTable from '../../SecundaryTable/SecundaryTable';
 import Icon from '../../../../Icon';
 import InputALL from '../../InputALL';
-import SelectMT from './SelectMT';
+import SelectALL from '../../SelectALL';
 
 function EditableMT (props) {  
 
     const optionsRol = [ { value: 'Admin', label: 'Admin' }, { value: 'User', label: 'User' } ]
     const optionsState = [ { value: 'Activo', label: 'Activo' }, { value: 'Inactivo', label: 'Inactivo' } ]
 
-    const handleEditChange = (event) => {
-        
-        event.preventDefault();
-    
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
-    
-        const newFormData = {...props.editionForm};
-        newFormData[fieldName] = fieldValue;
-    
-        props.setEditionForm(newFormData);
-    }
-
-    const [stateValue, setStateValue] = useState("");
-    const [rolValue, setRolValue] = useState("");
+    const [stateValue, setStateValue] = useState(props.editionForm.state);
+    const [rolValue, setRolValue] = useState(props.editionForm.rol);
     
     const [nameValue, setName] = useState({field:"", valid: null}); 
     const [emailValue, setEmail] = useState({field:"", valid: null});
@@ -39,11 +26,11 @@ function EditableMT (props) {
                     <td><InputALL name="email" value={props.editionForm.email} required="required" status={emailValue} changeStatus={setEmail} editionForm={props.editionForm} setEditionForm={props.setEditionForm} regexp={new RegExp(regExp_email)} error_message="Ejemplo de formato: foo-bar.baz@example.com"/></td>
                     <td><InputALL name="password" value={props.editionForm.password} required="required" status={passwordValue} changeStatus={setPassword} editionForm={props.editionForm} setEditionForm={props.setEditionForm} regexp={new RegExp(regExp_pass)} error_message="Formato: 8-16 caracteres, un dígito, una minúscula, una mayúscula"/></td>
                     <td> 
-                        <SelectMT name="rol" property={props.editionForm.rol} options={optionsRol} estado={rolValue} setEstado={setRolValue} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
+                        <SelectALL name="rol" options={optionsRol} estado={rolValue} setEstado={setRolValue} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
                     </td>
                     <td><input className="form-control" type="text" required="required" name="register_data" value={props.editionForm.register_data} onChange={props.handleEditChange} readOnly/></td>
                     <td>
-                        <SelectMT name="state" property={props.editionForm.state} options={optionsState} estado={stateValue} setEstado={setStateValue} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
+                        <SelectALL name="state" options={optionsState} estado={stateValue} setEstado={setStateValue} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
                     </td>
                     <td className="col_acciones">
                         <button className="icon-button save-cancel-button" type="submit"><Icon id="save" size="2x"/></button>
@@ -53,7 +40,7 @@ function EditableMT (props) {
                 <tr className="row-editable-secundaryTable"> 
                     <td colSpan="7">
                         <div className='div-editable-secundaryTable'>
-                            <SecundaryTable editionForm={props.editionForm} setEditionForm={props.setEditionForm} idUserEdit={props.idUserEdit} element={props.element} handleEditChange={handleEditChange}/>
+                            <SecundaryTable editionForm={props.editionForm} setEditionForm={props.setEditionForm} idUserEdit={props.idUserEdit} element={props.element}/>
                         </div>
                     </td>
                 </tr>
