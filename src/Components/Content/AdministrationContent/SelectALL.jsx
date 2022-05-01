@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Select from 'react-select';
 
 function SelectALL ( props ) {  
@@ -13,19 +13,12 @@ function SelectALL ( props ) {
 
     const handleSelectChange = ( { value } ) => { 
     
-        const fieldValue = value;
-    
         const newFormData = {...props.editionForm};
-        newFormData[props.name] = fieldValue;
+        newFormData[props.name] = value;
     
         props.setEditionForm(newFormData);
-        props.setEstado(fieldValue);
-
+        props.setEstado(value);
     }
-
-    useEffect(() => {
-        valorGuardado = props.estado;
-    });
 
     return (<Select name={props.name} onChange={handleSelectChange} options={props.options} defaultValue={valorGuardado}/>); 
 }

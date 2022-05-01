@@ -20,45 +20,137 @@ function EditableRowST (props) {
     const optionsLugo = [ { value: 'San Ciprián', label: 'San Ciprián' }, { value: 'Becerreá', label: 'Becerreá' } ]
     const optionsOurense = [ { value: 'Allariz', label: 'Allariz' }, { value: 'Verín', label: 'Verín' } ]
 
-    //Hacer un if marcando las opciones por defecto iniciales en funcion del valor de los datos del formulario
-    const [provinciaValue, setProvinceValue] = useState(optionsProvincia[0]);
-    const [cityValue, setCityValue] = useState(optionsPontevedra[0]);
-    const [optionsCity, setOptionsCity] = useState(optionsPontevedra);  
+    //Marcar los seleccionados inicialmente (falta acabar de seleccionar las distintas provincias)
+
+    var provinciaSeleccionada = "";
+    var arraySeleccionado = "";
+    var ciudadSeleccionada ="";
+
+    if (props.editionForm.provincia == "Pontevedra") {
+        provinciaSeleccionada = optionsProvincia[0];
+        arraySeleccionado = optionsPontevedra;
+
+        for (var i=0; i<optionsPontevedra.length; i++) {
+            if (optionsPontevedra[i].value == props.editionForm.city) {
+                ciudadSeleccionada = optionsPontevedra[i];
+            }
+        }
+    }
+    else if (props.editionForm.provincia == "Ourense") {
+        provinciaSeleccionada = optionsProvincia[1];
+        arraySeleccionado = optionsOurense;
+
+        for (var i=0; i<optionsOurense.length; i++) {
+            if (optionsOurense[i].value == props.editionForm.city) {
+                ciudadSeleccionada = optionsOurense[i];
+            }
+        }
+    }
+    else if (props.editionForm.provincia == "Lugo") {
+        provinciaSeleccionada = optionsProvincia[3];
+        arraySeleccionado = optionsLugo;
+
+        for (var i=0; i<optionsLugo.length; i++) {
+            if (optionsLugo[i].value == props.editionForm.city) {
+                ciudadSeleccionada = optionsLugo[i];
+            }
+        }
+    }
+    else if (props.editionForm.provincia == "A Coruña") {
+        provinciaSeleccionada = optionsProvincia[2];
+        arraySeleccionado = optionsCoruña;
+
+        for (var i=0; i<optionsCoruña.length; i++) {
+            if (optionsCoruña[i].value == props.editionForm.city) {
+                ciudadSeleccionada = optionsCoruña[i];
+            }
+        }
+    }
+
+    //Establecer los estados iniciales que tendrán los selects
+    
+    const [provinciaValue, setProvinceValue] = useState(provinciaSeleccionada);
+    const [cityValue, setCityValue] = useState(ciudadSeleccionada);
+    const [optionsCity, setOptionsCity] = useState(arraySeleccionado);  
       
     const handleChangeSelect = ( {value} ) => {
+
+        var ciudadGuardada = "";
   
         if (value === "Pontevedra") {
             setCityValue(optionsPontevedra[0]);
             setOptionsCity(optionsPontevedra);
             setProvinceValue(optionsProvincia[0])
+            ciudadGuardada = optionsPontevedra[0].value;
         }
         else if(value === "A Coruña") {
             setCityValue(optionsCoruña[0]);
             setOptionsCity(optionsCoruña);
-            setProvinceValue(optionsProvincia[2])
+            setProvinceValue(optionsProvincia[2]);
+            ciudadGuardada = optionsCoruña[0].value;
         }
         else if(value === "Lugo") {
             setCityValue(optionsLugo[0]);
             setOptionsCity(optionsLugo);
-            setProvinceValue(optionsProvincia[3])
+            setProvinceValue(optionsProvincia[3]);
+            ciudadGuardada = optionsLugo[0].value;
         }
         else if(value === "Ourense") {
             setCityValue(optionsOurense[0]);
             setOptionsCity(optionsOurense); 
-            setProvinceValue(optionsProvincia[1])
+            setProvinceValue(optionsProvincia[1]);
+            ciudadGuardada = optionsOurense[0].value;
         }
+    
+        const newFormData = {...props.editionForm};
+        newFormData["provincia"] = value;
+        newFormData["city"] = ciudadGuardada;
+    
+        props.setEditionForm(newFormData);
+        //El Value es lo que se guardará en el formulario de la provincia
     }
   
     const handleChangeSelectCity = ( {value} ) => {
-  
-        console.log(optionsCity);
-        /*
-        for (let i=0; optionsCity.length; i++) {
-            if(optionsCity[i].value == value) {
-                setCityValue(optionsCity[i]);
+        
+        //Value es lo que se guardará en el formulario de la ciudad
+
+        if (provinciaValue.value == "Pontevedra") {
+    
+            for (var i=0; i<optionsPontevedra.length; i++) {
+                if (optionsPontevedra[i].value == value) {
+                    setCityValue(optionsPontevedra[i]);
+                }
             }
         }
-        */
+        else if (provinciaValue.value == "A Coruña") {
+    
+            for (var i=0; i<optionsCoruña.length; i++) {
+                if (optionsCoruña[i].value == value) {
+                    setCityValue(optionsCoruña[i]);
+                }
+            }
+        }
+        else if (provinciaValue.value == "Ourense") {
+    
+            for (var i=0; i<optionsOurense.length; i++) {
+                if (optionsOurense[i].value == value) {
+                    setCityValue(optionsOurense[i]);
+                }
+            }
+        }
+        else if (provinciaValue.value == "Lugo") {
+    
+            for (var i=0; i<optionsLugo.length; i++) {
+                if (optionsLugo[i].value == value) {
+                    setCityValue(optionsLugo[i]);
+                }
+            }
+        }
+
+        const newFormData = {...props.editionForm};
+        newFormData["city"] = value;
+    
+        props.setEditionForm(newFormData);
     }
 
     //<SelectALL name="provincia" options={optionsProvincia} estado={provinciaValue} setEstado={setProvinciaValue} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
