@@ -12,7 +12,7 @@ function EditableRowST (props) {
   
     const regExp_cp = /^[0-9]{5}$/;
     const regExp_phone = /^[0-9]{9}$/;
-    const regExp_required =/^$/;
+    const regExp_required = /^$/;
 
     const optionsProvincia = [ { value: 'Pontevedra', label: 'Pontevedra' }, { value: 'Ourense', label: 'Ourense' }, { value: 'A Coruña', label: 'A Coruña' }, { value: 'Lugo', label: 'Lugo' } ]
     const optionsPontevedra = [ { value: 'Vilagarcía de Arousa', label: 'Vilagarcía de Arousa' }, { value: 'Illa de Arousa', label: 'Illa de Arousa' } ]

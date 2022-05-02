@@ -178,7 +178,7 @@ tr.hidde {
     margin-top: 20px;
     margin-bottom: 25px;
 }
-.row-editable-secundaryTable,  .row-editable-mainTable {
+.row-editable-secundaryTable,  .row-editable-mainTable, .row-editable-passwordForm {
     background-color: rgba(158, 219, 255, 0.199);
 }
 .row-editable-secundaryTable th {
@@ -188,6 +188,22 @@ tr.hidde {
     display: flex;
     justify-content: center;
 }
+.div-editable-passwordForm {
+    text-align: center;
+}
+.div-editable-passwordForm .container-update-password{
+    display: inline;
+}
+.col-update-label-password {
+    text-align: right;
+    padding-top: 17px;
+}
+.col-update-input-password {
+    padding-top: 10px;
+}
+.row-repeat-password {
+    padding-bottom: 20px;
+}
 .row-read-secundaryTable {
     display: none;
 }
@@ -195,7 +211,6 @@ tr.hidde {
     background-color: rgba(255, 255, 255, 0);
     color: rgb(255, 232, 207);
 }
-
 .row-read-secundaryTable {
     border-bottom: 3px solid rgb(233, 148, 79) !important;
 }

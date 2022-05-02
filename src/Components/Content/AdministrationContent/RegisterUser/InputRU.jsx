@@ -14,7 +14,7 @@ function InputRU ({type ="text", placeholder, name, required = "", status, chang
       newFormRegister[fieldName] = fieldValue;
   
       changeStatus({...status, field: event.target.value})
-      setRegisterForm(newFormRegister); 
+      setRegisterForm(newFormRegister);
     }
   
     var style_input ="";

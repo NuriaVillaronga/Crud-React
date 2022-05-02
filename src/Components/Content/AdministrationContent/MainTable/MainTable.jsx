@@ -11,6 +11,11 @@ function MainTable ( props ) {
   
     const [visibility, setVisibility] = useState(false);
 
+    const [passwordValue, setPassword] = useState({field:"", valid: null});
+
+    const bcrypt = require("bcryptjs");
+    const rondasEncriptacion = 2;
+
     const handleEditClick = (event, user) => {
       event.preventDefault();
       setIdUserEdit(user.id);
@@ -22,8 +27,25 @@ function MainTable ( props ) {
 
     const handleSaveFormSubmit = (event) => {
       event.preventDefault();
+
+      var password_final_value = "";
+      if (passwordValue.field != "") {
+          password_final_value = passwordValue.field; 
+          //Info: https://parzibyte.me/blog/2020/08/13/encriptar-contrasenas-node/
+
+          bcrypt.hash(passwordValue.field, rondasEncriptacion, (err, password_encriptado) => {
+            if (err) {
+              console.log("Error hasheando:", err);
+            } else {
+              console.log(password_encriptado);
+            }
+          });
+      }
+      else {
+          password_final_value = editionForm.password;
+      }
   
-      const user_on_edition = { id : idUserEdit, name : editionForm.name, email: editionForm.email, rol: editionForm.rol, password: editionForm.password, state: editionForm.state, address: editionForm.address, cp: editionForm.cp, phone: editionForm.phone, register_data: editionForm.register_data, city: editionForm.city, provincia: editionForm.provincia, apartment: editionForm.apartment };
+      const user_on_edition = { id : idUserEdit, name : editionForm.name, email: editionForm.email, rol: editionForm.rol, password: password_final_value, state: editionForm.state, address: editionForm.address, cp: editionForm.cp, phone: editionForm.phone, register_data: editionForm.register_data, city: editionForm.city, provincia: editionForm.provincia, apartment: editionForm.apartment };
   
       const new_users_array = [...props.users]; // Con ... se copian todas las propiedades del array de usuarios "users"
 
@@ -88,7 +110,7 @@ function MainTable ( props ) {
                       props.users.map((user) => (
                         <Fragment key={user.id}> 
                           {
-                            idUserEdit === user.id ? <EditableMT element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
+                            idUserEdit === user.id ? <EditableMT passwordValue={passwordValue} setPassword={setPassword} element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
                           }
                         </Fragment>  
                       ))
