@@ -67,17 +67,20 @@ function MainTable ( props ) {
       var row_read_ST = document.getElementById(`row-read-secundaryTable-${id_user}`);
       var icon_arrow = document.getElementById(`icon-arrow-${id_user}`);
       var row_read_MT = document.getElementById(`row-read-mainTable-${id_user}`);
+      var input_password = document.getElementById(`input-read-password-${id_user}`);
   
       if (visibility == true) {
         row_read_ST.style.display = "none";
         icon_arrow.setAttribute("style", "transform: rotate(360deg)");
         row_read_MT.setAttribute("style", "background-color: white");
+        input_password.setAttribute("style", "background-color: white !important");
         setVisibility(false);
       }
       else if(visibility == false) {
         icon_arrow.setAttribute("style", "transform: rotate(180deg)");
-        row_read_MT.setAttribute("style", "border-top: 3px solid rgb(233, 148, 79) !important; background-color: rgb(255, 232, 207)");
+        row_read_MT.setAttribute("style", "box-shadow: 0 0 5px rgb(231, 227, 205) !important; background-color: rgb(233, 230, 216)");
         row_read_ST.setAttribute("style", "display:table-row");
+        input_password.setAttribute("style", "background-color: rgb(233, 230, 216) !important");
         setVisibility(true);
       }
 

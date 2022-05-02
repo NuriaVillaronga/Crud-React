@@ -13,7 +13,7 @@ function NoEditableMT ( props ) {
                     {props.element.name}
                 </td>
                 <td>{props.element.email}</td>
-                <td><input className="form-control input-read-password" value={props.element.password} readOnly></input></td> 
+                <td><input className="form-control input-read-password" id={`input-read-password-${props.element.id}`} value={props.element.password} readOnly></input></td> 
                 <td>{props.element.rol}</td> 
                 <td>{props.element.register_data}</td>
                 <td>{props.element.state}</td>
