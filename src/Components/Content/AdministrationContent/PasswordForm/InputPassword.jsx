@@ -3,42 +3,19 @@ import React, { Fragment } from 'react';
 
 function InputPassword ({type ="text", placeholder, name, required = "", status, changeStatus, regexp, error_message}) { 
 
-    /*
-    const handleEditChange = (event) => {
-        event.preventDefault();
-    
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
-
-        const newFormData = {...editionForm};
-        newFormData[fieldName] = fieldValue;
-    
-        setEditionForm(newFormData);
-    }
-    */
-  
     var style_input ="";
     var style_error ="";
   
     const validation = (event) => { 
       if (regexp) {
-          if(regexp == "/^$/") {
-            if(!regexp.test(event.target.value)) { 
-              changeStatus({...status, field: event.target.value, valid: "validado"}) 
-            }
-            else {
-              changeStatus({...status, field: '', valid: "no_validado"})
-            } 
-          }
-          else {
             if(regexp.test(event.target.value)) { 
               changeStatus({...status, field: event.target.value, valid: "validado"}) 
             }
             else {
-              changeStatus({...status, field: '', valid: "no_validado"})
+              changeStatus({...status, field: '-', valid: "no_validado"})
+              //Cuando field value sea = "" tendrá que ser válido (no es obligaotiro modificar las contraseña)
             }
           }
-      }
     }
   
     if(status.valid == "no_validado") {
