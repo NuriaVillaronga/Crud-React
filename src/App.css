@@ -220,10 +220,7 @@ tr.hidde {
 .col_nombre {
     width: 25%;
 }
-.col_registro, .col_rol {
-    width: 9%;
-}
-.col_estado {
+.col_registro, .col_rol, .col_estado {
     width: 9%;
 }
 .col_contraseña {
@@ -236,6 +233,16 @@ tr.hidde {
     text-align: center;
     padding-left: 0px !important;
 }
+.input-read-password {
+    border: none !important;
+    background-color: white !important;
+}
+.input-read-password:focus {
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
 .mainTable {
     width: 100%;
     border: 1px solid rgba(224, 224, 224, 0.575);

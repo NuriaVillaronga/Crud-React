@@ -30,16 +30,8 @@ function MainTable ( props ) {
 
       var password_final_value = "";
       if (passwordValue.field != "") {
-          password_final_value = passwordValue.field; 
-          //Info: https://parzibyte.me/blog/2020/08/13/encriptar-contrasenas-node/
-
-          bcrypt.hash(passwordValue.field, rondasEncriptacion, (err, password_encriptado) => {
-            if (err) {
-              console.log("Error hasheando:", err);
-            } else {
-              console.log(password_encriptado);
-            }
-          });
+          password_final_value = bcrypt.hashSync(passwordValue.field, bcrypt.genSaltSync());
+          console.log(password_final_value);
       }
       else {
           password_final_value = editionForm.password;
