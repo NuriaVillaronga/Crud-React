@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 
-function InputPassword ({type ="text", placeholder, name, required = "", status, changeStatus, regexp, error_message}) { 
+function InputNP ({type ="text", name, required = "", status, changeStatus, regexp, error_message}) { 
 
     var style_input ="";
     var style_error ="";
@@ -30,10 +30,10 @@ function InputPassword ({type ="text", placeholder, name, required = "", status,
     }
   
       return (<Fragment>
-                <input className={`form-control ${style_input}`} type={type} placeholder={placeholder} name={name} regexp={regexp} required={required} onKeyUp={validation} onClick={console.log(status.field)}/>
+                <input className={`form-control ${style_input}`} type={type} required={required} name={name} onKeyUp={validation}/>
                 <div className={style_error}>{error_message}</div>
             </Fragment>
       );
   }
 
-export default InputPassword;
+export default InputNP; 

@@ -14,7 +14,6 @@ function MainTable ( props ) {
     const [passwordValue, setPassword] = useState({field:"", valid: null});
 
     const bcrypt = require("bcryptjs");
-    const rondasEncriptacion = 2;
 
     const handleEditClick = (event, user) => {
       event.preventDefault();
