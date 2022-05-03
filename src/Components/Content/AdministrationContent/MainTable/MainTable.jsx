@@ -5,6 +5,8 @@ import Icon from '../../../Icon';
  
 
 function MainTable ( props ) { 
+
+    const [arrayUsuarios, setArrayUsuarios] = useState(props.users);
   
     const [idUserEdit, setIdUserEdit] = useState(null);  
   
@@ -39,12 +41,12 @@ function MainTable ( props ) {
   
       const user_on_edition = { id : idUserEdit, name : editionForm.name, email: editionForm.email, rol: editionForm.rol, password: password_final_value, state: editionForm.state, address: editionForm.address, cp: editionForm.cp, phone: editionForm.phone, register_data: editionForm.register_data, city: editionForm.city, provincia: editionForm.provincia, apartment: editionForm.apartment };
   
-      const new_users_array = [...props.users]; // Con ... se copian todas las propinombrees del array de usuarios "users"
+      const new_users_array = [...arrayUsuarios]; // Con ... se copian todas las propinombrees del array de usuarios "users"
 
-      const index = props.users.findIndex((user) => user.id === idUserEdit);
+      const index = arrayUsuarios.findIndex((user) => user.id === idUserEdit);
   
       new_users_array[index] = user_on_edition; 
-      props.setUsers(new_users_array); 
+      setArrayUsuarios(new_users_array)
       setIdUserEdit(null);
     }
   
@@ -53,13 +55,14 @@ function MainTable ( props ) {
     }
   
     const handleDeleteClick = (userId) => {
-      const new_users_array = [...props.users];
+
+      const new_users_array = [...arrayUsuarios];
   
-      const index = props.users.findIndex((user) => user.id === userId);
+      const index = arrayUsuarios.findIndex((user) => user.id === userId);
   
       new_users_array.splice(index, 1);
   
-      props.setUsers(new_users_array);
+      setArrayUsuarios(new_users_array)
     }
   
 
@@ -86,9 +89,6 @@ function MainTable ( props ) {
       }
 
     }
-
-    
-    const [arrayUsuarios, setArrayUsuarios] = useState(props.users);
 
     const handleClickSortName = () => {
       var btn_icon_arrow = document.getElementById("icon-sort-name");
