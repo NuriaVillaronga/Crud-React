@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 
-function InputNP ({type ="text", name, required = "", status, changeStatus, regexp, error_message}) { 
+function InputNP ({type ="text", name, id="", required = "", status, changeStatus, regexp, error_message}) { 
 
     var style_input ="";
     var style_error ="";
@@ -30,7 +30,7 @@ function InputNP ({type ="text", name, required = "", status, changeStatus, rege
     }
   
       return (<Fragment>
-                <input className={`form-control ${style_input}`} type={type} required={required} name={name} onKeyUp={validation}/>
+                <input id={id} className={`form-control ${style_input}`} type={type} required={required} name={name} onKeyUp={validation}/>
                 <div className={style_error}>{error_message}</div>
             </Fragment>
       );

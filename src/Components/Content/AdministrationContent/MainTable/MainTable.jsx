@@ -87,17 +87,7 @@ function MainTable ( props ) {
 
     }
 
-    /*
-    const headers = [ 
-      {key: "name", class: "col_nombre", label: "Nombre (completo)"},
-      {key: "email", class: "col_email", label: "Email"},
-      {key: "password", class: "col_contraseña", label: "Contraseña"},
-      {key: "rol", class: "col_rol", label: "Rol"},
-      {key: "register_data", class: "col_registro", label: "Registro"},
-      {key: "state", class: "col_estado", label: "Estado"},
-      {key: "acciones", class: "col_acciones", label: "Acciones"},
-    ] */
-
+    
     const [arrayUsuarios, setArrayUsuarios] = useState(props.users);
 
     const handleClickSortName = () => {

@@ -15,7 +15,7 @@ function PasswordForm ( props ) {
                         <label>Contraseña</label> 
                     </div>
                     <div className="col-3 col-update-input-password"> 
-                        <InputNP type="password" name="new_password" status={props.passwordValue} changeStatus={props.setPassword} regexp={new RegExp(regExp_pass)} error_message="Formato: 8-16 caracteres, un dígito, una minúscula, una mayúscula"/>
+                        <InputNP type="password" id="password-update" name="new_password" status={props.passwordValue} changeStatus={props.setPassword} regexp={new RegExp(regExp_pass)} error_message="Formato: 8-16 caracteres, un dígito, una minúscula, una mayúscula"/>
                     </div>
                     <div className="col-4"></div>
                 </div>
@@ -25,7 +25,7 @@ function PasswordForm ( props ) {
                         <label>Confirma la contraseña</label>
                     </div>
                     <div className="col-3 col-update-input-password">
-                        <InputCP type="password" name="confirm_password" password={props.passwordValue} status={confirmPasswordValue} changeStatus={setConfirmPassword} error_message="Ambas contraseñas deben coincidir"/>
+                        <InputCP type="password" name="confirm_password" status={confirmPasswordValue} changeStatus={setConfirmPassword} error_message="Ambas contraseñas deben coincidir"/>
                     </div>
                     <div className="col-4"></div>
                 </div>
