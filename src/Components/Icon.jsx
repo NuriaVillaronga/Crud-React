@@ -6,6 +6,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDownLong } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Componente Icon para utilizar iconos en función de la acción que se quiera llevar a cabo. 
@@ -19,6 +20,7 @@ function Icon ({ id="", size = '2x' }) {
 
     let icon_type = '';
     let icon_color = '';   
+    let icon_class = '';
   
     if(id == "") {
         return ("");
@@ -26,29 +28,40 @@ function Icon ({ id="", size = '2x' }) {
     else if(id == "delete") {
         icon_type = faTrashCan;
         icon_color = "rgb(185, 9, 9)";
+        icon_class = "";
     }
     else if(id == "save") {
         icon_type = faFloppyDisk;
         icon_color = "rgb(40, 122, 177)";
+        icon_class = "";
     }
     else if(id == "update") {
         icon_type = faPenToSquare;
         icon_color = "rgb(63, 109, 69)";
+        icon_class = "";
     }
     else if(id == "angleDown") { 
-      icon_type = faAngleDown;
-      icon_color = "grey";
+        icon_type = faAngleDown;
+        icon_color = "grey";
+        icon_class = "";
     }
     else if(id == "cancel") {
         icon_type = faXmark;
         icon_color = "rgb(185, 9, 9)"; 
+        icon_class = "";
     }
     else if(id == "error") {
         icon_type = faCircleExclamation;
         icon_color = "red"; 
+        icon_class = ""; 
     }
-  
-    return (<FontAwesomeIcon id={id} icon={icon_type} size={size} color={icon_color} className="iconsCrud"/>);   
+    else if(id == "arrowDown") { 
+        icon_type = faArrowDownLong;
+        icon_color = "rgba(128, 128, 128, 0)";
+        icon_class = "icons-sort"; 
+    }
+
+    return (<FontAwesomeIcon id={id} icon={icon_type} size={size} color={icon_color} className={icon_class}/>);   
 }
 
 export default Icon;

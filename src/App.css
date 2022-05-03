@@ -76,10 +76,6 @@
 
 /***Formulario registro usuarios validacion***/
 
-
-.iconsCrud:hover {
-    cursor: pointer;
-}
 tr.hidde {
     display: none;
 }
@@ -138,13 +134,17 @@ tr.hidde {
 }
 /**/
 
+
 /*Icons - MainTable and SecundaryTable*/
-.icon-button {
+.icon-button, .icon-button-sort {
     display: inline;
     border: none !important;
     margin-right: 5px;
     margin-left: 5px;
     background-color: rgba(255, 255, 255, 0);
+}
+.icon-button-sort:hover > #arrowDown {
+    color: red;
 }
 #save:hover {
     color: rgb(125, 177, 211);
