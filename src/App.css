@@ -30,11 +30,11 @@
     height: 100%;
     padding-top:10px;
     padding-bottom:10px;
-    border-bottom: 2px solid rgb(136, 132, 112);
-    border-right: 2px solid rgb(136, 132, 112);
+    border-bottom: 2px solid rgb(134, 134, 134);
+    border-right: 2px solid rgb(134, 134, 134);
     border-top: 2px solid rgb(173, 169, 147);
     border-left: 2px solid rgb(173, 169, 147);
-    background-color: rgb(175, 170, 145);
+    background-color: rgb(218, 218, 218);
     color: black;
 }
 .global-btn {
@@ -83,6 +83,10 @@
 }
 .form-mainTable {
     background-color: rgba(255, 255, 255, 0.603);
+}
+#ejemplo-titulo {
+    width: 30%;
+    padding: 20px;
 }
 
 /***Formulario registro usuarios validacion***/

@@ -2,6 +2,7 @@ import React, { useState, Fragment } from 'react';
 import EditableMT from './Editable/EditableMT';
 import NoEditableMT from './NoEditable/NoEditableMT'; 
 import Icon from '../../../Icon';
+import titulo from './titulo.jpg';
  
 
 function MainTable ( props ) { 
@@ -122,8 +123,10 @@ function MainTable ( props ) {
     }
     
     return (<Fragment>
-            <h1>GESTION DE USUARIOS</h1>
-            <input placeholder='Buscar' value={busqueda} onChange={handleSearchChange}/>
+            <img src={titulo} id="ejemplo-titulo"/>
+            <p>
+              <input placeholder='Buscar' value={busqueda} onChange={handleSearchChange}/>
+            </p>
             <form onSubmit={handleSaveFormSubmit} className="form-mainTable"> 
               <table className="mainTable">
                   <thead>
