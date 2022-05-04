@@ -33,7 +33,6 @@ function MainTable ( props ) {
       var password_final_value = "";
       if (passwordValue.field != "") {
           password_final_value = bcrypt.hashSync(passwordValue.field, bcrypt.genSaltSync());
-          console.log(password_final_value);
       }
       else {
           password_final_value = editionForm.password;
@@ -90,35 +89,65 @@ function MainTable ( props ) {
 
     }
 
-    const handleClickSortName = () => {
-      var btn_icon_arrow = document.getElementById("icon-sort-name");
-      var icon_arrow = document.getElementById("arrowDown");
-      var sortedList = [...props.users].sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0)) 
+    const handleClickSort = (event, key) => { 
+
+      var btn_icon_arrow = document.getElementById(`icon-sort-${key}`);
+
+      var sortedList = [...props.users].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))  
       btn_icon_arrow.setAttribute("style", "transform: rotate(180deg)");
-      icon_arrow.setAttribute("style", "color: grey");
 
       if (sortedList[0] === arrayUsuarios[0]) {
-        sortedList = [...props.users].sort((b,a) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
+        sortedList = [...props.users].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0)) 
         btn_icon_arrow.setAttribute("style", "transform: rotate(360deg)");
-        icon_arrow.setAttribute("style", "color: grey");
       }
 
       setArrayUsuarios(sortedList)
     }
+
+    const [busqueda, setBusqueda] = useState(""); 
+
+    const handleSearchChange =  (event) => {
+      setBusqueda(event.target.value);
+      filtrar(event.target.value);
+    }
+
+    //Si no encuentra ningun elemento se tiene que ocultar la tabla y la paginacion (cuando la haya) y mostrar un mensaje --> añadir clasesName
+    const filtrar = (terminoBusqueda) => {
+      var resultadoBusqueda = props.users.filter((elemento)=>{
+        if(elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())) {
+          return elemento;
+        }
+      });
+      setArrayUsuarios(resultadoBusqueda);
+    }
     
-    return (<form onSubmit={handleSaveFormSubmit}> 
+    return (<Fragment>
+            <input placeholder='Buscar' value={busqueda} onChange={handleSearchChange}/>
+            <form onSubmit={handleSaveFormSubmit}> 
               <table className="mainTable">
                   <thead>
                     <tr>
                         <th className="col_nombre">
                           Nombre (completo)
-                          <button className="icon-button-sort" type="button" id="icon-sort-name" onClick={handleClickSortName}><Icon id="arrowDown" size="1x"/></button>
+                          <button className="icon-button-sort" type="button" id="icon-sort-name" onClick={(event) => handleClickSort(event, 'name')}><Icon id="arrowDown" size="1x"/></button>
                         </th>
-                        <th className="col_email">Email</th>
+                        <th className="col_email">
+                          Email
+                          <button className="icon-button-sort" type="button" id="icon-sort-email" onClick={(event) => handleClickSort(event, 'email')}><Icon id="arrowDown" size="1x"/></button>
+                        </th>
                         <th className="col_contraseña">Contraseña</th>
-                        <th className="col_rol">Rol</th>
-                        <th className="col_registro">Registro</th>
-                        <th className="col_estado">Estado</th>
+                        <th className="col_rol">
+                          Rol
+                          <button className="icon-button-sort" type="button" id="icon-sort-rol" onClick={(event) => handleClickSort(event, 'rol')}><Icon id="arrowDown" size="1x"/></button>
+                        </th>
+                        <th className="col_registro">
+                          Registro
+                          <button className="icon-button-sort" type="button" id="icon-sort-register_data" onClick={(event) => handleClickSort(event, 'register_data')}><Icon id="arrowDown" size="1x"/></button>
+                        </th>
+                        <th className="col_estado">
+                          Estado
+                          <button className="icon-button-sort" type="button" id="icon-sort-state" onClick={(event) => handleClickSort(event, 'state')}><Icon id="arrowDown" size="1x"/></button>
+                        </th>
                         <th className="col_acciones">Acciones</th>
                     </tr>
                   </thead>
@@ -134,7 +163,8 @@ function MainTable ( props ) {
                     }
                   </tbody>
               </table>
-            </form>);   
+            </form>
+            </Fragment>);   
 }; 
 
 

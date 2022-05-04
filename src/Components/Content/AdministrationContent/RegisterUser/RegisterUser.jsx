@@ -73,6 +73,8 @@ function RegisterUser ( props ) {
             setProvinceValue("Ourense")
         }
     }
+
+    const bcrypt = require("bcryptjs");
   
     const handleChangeSelectCity = ( {value} ) => {
   
@@ -97,8 +99,10 @@ function RegisterUser ( props ) {
         event.preventDefault();
   
         var registerData = moment().format("DD/MM/YYYY");
+
+        var passwordHashed = bcrypt.hashSync(registerForm.passwordAdd, bcrypt.genSaltSync());
   
-        const newUser = {id : nanoid(), name : registerForm.nameAdd, email: registerForm.emailAdd, register_data: registerData, rol: rolValue, password: registerForm.passwordAdd, state: stateValue,  address: registerForm.addressAdd, cp: registerForm.cpAdd, phone: registerForm.phoneAdd, city: cityValue.value, provincia: provinceValue, apartment: registerForm.apartmentAdd};
+        const newUser = {id : nanoid(), name : registerForm.nameAdd, email: registerForm.emailAdd, register_data: registerData, rol: rolValue, password: passwordHashed, state: stateValue,  address: registerForm.addressAdd, cp: registerForm.cpAdd, phone: registerForm.phoneAdd, city: cityValue.value, provincia: provinceValue, apartment: registerForm.apartmentAdd};
         const newUsers = [...props.users, newUser];
         props.setUser(newUsers)
   

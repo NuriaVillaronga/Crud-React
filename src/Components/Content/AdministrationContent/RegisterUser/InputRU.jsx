@@ -11,6 +11,11 @@ function InputRU ({type ="text", placeholder, name, required = "", status, chang
       const fieldValue = event.target.value;
   
       const newFormRegister = {...registerForm};
+
+      if (fieldName == "lastNameAdd") {
+        newFormRegister["nameAdd"] = newFormRegister["nameAdd"]+" "+fieldValue
+      }
+
       newFormRegister[fieldName] = fieldValue;
   
       changeStatus({...status, field: event.target.value})
