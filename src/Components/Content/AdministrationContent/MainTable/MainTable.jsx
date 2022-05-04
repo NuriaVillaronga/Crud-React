@@ -122,8 +122,9 @@ function MainTable ( props ) {
     }
     
     return (<Fragment>
+            <h1>GESTION DE USUARIOS</h1>
             <input placeholder='Buscar' value={busqueda} onChange={handleSearchChange}/>
-            <form onSubmit={handleSaveFormSubmit}> 
+            <form onSubmit={handleSaveFormSubmit} className="form-mainTable"> 
               <table className="mainTable">
                   <thead>
                     <tr>

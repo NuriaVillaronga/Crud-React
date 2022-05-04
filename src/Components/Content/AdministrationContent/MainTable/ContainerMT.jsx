@@ -5,7 +5,7 @@ function ContainerMT ( {id, users, setUsers } ) {
     
     
     return (<Fragment>
-            <div className="row" id={id}>
+            <div className="row containerMT" id={id}>
                 <div className="col-12">
                     <MainTable users={users} setUsers={setUsers}/>
                 </div>

@@ -63,15 +63,26 @@
 }
 /*******/
 
-
 /*Administration panel*/
-
 .administration-row {
     padding-top: 60px;
     padding-bottom: 60px;
     padding-left: 40px !important;
     padding-right: 40px !important;
     min-height: 91.1vh;
+    background-image: url("../public/images/red.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.containerMT {
+    background-color: rgba(255, 255, 255, 0.733);
+    padding-bottom: 35px;
+    padding-top: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.form-mainTable {
+    background-color: rgba(255, 255, 255, 0.603);
 }
 
 /***Formulario registro usuarios validacion***/
@@ -89,7 +100,7 @@ tr.hidde {
 
 /*Add-form*/
 #add-form {
-    background-color: rgba(209, 209, 209, 0.239);
+    background-color: rgba(255, 255, 255, 0.733); /*rgba(209, 209, 209, 0.239)*/
     padding: 20px;
 }
 .info-contacto {
@@ -242,16 +253,15 @@ tr.hidde {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
 }
-
 .mainTable {
     width: 100%;
-    border: 1px solid rgba(224, 224, 224, 0.575);
+    border: 1px solid rgb(214, 214, 214);
 }
 .mainTable tr {
-    border: 1px solid rgba(224, 224, 224, 0.575);
+    border: 1px solid rgb(214, 214, 214);
 }
 .mainTable td,  .mainTable th {
-    border: 1px solid rgba(224, 224, 224, 0.575); 
+    border: 1px solid rgb(214, 214, 214); 
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -262,7 +272,7 @@ tr.hidde {
 .mainTable th {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgba(224, 224, 224, 0.37);
+    background-color: rgba(177, 176, 176, 0.226);
 }
 
 
