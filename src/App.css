@@ -1,3 +1,63 @@
+/*Previus information main table users*/
+
+.title-info-users {
+    color: black;
+    font-size: 16px;
+    text-decoration: underline;
+    padding-top: 10px;
+}
+.help-info-users {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.help-info-users span{
+    color: black;
+    font-size: 13px;
+}
+.help-info-users #error {
+    padding-right: 10px;
+}
+
+/***************************************/
+
+/*Search users - main table*/
+
+.col-search-users {
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+.input-search-users {
+    font-size: 16px !important;
+    background-color: transparent !important;
+    border-radius: 0px !important;
+    border: none !important;
+    border-bottom: 1px solid rgb(167, 167, 167) !important;
+    padding: 0px !important;
+    padding-left: 4px !important;
+    padding-bottom: 2px !important;
+}
+.input-search-users::placeholder {
+    color: rgb(107, 107, 107) !important;
+}
+.col-search-users  #error {
+    position: absolute;
+    right: 25px;
+	top: 45%;
+}
+
+/**************************************/
+
+/*Main table no editable*/
+
+.tr-maintable-noeditable:hover {
+    background-color: rgba(25, 105, 180, 0.836);
+    color: white;
+}
+
+/***********************/
+
+
 .container-panel {
     min-height: 100vh;
 }
@@ -122,7 +182,7 @@ tr.hidde {
 .container-items-input {
     position: relative;
 }
-#error {
+.container-items-input  #error {
     position: absolute;
     right: 25px;
 	top: 16%;

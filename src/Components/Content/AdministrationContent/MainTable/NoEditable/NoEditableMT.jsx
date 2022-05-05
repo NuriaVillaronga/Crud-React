@@ -5,7 +5,7 @@ import Icon from '../../../../Icon';
 function NoEditableMT ( props ) {   
 
     return (<Fragment>
-              <tr id={`row-read-mainTable-${props.element.id}`}>
+              <tr id={`row-read-mainTable-${props.element.id}`} className="tr-maintable-noeditable">
                 <td>
                     <button className="icon-button" type="button" id={`icon-arrow-${props.element.id}`} onClick={() => props.handleDisplayClick(props.element.id)}>
                         <Icon id="angleDown" size="1x"/>

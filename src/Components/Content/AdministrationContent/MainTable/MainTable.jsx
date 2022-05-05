@@ -123,51 +123,78 @@ function MainTable ( props ) {
     }
     
     return (<Fragment>
-            <img src={titulo} id="ejemplo-titulo"/>
-            <p>
-              <input placeholder='Buscar' value={busqueda} onChange={handleSearchChange}/>
-            </p>
-            <form onSubmit={handleSaveFormSubmit} className="form-mainTable"> 
-              <table className="mainTable">
-                  <thead>
-                    <tr>
-                        <th className="col_nombre">
-                          Nombre (completo)
-                          <button className="icon-button-sort" type="button" id="icon-sort-name" onClick={(event) => handleClickSort(event, 'name')}><Icon id="arrowDown" size="1x"/></button>
-                        </th>
-                        <th className="col_email">
-                          Email
-                          <button className="icon-button-sort" type="button" id="icon-sort-email" onClick={(event) => handleClickSort(event, 'email')}><Icon id="arrowDown" size="1x"/></button>
-                        </th>
-                        <th className="col_contraseña">Contraseña</th>
-                        <th className="col_rol">
-                          Rol
-                          <button className="icon-button-sort" type="button" id="icon-sort-rol" onClick={(event) => handleClickSort(event, 'rol')}><Icon id="arrowDown" size="1x"/></button>
-                        </th>
-                        <th className="col_registro">
-                          Registro
-                          <button className="icon-button-sort" type="button" id="icon-sort-register_data" onClick={(event) => handleClickSort(event, 'register_data')}><Icon id="arrowDown" size="1x"/></button>
-                        </th>
-                        <th className="col_estado">
-                          Estado
-                          <button className="icon-button-sort" type="button" id="icon-sort-state" onClick={(event) => handleClickSort(event, 'state')}><Icon id="arrowDown" size="1x"/></button>
-                        </th>
-                        <th className="col_acciones">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      arrayUsuarios.map((user) => (
-                        <Fragment key={user.id}> 
-                          {
-                            idUserEdit === user.id ? <EditableMT passwordValue={passwordValue} setPassword={setPassword} element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
-                          }
-                        </Fragment>  
-                      ))
-                    }
-                  </tbody>
-              </table>
-            </form>
+            <div className="row">
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-12">
+                    <h1>GESTIÓN DE USUARIOS</h1>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12 title-info-users">
+                    <span>Gestión de información de acceso e información personal de todos los usuarios de la aplicación</span>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12 help-info-users">
+                    <Icon id="error" size="1x"/>
+                    <span>En el caso de que se presente una <b>visualización incompleta</b> de alguno de los <b>campos</b>, habrá que seleccionar dicho campo y este se deslizará hacia la derecha hasta mostrar el valor por completo</span>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-8"></div>
+                  <div className="col-4 col-search-users">
+                    <input className="form-control input-search-users" placeholder='Introduce el valor que deseas buscar' value={busqueda} onChange={handleSearchChange}/>
+                    <Icon id="error" size="1x"/>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12">
+                      <form onSubmit={handleSaveFormSubmit} className="form-mainTable"> 
+                        <table className="mainTable">
+                            <thead>
+                              <tr>
+                                  <th className="col_nombre">
+                                    Nombre (completo)
+                                    <button className="icon-button-sort" type="button" id="icon-sort-name" onClick={(event) => handleClickSort(event, 'name')}><Icon id="arrowDown" size="1x"/></button>
+                                  </th>
+                                  <th className="col_email">
+                                    Email
+                                    <button className="icon-button-sort" type="button" id="icon-sort-email" onClick={(event) => handleClickSort(event, 'email')}><Icon id="arrowDown" size="1x"/></button>
+                                  </th>
+                                  <th className="col_contraseña">Contraseña</th>
+                                  <th className="col_rol">
+                                    Rol
+                                    <button className="icon-button-sort" type="button" id="icon-sort-rol" onClick={(event) => handleClickSort(event, 'rol')}><Icon id="arrowDown" size="1x"/></button>
+                                  </th>
+                                  <th className="col_registro">
+                                    Registro
+                                    <button className="icon-button-sort" type="button" id="icon-sort-register_data" onClick={(event) => handleClickSort(event, 'register_data')}><Icon id="arrowDown" size="1x"/></button>
+                                  </th>
+                                  <th className="col_estado">
+                                    Estado
+                                    <button className="icon-button-sort" type="button" id="icon-sort-state" onClick={(event) => handleClickSort(event, 'state')}><Icon id="arrowDown" size="1x"/></button>
+                                  </th>
+                                  <th className="col_acciones">Acciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {
+                                arrayUsuarios.map((user) => (
+                                  <Fragment key={user.id}> 
+                                    {
+                                      idUserEdit === user.id ? <EditableMT passwordValue={passwordValue} setPassword={setPassword} element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
+                                    }
+                                  </Fragment>  
+                                ))
+                              }
+                            </tbody>
+                        </table>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
             </Fragment>);   
 }; 
 
