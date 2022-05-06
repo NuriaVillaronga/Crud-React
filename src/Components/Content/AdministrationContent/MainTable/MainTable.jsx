@@ -2,7 +2,6 @@ import React, { useState, Fragment } from 'react';
 import EditableMT from './Editable/EditableMT';
 import NoEditableMT from './NoEditable/NoEditableMT'; 
 import Icon from '../../../Icon';
-import titulo from './titulo.jpg';
  
 
 function MainTable ( props ) { 
@@ -66,29 +65,35 @@ function MainTable ( props ) {
     }
   
 
+    const [selected, setSelected] = useState([]);
+    
+    //------------------------------------------------
     const handleDisplayClick = (id_user) => { 
   
+      var row_read_MT = document.getElementById(`row-read-mainTable-${id_user}`); 
       var row_read_ST = document.getElementById(`row-read-secundaryTable-${id_user}`);
       var icon_arrow = document.getElementById(`icon-arrow-${id_user}`);
-      var row_read_MT = document.getElementById(`row-read-mainTable-${id_user}`);
       var input_password = document.getElementById(`input-read-password-${id_user}`);
   
       if (visibility == true) {
         row_read_ST.style.display = "none";
         icon_arrow.setAttribute("style", "transform: rotate(360deg)");
-        row_read_MT.setAttribute("style", "background-color: white");
-        input_password.setAttribute("style", "background-color: white !important");
+        row_read_MT.setAttribute("style", "background-color:transparent");
+        input_password.setAttribute("style", "color:black");
+        setSelected([]);
         setVisibility(false);
       }
       else if(visibility == false) {
         icon_arrow.setAttribute("style", "transform: rotate(180deg)");
-        row_read_MT.setAttribute("style", "box-shadow: 0 0 5px rgb(231, 227, 205) !important; background-color: rgb(233, 230, 216)");
-        row_read_ST.setAttribute("style", "display:table-row");
-        input_password.setAttribute("style", "background-color: rgb(233, 230, 216) !important");
+        row_read_MT.setAttribute("style", "background-color:rgba(216, 224, 233, 0.852) !important")
+        row_read_ST.setAttribute("style", "display:table-row; background-color:rgba(228, 233, 239, 0.852)");
+        input_password.setAttribute("style", "color:black");
+        setSelected((selected) => [...selected, id_user]);
         setVisibility(true);
       }
-
+      
     }
+    //------------------
 
     const handleClickSort = (event, key) => { 
 
@@ -183,7 +188,7 @@ function MainTable ( props ) {
                                 arrayUsuarios.map((user) => (
                                   <Fragment key={user.id}> 
                                     {
-                                      idUserEdit === user.id ? <EditableMT passwordValue={passwordValue} setPassword={setPassword} element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
+                                      idUserEdit === user.id ? <EditableMT passwordValue={passwordValue} setPassword={setPassword} element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick} handleDisplayClick={handleDisplayClick} visibilidad={visibility}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} selected={selected} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick} handleDisplayClick={handleDisplayClick}/>
                                     }
                                   </Fragment>  
                                 ))

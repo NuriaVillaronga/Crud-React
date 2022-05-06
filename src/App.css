@@ -50,11 +50,7 @@
 
 /*Main table no editable*/
 
-.tr-maintable-noeditable:hover {
-    background-color: rgba(25, 105, 180, 0.836);
-    color: white;
-}
-
+.input-read-password
 /***********************/
 
 
@@ -310,7 +306,7 @@ tr.hidde {
 }
 .input-read-password {
     border: none !important;
-    background-color: white !important;
+    background-color: transparent !important;
 }
 .input-read-password:focus {
     box-shadow: none !important;
