@@ -16,7 +16,7 @@ function SecundaryTable ( props ) {
                 </tr>
               </thead>
               <tbody>
-                { props.idUserEdit === props.element.id ? <EditableST editionForm={props.editionForm} setEditionForm={props.setEditionForm} handleEditChange={props.handleEditChange}/> : <NoEditableST element={props.element}/> }
+                { props.idUserEdit === props.element.id ? <EditableST editionForm={props.editionForm} setEditionForm={props.setEditionForm}/> : <NoEditableST element={props.element}/> }
               </tbody>
             </table>);
 }

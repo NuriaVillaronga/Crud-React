@@ -7,6 +7,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faArrowDownLong } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Componente Icon para utilizar iconos en función de la acción que se quiera llevar a cabo. 
@@ -59,6 +60,10 @@ function Icon ({ id="", size = '2x' }) {
         icon_type = faArrowDownLong;
         icon_color = "rgba(128, 128, 128, 0)";
         icon_class = "icons-sort"; 
+    }
+    else if(id == "lupa") { 
+        icon_type = faMagnifyingGlass;
+        icon_color = "grey";
     }
 
     return (<FontAwesomeIcon id={id} icon={icon_type} size={size} color={icon_color} className={icon_class}/>);   

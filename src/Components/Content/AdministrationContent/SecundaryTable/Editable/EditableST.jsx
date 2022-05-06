@@ -153,8 +153,6 @@ function EditableRowST (props) {
         props.setEditionForm(newFormData);
     }
 
-    //<SelectALL name="provincia" options={optionsProvincia} estado={provinciaValue} setEstado={setProvinciaValue} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
-    //<SelectCity name="city" provinciaSeleccionada={provinciaValue} city={props.editionForm.city} editionForm={props.editionForm} setEditionForm={props.setEditionForm}/>
     return (<Fragment>
                 <tr>
                     <td><InputALL name="address" value={props.editionForm.address} required="required" status={addressValue} changeStatus={setAddress} editionForm={props.editionForm} setEditionForm={props.setEditionForm} regexp={new RegExp(regExp_required)} error_message="Dirección es un campo obligatorio"/></td>

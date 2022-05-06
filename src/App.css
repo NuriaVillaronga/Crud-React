@@ -40,7 +40,7 @@
 .input-search-users::placeholder {
     color: rgb(107, 107, 107) !important;
 }
-.col-search-users  #error {
+.col-search-users  #lupa {
     position: absolute;
     right: 25px;
 	top: 45%;
