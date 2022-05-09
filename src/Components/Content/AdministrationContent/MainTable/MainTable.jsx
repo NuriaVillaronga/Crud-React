@@ -18,15 +18,6 @@ function MainTable ( props ) {
 
     const bcrypt = require("bcryptjs");
 
-    const handleEditClick = (event, user) => {
-      event.preventDefault();
-      setIdUserEdit(user.id);
-
-      const formValues = { id : user.id, name : user.name, email: user.email, rol: user.rol, password: user.password, state: user.state, address : user.address, cp: user.cp, phone: user.phone, register_data: user.register_data, city: user.city, provincia: user.provincia, apartment: user.apartment };
-
-      setEditionForm(formValues);
-    }
-
     const handleSaveFormSubmit = (event) => {
       event.preventDefault();
 
@@ -52,16 +43,9 @@ function MainTable ( props ) {
     const handleCancelClick = () => {
       setIdUserEdit(null);
     }
-  
-    const handleDeleteClick = (userId) => {
 
-      const new_users_array = [...arrayUsuarios];
-  
-      const index = arrayUsuarios.findIndex((user) => user.id === userId);
-  
-      new_users_array.splice(index, 1);
-  
-      setArrayUsuarios(new_users_array)
+    const tocado = () => {
+      console.log("Tocado");
     }
     
     return (<Fragment>
@@ -81,7 +65,9 @@ function MainTable ( props ) {
                                 arrayUsuarios.map((user) => (
                                   <Fragment key={user.id}> 
                                     {
-                                      idUserEdit === user.id ? <EditableMT passwordValue={passwordValue} setPassword={setPassword} element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick}/> : <NoEditableMT element={user} user_on_editionId={idUserEdit} editionForm={editionForm} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>
+                                      idUserEdit === user.id ? 
+                                      <EditableMT passwordValue={passwordValue} setPassword={setPassword} element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick}/>
+                                       : <NoEditableMT element={user} arrayUsuarios={arrayUsuarios} tocado={tocado} setArrayUsuarios={setArrayUsuarios} setEditionForm={setEditionForm} setIdUserEdit={setIdUserEdit}  editedUserId={idUserEdit} editionForm={editionForm}/>
                                     }
                                   </Fragment>  
                                 ))

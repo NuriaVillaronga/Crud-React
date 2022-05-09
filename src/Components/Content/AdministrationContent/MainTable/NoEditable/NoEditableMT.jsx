@@ -21,7 +21,7 @@ function NoEditableMT ( props ) {
 
         if (check == false) {
             input.setAttribute("style", "color: black");
-            tr.setAttribute("style", "color:black; background-color:rgba(216, 224, 233, 0.852); border-top: 2px solid rgba(158, 182, 213, 0.852) !important;");
+            tr.setAttribute("style", "color:black; background-color:rgba(216, 224, 233, 0.852);");
         }
         else {
             input.setAttribute("style", "color: black");
@@ -29,6 +29,8 @@ function NoEditableMT ( props ) {
         }
     }
     
+    var contador = 0;
+
     const handleCheck = () => {
         
         var tr = document.getElementById(`row-read-mainTable-${props.element.id}`);
@@ -37,13 +39,14 @@ function NoEditableMT ( props ) {
 
         if (check == true) {
             input_password.setAttribute("style", "color: black"); 
-            tr.setAttribute("style", "color:black; background-color:rgba(216, 224, 233, 0.852); border-top: 2px solid rgba(158, 182, 213, 0.852) !important;");
+            tr.setAttribute("style", "color:black; background-color:rgba(216, 224, 233, 0.852);");
             if (visibility == true) {
                 row_read_ST.setAttribute("style", "display:table-row; background-color:rgba(228, 233, 239, 0.852)");
             }
             if (visibility == false) {
                 row_read_ST.setAttribute("style", "background-color:transparent");
             }
+            contador++;
             setCheck(false);
         }
         if (check == false) {
@@ -54,8 +57,11 @@ function NoEditableMT ( props ) {
             if (visibility == false) {
                 row_read_ST.setAttribute("style", "background-color:transparent");
             }
+            contador--;
             setCheck(true);
         }
+        props.tocado(); //Se hace el contador en el padre y se ejecuta aqui la funcion, el estado ya va a estar en el hijo asi que se le puede pasar a al padre
+        //Esto es para controlar cuando clickas y desclickas en un checkbox para mostrar el mensaje con el numero de pulsados y mostrar las posibles acciones a realizar
     }
     
     const handleDisplayClick = () => { 
@@ -84,6 +90,25 @@ function NoEditableMT ( props ) {
       
     }
 
+    const handleDeleteClick = () => {
+
+        const new_users_array = [...props.arrayUsuarios];
+    
+        const index = props.arrayUsuarios.findIndex((user) => user.id === props.element.id);
+    
+        new_users_array.splice(index, 1);
+    
+        props.setArrayUsuarios(new_users_array)
+    }
+
+    const handleEditClick = () => {
+        props.setIdUserEdit(props.element.id);
+    
+        const formValues = { id : props.element.id, name : props.element.name, email: props.element.email, rol: props.element.rol, password: props.element.password, state: props.element.state, address : props.element.address, cp: props.element.cp, phone: props.element.phone, register_data: props.element.register_data, city: props.element.city, provincia: props.element.provincia, apartment: props.element.apartment };
+    
+        props.setEditionForm(formValues); 
+    }
+
     return (<Fragment>
               <tr id={`row-read-mainTable-${props.element.id}`} className="tr-maintable-noeditable" onMouseOver={handleSelection} onMouseOut={handleDeselection}>
                 <td>
@@ -101,10 +126,10 @@ function NoEditableMT ( props ) {
                 <td>{props.element.register_data}</td>
                 <td>{props.element.state}</td>
                 <td className="col_acciones">
-                    <button className="icon-button" type="button" onClick={(event) => props.handleEditClick(event, props.element )}>
+                    <button className="icon-button" type="button" onClick={handleEditClick}>
                         <Icon id="update" size="2x"/>
                     </button>
-                    <button className="icon-button" type="button" onClick={() => props.handleDeleteClick(props.element.id)}>
+                    <button className="icon-button" type="button" onClick={handleDeleteClick}>
                         <Icon id="delete" size="2x"/>
                     </button> 
                 </td>
