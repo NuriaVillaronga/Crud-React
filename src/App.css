@@ -335,4 +335,6 @@ tr.hidde {
     background-color: rgba(177, 176, 176, 0.226);
 }
 
-
+#td-check-editable {
+    border-bottom: 1px solid rgba(228, 244, 255, 0.63) !important;
+}

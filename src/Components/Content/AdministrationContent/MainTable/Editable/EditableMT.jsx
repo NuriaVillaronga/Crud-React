@@ -23,7 +23,7 @@ function EditableMT (props) {
 
     return (<Fragment>
                 <tr className="row-editable-mainTable">
-                    <td><input type="checkbox"></input></td>
+                    <td id="td-check-editable"></td>
                     <td><InputALL name="name" value={props.editionForm.name} required="required" status={nameValue} changeStatus={setName} editionForm={props.editionForm} setEditionForm={props.setEditionForm} regexp={new RegExp(regExp_letters)} error_message="Nombre solo puede contener letras y espacios"/></td>
                     <td><InputALL name="email" value={props.editionForm.email} required="required" status={emailValue} changeStatus={setEmail} editionForm={props.editionForm} setEditionForm={props.setEditionForm} regexp={new RegExp(regExp_email)} error_message="Ejemplo de formato: foo-bar.baz@example.com"/></td>
                     <td><input className="form-control" type="text" name="password" value={props.editionForm.password} onChange={props.handleEditChange} readOnly/></td>

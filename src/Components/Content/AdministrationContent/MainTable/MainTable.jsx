@@ -42,17 +42,32 @@ function MainTable ( props ) {
   
     const handleCancelClick = () => {
       setIdUserEdit(null);
+        var th_check_mt = document.getElementById("th-check-mt");
+        var td_check_mt = document.getElementById("td-check-mt");
+
+        th_check_mt.style.display = "block";
+        td_check_mt.style.display = "block";
     }
 
-    const tocado = () => {
-      console.log("Tocado");
+    const [contador, setContador] = useState(0);
+
+    const tocado = (check) => {
+      if (check == true) {
+        setContador(contador + 1);
+      }
+      else if (check == false) {
+        setContador(contador - 1);
+      }
     }
+
+    //Nota: si se pincha en editar y el elemento se selecciona, este tiene que deseleccionarse (el contador tiene que decrementarse)
     
     return (<Fragment>
             <div className="row">
               <div className="col-12">
                 <Title/>
                 <SearchBar users={props.users} setArrayUsuarios={setArrayUsuarios}/>
+                <div><b>{contador}</b> elementos seleccionados</div>
                 <div className="row">
                   <div className="col-12">
                       <form onSubmit={handleSaveFormSubmit} className="form-mainTable"> 
@@ -67,7 +82,7 @@ function MainTable ( props ) {
                                     {
                                       idUserEdit === user.id ? 
                                       <EditableMT passwordValue={passwordValue} setPassword={setPassword} element={user} idUserEdit={idUserEdit} editionForm={editionForm} setEditionForm={setEditionForm} handleCancelClick={handleCancelClick}/>
-                                       : <NoEditableMT element={user} arrayUsuarios={arrayUsuarios} tocado={tocado} setArrayUsuarios={setArrayUsuarios} setEditionForm={setEditionForm} setIdUserEdit={setIdUserEdit}  editedUserId={idUserEdit} editionForm={editionForm}/>
+                                       : <NoEditableMT element={user} setContador={setContador} contador={contador} arrayUsuarios={arrayUsuarios} tocado={tocado} setArrayUsuarios={setArrayUsuarios} setEditionForm={setEditionForm} setIdUserEdit={setIdUserEdit}  editedUserId={idUserEdit} editionForm={editionForm}/>
                                     }
                                   </Fragment>  
                                 ))

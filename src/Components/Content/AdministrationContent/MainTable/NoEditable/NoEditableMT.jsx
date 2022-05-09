@@ -28,8 +28,6 @@ function NoEditableMT ( props ) {
             tr.setAttribute("style", "color:black; background-color:transparent");
         }
     }
-    
-    var contador = 0;
 
     const handleCheck = () => {
         
@@ -46,7 +44,7 @@ function NoEditableMT ( props ) {
             if (visibility == false) {
                 row_read_ST.setAttribute("style", "background-color:transparent");
             }
-            contador++;
+            
             setCheck(false);
         }
         if (check == false) {
@@ -57,11 +55,10 @@ function NoEditableMT ( props ) {
             if (visibility == false) {
                 row_read_ST.setAttribute("style", "background-color:transparent");
             }
-            contador--;
             setCheck(true);
         }
-        props.tocado(); //Se hace el contador en el padre y se ejecuta aqui la funcion, el estado ya va a estar en el hijo asi que se le puede pasar a al padre
-        //Esto es para controlar cuando clickas y desclickas en un checkbox para mostrar el mensaje con el numero de pulsados y mostrar las posibles acciones a realizar
+
+        props.tocado(check);
     }
     
     const handleDisplayClick = () => { 
@@ -102,11 +99,17 @@ function NoEditableMT ( props ) {
     }
 
     const handleEditClick = () => {
+
         props.setIdUserEdit(props.element.id);
     
         const formValues = { id : props.element.id, name : props.element.name, email: props.element.email, rol: props.element.rol, password: props.element.password, state: props.element.state, address : props.element.address, cp: props.element.cp, phone: props.element.phone, register_data: props.element.register_data, city: props.element.city, provincia: props.element.provincia, apartment: props.element.apartment };
     
         props.setEditionForm(formValues); 
+
+        setCheck(false);
+        if (check == false) {
+            props.tocado(check);
+        }
     }
 
     return (<Fragment>
