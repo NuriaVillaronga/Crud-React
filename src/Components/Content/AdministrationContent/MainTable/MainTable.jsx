@@ -83,8 +83,6 @@ function MainTable ( props ) {
         }
       }
     }
-
-    //Nota: si se pincha en editar y el elemento se selecciona, este tiene que deseleccionarse (el contador tiene que decrementarse)
     
     return (<Fragment>
             <div className="row">
@@ -94,13 +92,11 @@ function MainTable ( props ) {
                   <div className="col-12">
                       <div className="row container-contador-checks">
                         <div className="col-2 col-contador-title"><span id="span-contador-oculto"><b>{contador}</b> elementos seleccionados</span></div>
-                        <div className="col-2 col-contador-action-de border">
-                          <button type="button" className='btn' id="btn-contador-oculto">Eliminar seleccionados</button><span id="ocultar-truco">.</span>
+                        <div className="col-6 col-contador-action">
+                          <button type="button" className="btn" id="btn-contador-oculto">Eliminar seleccionados</button>
+                          <button type="button" className="btn" id="btn-exportar-oculto">Exportar datos (CSV)</button>
                         </div>
-                        <div className="col-2 col-contador-action-ex border">
-                          <button type="button" className='btn' id="btn-exportar-oculto">Exportar datos (CSV)</button>
-                        </div>
-                        <div className="col-6 col-search-users"><SearchBar users={props.users} setArrayUsuarios={setArrayUsuarios}/></div>
+                        <div className="col-4 col-search-users"><SearchBar users={props.users} setArrayUsuarios={setArrayUsuarios}/></div>
                       </div>
                       <form onSubmit={handleSaveFormSubmit} className="form-mainTable"> 
                         <table className="mainTable">

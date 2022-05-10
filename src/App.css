@@ -24,14 +24,17 @@
 #btn-contador-oculto {
     display: none;
     border: 1px solid rgb(251, 125, 125);
-    color: red;
-    background-color: rgba(255, 0, 0, 0.209);
+    color: white;
+    background-color: rgb(175, 49, 49);
 }
 #btn-exportar-oculto {
+    position: absolute;
+    top: 44px;
+    left: 170px;
     display: none;
-    border: 1px solid rgb(51, 111, 8);
-    color: rgb(32, 74, 0);
-    background-color: rgba(34, 80, 0, 0.309);
+    border: 1px solid rgb(0, 11, 170);
+    color: white;
+    background-color: rgb(62, 68, 150);
 }
 #span-contador-oculto {
     color: rgb(110, 110, 110);
@@ -46,13 +49,11 @@
     padding-top: 50px;
     text-align: left;
 }
-.col-contador-action-ex,  .col-contador-action-de{
+.col-contador-action {
+    position: relative;
     padding-top: 44px;
 }
-.col-contador-action-de {
-    
-}
-.col-contador-action-ex button,  .col-contador-action-de button{
+.col-contador-action button {
     font-size: 13px !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
@@ -374,3 +375,34 @@ tr.hidde {
     border-bottom: 1px solid rgba(228, 244, 255, 0.63) !important;
 }
 
+#btn-up, #btn-down {
+    border: 1px solid rgba(134, 134, 134, 0.164);
+}
+#btn-up {
+    position: relative;
+    height: 13px;
+    top: -13px;
+    left: 5px;
+}
+#btn-down {
+    position: relative;
+    height: 13px;
+    top: 1px;
+    left: -9px;
+}
+#sortdown {
+    position: absolute;
+    cursor: pointer;
+    left: 1px;
+    top: -6px;
+    height: 13px;
+    width: 10px;
+}
+#sortup {
+    position: absolute;
+    cursor: pointer;
+    left: 1px;
+    top: 3px;
+    height: 13px;
+    width: 10px;
+}

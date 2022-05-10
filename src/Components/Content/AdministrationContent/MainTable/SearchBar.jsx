@@ -22,7 +22,7 @@ function SearchBar ( props ) {
     }
     
     return (<Fragment>
-                <input className="form-control input-search-users" placeholder='Introduce el valor que deseas buscar' value={busqueda} onChange={handleSearchChange}/>
+                <input className="form-control input-search-users" placeholder='Busqueda' value={busqueda} onChange={handleSearchChange}/>
                 <Icon id="lupa" size="1x"/>
               </Fragment>);   
 }; 

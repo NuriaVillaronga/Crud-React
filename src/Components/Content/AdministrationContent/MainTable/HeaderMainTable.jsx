@@ -4,17 +4,27 @@ import Icon from '../../../Icon';
 
 function HeaderMainTable ( props ) { 
 
-    const handleClickSort = (event, key) => { 
+    const handleClickSortDown = (event, key) => { 
 
-      var btn_icon_arrow = document.getElementById(`icon-sort-${key}`);
+      var btn = document.getElementById(`sortdown`);
+      var btn_up = document.getElementById(`sortup`);
 
-      var sortedList = [...props.users].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0))  
-      btn_icon_arrow.setAttribute("style", "transform: rotate(180deg)");
+      var sortedList = [...props.users].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0)) 
+      
+      btn.setAttribute("style", "color: rgb(22, 98, 160) !important");
+          btn_up.setAttribute("style", "color: grey !important");
 
-      if (sortedList[0] === props.arrayUsuarios[0]) {
-        sortedList = [...props.users].sort((a, b) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0)) 
-        btn_icon_arrow.setAttribute("style", "transform: rotate(360deg)");
-      }
+      props.setArrayUsuarios(sortedList)
+    }
+
+    const handleClickSortUp = (event, key) => { 
+
+      var btn = document.getElementById(`sortup`);
+      var btn_down = document.getElementById(`sortdown`);
+
+      var sortedList = [...props.users].sort((b, a) => (a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0)) 
+      btn.setAttribute("style", "color:rgb(22, 98, 160) !important");
+      btn_down.setAttribute("style", "color: grey !important");  
 
       props.setArrayUsuarios(sortedList)
     }
@@ -22,26 +32,17 @@ function HeaderMainTable ( props ) {
     return (<tr>
                 <th><input type="checkbox"></input></th>
                 <th className="col_nombre">
+                <div id="div-button">
                 Nombre (completo)
-                <button className="icon-button-sort" type="button" id="icon-sort-name" onClick={(event) => handleClickSort(event, 'name')}><Icon id="arrowDown" size="1x"/></button>
+                  <button onClick={(event) => handleClickSortUp(event, 'name')} id="btn-up"><Icon id="sortup" size="1x"/></button>
+                  <button onClick={(event) => handleClickSortDown(event, 'name')} id="btn-down"><Icon id="sortdown" size="1x"/></button>
+                </div>
                 </th>
-                <th className="col_email">
-                Email
-                <button className="icon-button-sort" type="button" id="icon-sort-email" onClick={(event) => handleClickSort(event, 'email')}><Icon id="arrowDown" size="1x"/></button>
-                </th>
+                <th className="col_email">Email</th>
                 <th className="col_contraseña">Contraseña</th>
-                <th className="col_rol">
-                Rol
-                <button className="icon-button-sort" type="button" id="icon-sort-rol" onClick={(event) => handleClickSort(event, 'rol')}><Icon id="arrowDown" size="1x"/></button>
-                </th>
-                <th className="col_registro">
-                Registro
-                <button className="icon-button-sort" type="button" id="icon-sort-register_data" onClick={(event) => handleClickSort(event, 'register_data')}><Icon id="arrowDown" size="1x"/></button>
-                </th>
-                <th className="col_estado">
-                Estado
-                <button className="icon-button-sort" type="button" id="icon-sort-state" onClick={(event) => handleClickSort(event, 'state')}><Icon id="arrowDown" size="1x"/></button>
-                </th>
+                <th className="col_rol">Rol</th>
+                <th className="col_registro">Registro</th>
+                <th className="col_estado">Estado</th>
                 <th className="col_acciones">Acciones</th>
             </tr>);   
 }; 
