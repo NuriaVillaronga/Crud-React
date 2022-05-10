@@ -21,11 +21,35 @@
 /***************************************/
 
 /*Search users - main table*/
-
+#btn-contador-oculto {
+    display: none;
+}
+#span-contador-oculto {
+    color: rgb(110, 110, 110);
+    padding: 5px;
+    font-size: 13px;
+}
+.container-contador-checks {
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+.col-contador-title {
+    padding-top: 35px;
+    text-align: left;
+}
+.container-contador-checks .col-contador-action {
+    text-align: left;
+}
+.col-contador-action button {
+    font-size: 13px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}
 .col-search-users {
     position: relative;
-    padding-top: 40px;
-    padding-bottom: 30px;
+    padding-top: 5px;
 }
 .input-search-users {
     font-size: 16px !important;
@@ -35,22 +59,21 @@
     border-bottom: 1px solid rgb(167, 167, 167) !important;
     padding: 0px !important;
     padding-left: 4px !important;
-    padding-bottom: 2px !important;
 }
 .input-search-users::placeholder {
     color: rgb(107, 107, 107) !important;
+    padding: 0px !important;
 }
 .col-search-users  #lupa {
     position: absolute;
     right: 25px;
-	top: 45%;
+	top: 16%;
 }
 
 /**************************************/
 
 /*Main table no editable*/
 
-.input-read-password
 /***********************/
 
 
@@ -338,3 +361,4 @@ tr.hidde {
 #td-check-editable {
     border-bottom: 1px solid rgba(228, 244, 255, 0.63) !important;
 }
+

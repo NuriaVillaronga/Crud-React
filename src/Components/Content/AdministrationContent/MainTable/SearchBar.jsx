@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Icon from '../../../Icon';
  
 
@@ -21,13 +21,10 @@ function SearchBar ( props ) {
       props.setArrayUsuarios(resultadoBusqueda);
     }
     
-    return (<div className="row">
-                  <div className="col-8"></div>
-                  <div className="col-4 col-search-users">
-                    <input className="form-control input-search-users" placeholder='Introduce el valor que deseas buscar' value={busqueda} onChange={handleSearchChange}/>
-                    <Icon id="lupa" size="1x"/>
-                  </div>
-                </div>);   
+    return (<Fragment>
+                <input className="form-control input-search-users" placeholder='Introduce el valor que deseas buscar' value={busqueda} onChange={handleSearchChange}/>
+                <Icon id="lupa" size="1x"/>
+              </Fragment>);   
 }; 
 
 

@@ -52,11 +52,29 @@ function MainTable ( props ) {
     const [contador, setContador] = useState(0);
 
     const tocado = (check) => {
+      var btn = document.getElementById("btn-contador-oculto");
+      var span = document.getElementById("span-contador-oculto");
       if (check == true) {
         setContador(contador + 1);
+        if (contador+1 > 0) {
+          btn.setAttribute("style", "display: block");
+          span.setAttribute("style", "color: black");
+        }
+        if (contador+1 == 0) {
+          btn.setAttribute("style", "display: none");
+          span.setAttribute("style", "color: grey");
+        }
       }
       else if (check == false) {
         setContador(contador - 1);
+        if (contador > 0) {
+          btn.setAttribute("style", "display: block");
+          span.setAttribute("style", "color: black");
+        }
+        if (contador-1 == 0) {
+          btn.setAttribute("style", "display: none");
+          span.setAttribute("style", "color: grey");
+        }
       }
     }
 
@@ -66,10 +84,13 @@ function MainTable ( props ) {
             <div className="row">
               <div className="col-12">
                 <Title/>
-                <SearchBar users={props.users} setArrayUsuarios={setArrayUsuarios}/>
-                <div><b>{contador}</b> elementos seleccionados</div>
                 <div className="row">
                   <div className="col-12">
+                      <div className="row container-contador-checks">
+                        <div className="col-2 col-contador-title border"><span id="span-contador-oculto"><b>{contador}</b> elementos seleccionados</span></div>
+                        <div className="col-5 col-contador-action border"><button type="button" className='btn btn-danger' id="btn-contador-oculto">Eliminar seleccionados</button></div>
+                        <div className="col-5 col-search-users"><SearchBar users={props.users} setArrayUsuarios={setArrayUsuarios}/></div>
+                      </div>
                       <form onSubmit={handleSaveFormSubmit} className="form-mainTable"> 
                         <table className="mainTable">
                             <thead>
