@@ -23,6 +23,15 @@
 /*Search users - main table*/
 #btn-contador-oculto {
     display: none;
+    border: 1px solid rgb(251, 125, 125);
+    color: red;
+    background-color: rgba(255, 0, 0, 0.209);
+}
+#btn-exportar-oculto {
+    display: none;
+    border: 1px solid rgb(51, 111, 8);
+    color: rgb(32, 74, 0);
+    background-color: rgba(34, 80, 0, 0.309);
 }
 #span-contador-oculto {
     color: rgb(110, 110, 110);
@@ -31,16 +40,19 @@
 }
 .container-contador-checks {
     padding-top: 50px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 .col-contador-title {
-    padding-top: 35px;
+    padding-top: 50px;
     text-align: left;
 }
-.container-contador-checks .col-contador-action {
-    text-align: left;
+.col-contador-action-ex,  .col-contador-action-de{
+    padding-top: 44px;
 }
-.col-contador-action button {
+.col-contador-action-de {
+    
+}
+.col-contador-action-ex button,  .col-contador-action-de button{
     font-size: 13px !important;
     padding-top: 2px !important;
     padding-bottom: 2px !important;
