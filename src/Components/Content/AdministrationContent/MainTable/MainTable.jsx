@@ -84,20 +84,16 @@ function MainTable ( props ) {
       }
     }
     
+    //Si no hay busquedas se muestra un mensaje de error
+
     return (<Fragment>
             <div className="row">
               <div className="col-12">
                 <Title/>
+                <SearchBar users={props.users} setArrayUsuarios={setArrayUsuarios}/>
+                <div>Se han encontrado X busquedas con coincidencias en YYY, OOO...</div>
                 <div className="row">
                   <div className="col-12">
-                      <div className="row container-contador-checks">
-                        <div className="col-2 col-contador-title"><span id="span-contador-oculto"><b>{contador}</b> elementos seleccionados</span></div>
-                        <div className="col-6 col-contador-action">
-                          <button type="button" className="btn" id="btn-contador-oculto">Eliminar seleccionados</button>
-                          <button type="button" className="btn" id="btn-exportar-oculto">Exportar datos (CSV)</button>
-                        </div>
-                        <div className="col-4 col-search-users"><SearchBar users={props.users} setArrayUsuarios={setArrayUsuarios}/></div>
-                      </div>
                       <form onSubmit={handleSaveFormSubmit} className="form-mainTable"> 
                         <table className="mainTable">
                             <thead>
@@ -118,6 +114,13 @@ function MainTable ( props ) {
                             </tbody>
                         </table>
                       </form>
+                      <div className="row container-contador-checks">
+                        <div className="col-2 col-contador-title"><span id="span-contador-oculto"><b>{contador}</b> elementos seleccionados</span></div>
+                        <div className="col-10 col-contador-action">
+                          <button type="button" className="btn" id="btn-contador-oculto">Eliminar seleccionados</button>
+                          <button type="button" className="btn" id="btn-exportar-oculto">Exportar datos (CSV)</button>
+                        </div>
+                      </div>
                   </div>
                 </div>
               </div>

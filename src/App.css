@@ -42,7 +42,7 @@
     font-size: 13px;
 }
 .container-contador-checks {
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 20px;
 }
 .col-contador-title {
@@ -405,4 +405,12 @@ tr.hidde {
     top: 3px;
     height: 13px;
     width: 10px;
+}
+
+.row-search {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+#busqueda-avanzada-cont{
+    visibility: hidden;
 }
